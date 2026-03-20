@@ -9,15 +9,16 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --navy: #0a0f1e;
-      --navy-mid: #111827;
-      --navy-light: #1c2a45;
-      --gold: #c9a84c;
-      --gold-light: #e8c97a;
-      --gold-pale: #f5e6c0;
-      --cream: #faf7f2;
+      --navy: #1D0C43;
+      --navy-mid: #2B1464;
+      --navy-light: #2B1464;
+      --gold: #CC77F9;
+      --gold-light: #A999F4;
+      --gold-pale: #e8d8ff;
+      --cream: #f5f0ff;
       --white: #ffffff;
-      --text-muted: #8a9ab5;
+      --text-muted: #A999F4;
+      --accent: #613DBC;
       --serif: 'Cormorant Garamond', Georgia, serif;
       --sans: 'Jost', sans-serif;
     }
@@ -45,8 +46,8 @@
 
     /* ── TOP BAR ── */
     .topbar {
-      background: var(--gold);
-      color: var(--navy);
+      background: var(--accent);
+      color: var(--white);
       text-align: center;
       padding: 8px 20px;
       font-family: var(--sans);
@@ -55,16 +56,16 @@
       letter-spacing: 0.15em;
       text-transform: uppercase;
     }
-    .topbar a { color: var(--navy); text-decoration: none; }
+    .topbar a { color: var(--white); text-decoration: none; }
 
     /* ── NAV ── */
     nav {
       position: sticky;
       top: 0;
       z-index: 100;
-      background: rgba(10, 15, 30, 0.95);
+      background: rgba(29, 12, 67, 0.95);
       backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(201, 168, 76, 0.2);
+      border-bottom: 1px solid rgba(204, 119, 249, 0.2);
       padding: 0 40px;
       display: flex;
       align-items: center;
@@ -146,10 +147,24 @@
     .hero-bg {
       position: absolute;
       inset: 0;
+      overflow: hidden;
+    }
+    .hero-bg video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.45;
+    }
+    .hero-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
       background:
-        radial-gradient(ellipse at 20% 50%, rgba(201,168,76,0.08) 0%, transparent 60%),
-        radial-gradient(ellipse at 80% 20%, rgba(100,140,200,0.1) 0%, transparent 50%),
-        linear-gradient(180deg, #0a0f1e 0%, #0d1628 50%, #0a0f1e 100%);
+        radial-gradient(ellipse at 20% 50%, rgba(204,119,249,0.15) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 20%, rgba(97,61,188,0.2) 0%, transparent 50%),
+        linear-gradient(180deg, rgba(29,12,67,0.5) 0%, rgba(29,12,67,0.3) 50%, rgba(29,12,67,0.7) 100%);
     }
 
     /* Star field */
@@ -211,11 +226,11 @@
 
     .btn-primary {
       background: var(--gold);
-      color: var(--navy);
+      color: #1D0C43;
       padding: 14px 36px;
       font-family: var(--sans);
       font-size: 0.75rem;
-      font-weight: 500;
+      font-weight: 600;
       letter-spacing: 0.15em;
       text-transform: uppercase;
       text-decoration: none;
@@ -224,8 +239,9 @@
     }
     .btn-primary:hover {
       background: var(--gold-light);
+      color: #1D0C43;
       transform: translateY(-2px);
-      box-shadow: 0 8px 30px rgba(201,168,76,0.3);
+      box-shadow: 0 8px 30px rgba(204,119,249,0.3);
     }
 
     .btn-outline {
@@ -304,8 +320,8 @@
     /* ── SERVICES STRIP ── */
     .services-strip {
       background: var(--navy-light);
-      border-top: 1px solid rgba(201,168,76,0.15);
-      border-bottom: 1px solid rgba(201,168,76,0.15);
+      border-top: 1px solid rgba(204,119,249,0.15);
+      border-bottom: 1px solid rgba(204,119,249,0.15);
       padding: 0;
       display: grid;
       grid-template-columns: repeat(6, 1fr);
@@ -314,7 +330,7 @@
     .service-item {
       padding: 32px 20px;
       text-align: center;
-      border-right: 1px solid rgba(201,168,76,0.1);
+      border-right: 1px solid rgba(204,119,249,0.1);
       text-decoration: none;
       color: var(--white);
       transition: background 0.3s;
@@ -324,7 +340,7 @@
       gap: 10px;
     }
     .service-item:last-child { border-right: none; }
-    .service-item:hover { background: rgba(201,168,76,0.06); }
+    .service-item:hover { background: rgba(204,119,249,0.06); }
 
     .service-icon {
       font-size: 1.4rem;
@@ -379,11 +395,11 @@
     .stat-box {
       background: var(--navy-light);
       padding: 40px 32px;
-      border: 1px solid rgba(201,168,76,0.1);
+      border: 1px solid rgba(204,119,249,0.1);
     }
-    .stat-box:nth-child(2) { background: var(--gold); }
-    .stat-box:nth-child(2) .stat-num,
-    .stat-box:nth-child(2) .stat-label { color: var(--navy); }
+    .stat-box:nth-child(2) { background: var(--accent); border-color: rgba(204,119,249,0.3); }
+    .stat-box:nth-child(2) .stat-num { color: var(--white); }
+    .stat-box:nth-child(2) .stat-label { color: rgba(255,255,255,0.7); }
 
     .stat-num {
       font-family: var(--serif);
@@ -405,7 +421,7 @@
     .blog-section {
       padding: 100px 40px;
       background: var(--navy-mid);
-      border-top: 1px solid rgba(201,168,76,0.1);
+      border-top: 1px solid rgba(204,119,249,0.1);
     }
 
     .blog-header {
@@ -439,7 +455,7 @@
       letter-spacing: 0.2em;
       text-transform: uppercase;
       font-weight: 500;
-      border-bottom: 1px solid rgba(201,168,76,0.3);
+      border-bottom: 1px solid rgba(204,119,249,0.3);
       padding-bottom: 2px;
       white-space: nowrap;
       transition: border-color 0.2s;
@@ -483,7 +499,7 @@
     .blog-card-overlay {
       position: absolute;
       inset: 0;
-      background: linear-gradient(to top, rgba(10,15,30,0.95) 0%, rgba(10,15,30,0.3) 60%, transparent 100%);
+      background: linear-gradient(to top, rgba(29,12,67,0.95) 0%, rgba(29,12,67,0.3) 60%, transparent 100%);
     }
 
     .blog-card-content {
@@ -496,8 +512,8 @@
 
     .blog-tag {
       display: inline-block;
-      background: var(--gold);
-      color: var(--navy);
+      background: var(--accent);
+      color: var(--white);
       font-size: 0.62rem;
       letter-spacing: 0.15em;
       text-transform: uppercase;
@@ -574,7 +590,7 @@
     .dest-overlay {
       position: absolute;
       inset: 0;
-      background: linear-gradient(to top, rgba(10,15,30,0.85) 0%, rgba(10,15,30,0.2) 100%);
+      background: linear-gradient(to top, rgba(29,12,67,0.85) 0%, rgba(29,12,67,0.2) 100%);
     }
 
     .dest-content {
@@ -598,7 +614,7 @@
       right: 24px;
       width: 36px;
       height: 36px;
-      border: 1px solid rgba(201,168,76,0.4);
+      border: 1px solid rgba(204,119,249,0.4);
       border-radius: 50%;
       display: flex;
       align-items: center;
@@ -615,8 +631,8 @@
     .why-us {
       padding: 100px 40px;
       background: var(--navy-light);
-      border-top: 1px solid rgba(201,168,76,0.1);
-      border-bottom: 1px solid rgba(201,168,76,0.1);
+      border-top: 1px solid rgba(204,119,249,0.1);
+      border-bottom: 1px solid rgba(204,119,249,0.1);
     }
 
     .why-us-inner {
@@ -647,16 +663,16 @@
     .why-item {
       background: var(--navy);
       padding: 40px 32px;
-      border: 1px solid rgba(201,168,76,0.08);
+      border: 1px solid rgba(204,119,249,0.08);
       transition: border-color 0.3s;
     }
-    .why-item:hover { border-color: rgba(201,168,76,0.3); }
+    .why-item:hover { border-color: rgba(204,119,249,0.3); }
 
     .why-num {
       font-family: var(--serif);
       font-size: 2.5rem;
       font-weight: 300;
-      color: rgba(201,168,76,0.2);
+      color: rgba(204,119,249,0.2);
       line-height: 1;
       margin-bottom: 16px;
     }
@@ -678,8 +694,8 @@
     /* ── SANDALS BADGE ── */
     .sandals-banner {
       background: linear-gradient(135deg, #0a0f1e, #1c2a45);
-      border-top: 1px solid rgba(201,168,76,0.15);
-      border-bottom: 1px solid rgba(201,168,76,0.15);
+      border-top: 1px solid rgba(204,119,249,0.15);
+      border-bottom: 1px solid rgba(204,119,249,0.15);
       padding: 60px 40px;
       text-align: center;
     }
@@ -704,7 +720,7 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: radial-gradient(ellipse at center, rgba(201,168,76,0.08) 0%, transparent 70%);
+      background: radial-gradient(ellipse at center, rgba(204,119,249,0.08) 0%, transparent 70%);
     }
     .cta-section h2 {
       font-family: var(--serif);
@@ -721,7 +737,7 @@
     /* ── FOOTER ── */
     footer {
       background: var(--navy-mid);
-      border-top: 1px solid rgba(201,168,76,0.15);
+      border-top: 1px solid rgba(204,119,249,0.15);
       padding: 80px 40px 40px;
     }
 
@@ -756,7 +772,7 @@
     .social-btn {
       width: 36px;
       height: 36px;
-      border: 1px solid rgba(201,168,76,0.3);
+      border: 1px solid rgba(204,119,249,0.3);
       border-radius: 50%;
       display: flex;
       align-items: center;
@@ -860,7 +876,11 @@
 
   <!-- HERO -->
   <section class="hero">
-    <div class="hero-bg"></div>
+    <div class="hero-bg">
+      <video autoplay muted loop playsinline>
+        <source src="https://video.wixstatic.com/video/b0753b_79762f9632254222964ce841d78be3b9/1080p/mp4/file.mp4" type="video/mp4">
+      </video>
+    </div>
     <div class="stars" id="stars"></div>
 
     <span class="hero-eyebrow">✦ Certified Sandals Specialist ✦ KHM Travel Group Affiliate</span>
@@ -1148,7 +1168,7 @@
           <li><a href="#">How Booking Works</a></li>
           <li><a href="#">Reviews</a></li>
           <li><a href="#">Blog</a></li>
-          <li><a href="mailto:info@starlight2travel.com">Email Us</a></li>
+          <li><a href="/cdn-cgi/l/email-protection#c3aaada5ac83b0b7a2b1afaaa4abb7f1b7b1a2b5a6afeda0acae">Email Us</a></li>
         </ul>
       </div>
     </div>
@@ -1165,7 +1185,7 @@
     </div>
   </footer>
 
-  <script>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     // Generate star field
     const starsEl = document.getElementById('stars');
     for (let i = 0; i < 180; i++) {
@@ -1179,11 +1199,4 @@
         left: ${Math.random() * 100}%;
         --dur: ${Math.random() * 4 + 2}s;
         --delay: ${Math.random() * 5}s;
-        --min-op: ${Math.random() * 0.2 + 0.05};
-        --max-op: ${Math.random() * 0.6 + 0.3};
-      `;
-      starsEl.appendChild(star);
-    }
-  </script>
-</body>
-</html>
+        --min-op:
