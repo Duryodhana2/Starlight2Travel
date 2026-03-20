@@ -1,0 +1,1189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Starlight2Travel | Travel Agency</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy: #0a0f1e;
+      --navy-mid: #111827;
+      --navy-light: #1c2a45;
+      --gold: #c9a84c;
+      --gold-light: #e8c97a;
+      --gold-pale: #f5e6c0;
+      --cream: #faf7f2;
+      --white: #ffffff;
+      --text-muted: #8a9ab5;
+      --serif: 'Cormorant Garamond', Georgia, serif;
+      --sans: 'Jost', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--navy);
+      color: var(--white);
+      font-family: var(--sans);
+      font-weight: 300;
+      overflow-x: hidden;
+    }
+
+    /* ── NOISE TEXTURE OVERLAY ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.4;
+    }
+
+    /* ── TOP BAR ── */
+    .topbar {
+      background: var(--gold);
+      color: var(--navy);
+      text-align: center;
+      padding: 8px 20px;
+      font-family: var(--sans);
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+    .topbar a { color: var(--navy); text-decoration: none; }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(10, 15, 30, 0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(201, 168, 76, 0.2);
+      padding: 0 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+    }
+
+    .nav-logo img {
+      height: 44px;
+      filter: brightness(0) invert(1);
+    }
+    .nav-logo-text {
+      font-family: var(--serif);
+      font-size: 1.5rem;
+      font-weight: 400;
+      color: var(--white);
+      letter-spacing: 0.05em;
+    }
+    .nav-logo-text span { color: var(--gold); }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 32px;
+      align-items: center;
+    }
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+      position: relative;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: var(--gold);
+      transition: width 0.3s;
+    }
+    .nav-links a:hover { color: var(--gold-light); }
+    .nav-links a:hover::after { width: 100%; }
+
+    .nav-cta {
+      background: transparent;
+      border: 1px solid var(--gold);
+      color: var(--gold) !important;
+      padding: 8px 20px;
+      border-radius: 2px;
+      font-size: 0.72rem !important;
+      letter-spacing: 0.15em !important;
+      transition: all 0.3s !important;
+    }
+    .nav-cta:hover {
+      background: var(--gold) !important;
+      color: var(--navy) !important;
+    }
+    .nav-cta::after { display: none !important; }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      height: 100vh;
+      min-height: 700px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 20% 50%, rgba(201,168,76,0.08) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 20%, rgba(100,140,200,0.1) 0%, transparent 50%),
+        linear-gradient(180deg, #0a0f1e 0%, #0d1628 50%, #0a0f1e 100%);
+    }
+
+    /* Star field */
+    .stars {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+    }
+    .star {
+      position: absolute;
+      background: white;
+      border-radius: 50%;
+      animation: twinkle var(--dur, 3s) ease-in-out infinite var(--delay, 0s);
+    }
+    @keyframes twinkle {
+      0%, 100% { opacity: var(--min-op, 0.2); }
+      50% { opacity: var(--max-op, 0.9); }
+    }
+
+    .hero-eyebrow {
+      font-size: 0.72rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 24px;
+      font-weight: 500;
+      animation: fadeUp 1s ease 0.2s both;
+    }
+
+    .hero-title {
+      font-family: var(--serif);
+      font-size: clamp(3rem, 8vw, 7rem);
+      font-weight: 300;
+      line-height: 1.0;
+      letter-spacing: -0.01em;
+      margin-bottom: 8px;
+      animation: fadeUp 1s ease 0.4s both;
+    }
+    .hero-title em {
+      font-style: italic;
+      color: var(--gold-light);
+    }
+
+    .hero-tagline {
+      font-family: var(--serif);
+      font-size: clamp(1rem, 2.5vw, 1.5rem);
+      font-weight: 300;
+      font-style: italic;
+      color: var(--text-muted);
+      margin-bottom: 48px;
+      animation: fadeUp 1s ease 0.6s both;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      animation: fadeUp 1s ease 0.8s both;
+    }
+
+    .btn-primary {
+      background: var(--gold);
+      color: var(--navy);
+      padding: 14px 36px;
+      font-family: var(--sans);
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+    .btn-primary:hover {
+      background: var(--gold-light);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(201,168,76,0.3);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--white);
+      padding: 14px 36px;
+      font-family: var(--sans);
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+    .btn-outline:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+    }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      animation: fadeUp 1s ease 1.2s both;
+    }
+    .hero-scroll span {
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+    .scroll-line {
+      width: 1px;
+      height: 40px;
+      background: linear-gradient(to bottom, var(--gold), transparent);
+      animation: scrollPulse 2s ease infinite;
+    }
+    @keyframes scrollPulse {
+      0% { transform: scaleY(0); transform-origin: top; }
+      50% { transform: scaleY(1); transform-origin: top; }
+      50.01% { transform: scaleY(1); transform-origin: bottom; }
+      100% { transform: scaleY(0); transform-origin: bottom; }
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── DIVIDER ── */
+    .gold-divider {
+      width: 60px;
+      height: 1px;
+      background: var(--gold);
+      margin: 0 auto 24px;
+    }
+
+    /* ── SECTION BASE ── */
+    section { position: relative; z-index: 1; }
+
+    .section-label {
+      font-size: 0.68rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 500;
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    /* ── SERVICES STRIP ── */
+    .services-strip {
+      background: var(--navy-light);
+      border-top: 1px solid rgba(201,168,76,0.15);
+      border-bottom: 1px solid rgba(201,168,76,0.15);
+      padding: 0;
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+    }
+
+    .service-item {
+      padding: 32px 20px;
+      text-align: center;
+      border-right: 1px solid rgba(201,168,76,0.1);
+      text-decoration: none;
+      color: var(--white);
+      transition: background 0.3s;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+    .service-item:last-child { border-right: none; }
+    .service-item:hover { background: rgba(201,168,76,0.06); }
+
+    .service-icon {
+      font-size: 1.4rem;
+      color: var(--gold);
+    }
+
+    .service-item h3 {
+      font-family: var(--serif);
+      font-size: 0.95rem;
+      font-weight: 400;
+      color: var(--white);
+    }
+
+    /* ── INTRO ── */
+    .intro {
+      padding: 120px 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .intro-text h2 {
+      font-family: var(--serif);
+      font-size: clamp(2.2rem, 4vw, 3.5rem);
+      font-weight: 300;
+      line-height: 1.15;
+      margin-bottom: 24px;
+    }
+    .intro-text h2 em {
+      font-style: italic;
+      color: var(--gold-light);
+    }
+
+    .intro-text p {
+      color: var(--text-muted);
+      line-height: 1.8;
+      font-size: 0.95rem;
+      margin-bottom: 16px;
+    }
+
+    .intro-text .btn-primary { display: inline-block; margin-top: 16px; }
+
+    .intro-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+    }
+
+    .stat-box {
+      background: var(--navy-light);
+      padding: 40px 32px;
+      border: 1px solid rgba(201,168,76,0.1);
+    }
+    .stat-box:nth-child(2) { background: var(--gold); }
+    .stat-box:nth-child(2) .stat-num,
+    .stat-box:nth-child(2) .stat-label { color: var(--navy); }
+
+    .stat-num {
+      font-family: var(--serif);
+      font-size: 3rem;
+      font-weight: 300;
+      color: var(--gold-light);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .stat-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    /* ── BLOG (FRONT AND CENTER) ── */
+    .blog-section {
+      padding: 100px 40px;
+      background: var(--navy-mid);
+      border-top: 1px solid rgba(201,168,76,0.1);
+    }
+
+    .blog-header {
+      max-width: 1200px;
+      margin: 0 auto 60px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+    }
+
+    .blog-header-text h2 {
+      font-family: var(--serif);
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 300;
+      line-height: 1;
+    }
+    .blog-header-text h2 em { font-style: italic; color: var(--gold-light); }
+
+    .blog-header p {
+      color: var(--text-muted);
+      margin-top: 12px;
+      font-size: 0.9rem;
+      max-width: 400px;
+      line-height: 1.7;
+    }
+
+    .see-all-link {
+      color: var(--gold);
+      text-decoration: none;
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      font-weight: 500;
+      border-bottom: 1px solid rgba(201,168,76,0.3);
+      padding-bottom: 2px;
+      white-space: nowrap;
+      transition: border-color 0.2s;
+    }
+    .see-all-link:hover { border-color: var(--gold); }
+
+    .blog-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.6fr 1fr 1fr;
+      grid-template-rows: auto auto;
+      gap: 2px;
+    }
+
+    .blog-card {
+      position: relative;
+      overflow: hidden;
+      background: var(--navy-light);
+      cursor: pointer;
+      text-decoration: none;
+      color: var(--white);
+      display: block;
+    }
+    .blog-card.featured {
+      grid-row: span 2;
+    }
+
+    .blog-card-img {
+      width: 100%;
+      aspect-ratio: 16/10;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.6s ease;
+      background: linear-gradient(135deg, var(--navy-light), var(--navy-mid));
+    }
+    .blog-card.featured .blog-card-img { aspect-ratio: unset; height: 100%; min-height: 500px; }
+
+    .blog-card:hover .blog-card-img { transform: scale(1.04); }
+
+    .blog-card-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(10,15,30,0.95) 0%, rgba(10,15,30,0.3) 60%, transparent 100%);
+    }
+
+    .blog-card-content {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 32px;
+    }
+
+    .blog-tag {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--navy);
+      font-size: 0.62rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      font-weight: 600;
+      padding: 4px 10px;
+      margin-bottom: 12px;
+      border-radius: 1px;
+    }
+
+    .blog-card-content h3 {
+      font-family: var(--serif);
+      font-weight: 400;
+      line-height: 1.25;
+      margin-bottom: 8px;
+    }
+    .blog-card.featured .blog-card-content h3 { font-size: 1.8rem; }
+    .blog-card:not(.featured) .blog-card-content h3 { font-size: 1.1rem; }
+
+    .blog-card-meta {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      letter-spacing: 0.08em;
+    }
+
+    /* ── DESTINATIONS ── */
+    .destinations {
+      padding: 100px 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .destinations-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+    .destinations-header h2 {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 300;
+      margin-bottom: 16px;
+    }
+    .destinations-header h2 em { font-style: italic; color: var(--gold-light); }
+    .destinations-header p { color: var(--text-muted); font-size: 0.9rem; max-width: 500px; margin: 0 auto; line-height: 1.7; }
+
+    .dest-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(2, 260px);
+      gap: 3px;
+    }
+
+    .dest-card {
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .dest-card:first-child { grid-row: span 2; }
+
+    .dest-card-bg {
+      position: absolute;
+      inset: 0;
+      transition: transform 0.6s ease;
+    }
+    .dest-card:hover .dest-card-bg { transform: scale(1.06); }
+
+    .dest-card-bg.mexico { background: linear-gradient(135deg, #1a4a2e, #2d6a4f); }
+    .dest-card-bg.caribbean { background: linear-gradient(135deg, #0d3b6e, #1a7fa8); }
+    .dest-card-bg.europe { background: linear-gradient(135deg, #3d1a5e, #6b3fa0); }
+    .dest-card-bg.usa { background: linear-gradient(135deg, #4a1c1c, #8b3a3a); }
+    .dest-card-bg.pacific { background: linear-gradient(135deg, #0a3d3d, #1a7a7a); }
+    .dest-card-bg.dream { background: linear-gradient(135deg, #2a1f0a, #6b4c1a); }
+
+    .dest-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(10,15,30,0.85) 0%, rgba(10,15,30,0.2) 100%);
+    }
+
+    .dest-content {
+      position: absolute;
+      bottom: 28px;
+      left: 28px;
+      right: 28px;
+    }
+    .dest-content h3 {
+      font-family: var(--serif);
+      font-size: 1.5rem;
+      font-weight: 400;
+      margin-bottom: 4px;
+    }
+    .dest-card:first-child .dest-content h3 { font-size: 2.2rem; }
+    .dest-content p { font-size: 0.75rem; color: var(--text-muted); letter-spacing: 0.1em; }
+
+    .dest-arrow {
+      position: absolute;
+      top: 24px;
+      right: 24px;
+      width: 36px;
+      height: 36px;
+      border: 1px solid rgba(201,168,76,0.4);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gold);
+      font-size: 1rem;
+      opacity: 0;
+      transform: translateY(6px);
+      transition: all 0.3s;
+    }
+    .dest-card:hover .dest-arrow { opacity: 1; transform: translateY(0); }
+
+    /* ── WHY US ── */
+    .why-us {
+      padding: 100px 40px;
+      background: var(--navy-light);
+      border-top: 1px solid rgba(201,168,76,0.1);
+      border-bottom: 1px solid rgba(201,168,76,0.1);
+    }
+
+    .why-us-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .why-us-left h2 {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      font-weight: 300;
+      line-height: 1.15;
+      position: sticky;
+      top: 100px;
+    }
+    .why-us-left h2 em { font-style: italic; color: var(--gold-light); }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+    }
+
+    .why-item {
+      background: var(--navy);
+      padding: 40px 32px;
+      border: 1px solid rgba(201,168,76,0.08);
+      transition: border-color 0.3s;
+    }
+    .why-item:hover { border-color: rgba(201,168,76,0.3); }
+
+    .why-num {
+      font-family: var(--serif);
+      font-size: 2.5rem;
+      font-weight: 300;
+      color: rgba(201,168,76,0.2);
+      line-height: 1;
+      margin-bottom: 16px;
+    }
+
+    .why-item h3 {
+      font-family: var(--serif);
+      font-size: 1.2rem;
+      font-weight: 400;
+      margin-bottom: 12px;
+      color: var(--gold-pale);
+    }
+
+    .why-item p {
+      color: var(--text-muted);
+      font-size: 0.88rem;
+      line-height: 1.75;
+    }
+
+    /* ── SANDALS BADGE ── */
+    .sandals-banner {
+      background: linear-gradient(135deg, #0a0f1e, #1c2a45);
+      border-top: 1px solid rgba(201,168,76,0.15);
+      border-bottom: 1px solid rgba(201,168,76,0.15);
+      padding: 60px 40px;
+      text-align: center;
+    }
+    .sandals-banner .section-label { text-align: center; }
+    .sandals-banner h2 {
+      font-family: var(--serif);
+      font-size: clamp(1.8rem, 3vw, 2.5rem);
+      font-weight: 300;
+      margin-bottom: 8px;
+    }
+    .sandals-banner h2 em { font-style: italic; color: var(--gold-light); }
+    .sandals-banner p { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 28px; }
+
+    /* ── CTA ── */
+    .cta-section {
+      padding: 120px 40px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at center, rgba(201,168,76,0.08) 0%, transparent 70%);
+    }
+    .cta-section h2 {
+      font-family: var(--serif);
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      font-weight: 300;
+      line-height: 1.1;
+      margin-bottom: 20px;
+      position: relative;
+    }
+    .cta-section h2 em { font-style: italic; color: var(--gold-light); }
+    .cta-section p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 40px; max-width: 500px; margin-left: auto; margin-right: auto; line-height: 1.8; position: relative; }
+    .cta-actions { display: flex; gap: 16px; justify-content: center; position: relative; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--navy-mid);
+      border-top: 1px solid rgba(201,168,76,0.15);
+      padding: 80px 40px 40px;
+    }
+
+    .footer-top {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1fr;
+      gap: 60px;
+      margin-bottom: 60px;
+    }
+
+    .footer-brand h3 {
+      font-family: var(--serif);
+      font-size: 1.5rem;
+      font-weight: 400;
+      margin-bottom: 16px;
+      color: var(--gold-light);
+    }
+
+    .footer-brand p {
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      line-height: 1.75;
+      margin-bottom: 24px;
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 12px;
+    }
+    .social-btn {
+      width: 36px;
+      height: 36px;
+      border: 1px solid rgba(201,168,76,0.3);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.85rem;
+      transition: all 0.3s;
+    }
+    .social-btn:hover { border-color: var(--gold); color: var(--gold); }
+
+    .footer-col h4 {
+      font-size: 0.68rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      font-weight: 500;
+      color: var(--gold);
+      margin-bottom: 20px;
+    }
+
+    .footer-col ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .footer-col ul a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.85rem;
+      transition: color 0.2s;
+    }
+    .footer-col ul a:hover { color: var(--gold-light); }
+
+    .footer-bottom {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding-top: 32px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .footer-bottom p {
+      color: var(--text-muted);
+      font-size: 0.75rem;
+      line-height: 1.6;
+    }
+    .footer-legal {
+      display: flex;
+      gap: 24px;
+    }
+    .footer-legal a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.72rem;
+      letter-spacing: 0.05em;
+      transition: color 0.2s;
+    }
+    .footer-legal a:hover { color: var(--gold); }
+
+    /* ── MOBILE ── */
+    @media (max-width: 900px) {
+      nav { padding: 0 20px; }
+      .nav-links { display: none; }
+      .intro { grid-template-columns: 1fr; gap: 40px; padding: 60px 24px; }
+      .services-strip { grid-template-columns: repeat(3, 1fr); }
+      .blog-grid { grid-template-columns: 1fr; }
+      .blog-card.featured { grid-row: span 1; }
+      .dest-grid { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
+      .dest-card:first-child { grid-row: span 1; }
+      .why-us-inner { grid-template-columns: 1fr; gap: 40px; }
+      .why-grid { grid-template-columns: 1fr; }
+      .footer-top { grid-template-columns: 1fr 1fr; gap: 40px; }
+      .blog-section { padding: 60px 24px; }
+      .destinations { padding: 60px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOP BAR -->
+  <div class="topbar">
+    <a href="tel:4404781181">✦ Call or Text to Talk Travel: (440) 478-1181 ✦</a>
+  </div>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-logo-text">Starlight<span>2</span>Travel</div>
+    <ul class="nav-links">
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Vacations</a></li>
+      <li><a href="#">Destinations</a></li>
+      <li><a href="#">Blog</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#" class="nav-cta">Request a Quote</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="stars" id="stars"></div>
+
+    <span class="hero-eyebrow">✦ Certified Sandals Specialist ✦ KHM Travel Group Affiliate</span>
+    <h1 class="hero-title">Follow the Stars<br>to <em>Your Adventure</em></h1>
+    <p class="hero-tagline">Custom itineraries crafted for the journey of a lifetime</p>
+    <div class="hero-actions">
+      <a href="https://calendly.com/-starlight2travel/travelappointment" class="btn-primary">Plan My Trip</a>
+      <a href="#" class="btn-outline">Explore Destinations</a>
+    </div>
+
+    <div class="hero-scroll">
+      <div class="scroll-line"></div>
+      <span>Scroll</span>
+    </div>
+  </section>
+
+  <!-- SERVICES STRIP -->
+  <div class="services-strip">
+    <a href="#" class="service-item">
+      <div class="service-icon">💑</div>
+      <h3>Romance Travel</h3>
+    </a>
+    <a href="#" class="service-item">
+      <div class="service-icon">🌴</div>
+      <h3>All-Inclusive</h3>
+    </a>
+    <a href="#" class="service-item">
+      <div class="service-icon">✨</div>
+      <h3>Luxury Trips</h3>
+    </a>
+    <a href="#" class="service-item">
+      <div class="service-icon">🚢</div>
+      <h3>Cruises</h3>
+    </a>
+    <a href="#" class="service-item">
+      <div class="service-icon">👨‍👩‍👧</div>
+      <h3>Family Vacations</h3>
+    </a>
+    <a href="#" class="service-item">
+      <div class="service-icon">💒</div>
+      <h3>Destination Weddings</h3>
+    </a>
+  </div>
+
+  <!-- INTRO -->
+  <section>
+    <div class="intro">
+      <div class="intro-text">
+        <span class="section-label">About Starlight2Travel</span>
+        <h2>We'll Move the Stars to Give You a <em>Magical Adventure</em></h2>
+        <p>Welcome to Starlight2Travel, where custom itineraries meet exceptional service. We specialize in crafting unforgettable travel experiences — from hiking glaciers under the northern lights to discovering the birthplace of constellation namesakes in Greece and Rome.</p>
+        <p>Whether you're traveling as a couple, a family, or a large group, your adventure will have the chance to shine bright because when you're here, you're our guest.</p>
+        <a href="#" class="btn-primary">Our Story</a>
+      </div>
+      <div class="intro-stats">
+        <div class="stat-box">
+          <div class="stat-num">6+</div>
+          <div class="stat-label">Years of Service</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-num">★</div>
+          <div class="stat-label">Certified Sandals Specialist</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-num">∞</div>
+          <div class="stat-label">Dream Destinations</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-num">100%</div>
+          <div class="stat-label">Custom Itineraries</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BLOG (FRONT AND CENTER) -->
+  <section class="blog-section">
+    <div class="blog-header">
+      <div class="blog-header-text">
+        <span class="section-label">✦ Fresh from the Team</span>
+        <h2>Travel Like<br>a <em>Star</em></h2>
+        <p>Inspiration, destination guides, agency news, and travel tips — straight from the Starlight2Travel team.</p>
+      </div>
+      <a href="#" class="see-all-link">View All Posts →</a>
+    </div>
+
+    <div class="blog-grid">
+      <!-- Featured Post -->
+      <a href="#" class="blog-card featured">
+        <div class="blog-card-img" style="background: linear-gradient(135deg, #1a3a6e 0%, #0d6e8a 50%, #0a4a5a 100%); height: 100%; min-height: 500px; display:block;"></div>
+        <div class="blog-card-overlay"></div>
+        <div class="blog-card-content">
+          <span class="blog-tag">Agency News</span>
+          <h3>A Recap of Crystal Conference & Awards Ceremony Agency Trip 2025</h3>
+          <p class="blog-card-meta">May 16, 2025 &nbsp;·&nbsp; 3 min read</p>
+        </div>
+      </a>
+
+      <!-- Post 2 -->
+      <a href="#" class="blog-card">
+        <div class="blog-card-img" style="background: linear-gradient(135deg, #2d6a4f, #1b4332);"></div>
+        <div class="blog-card-overlay"></div>
+        <div class="blog-card-content">
+          <span class="blog-tag">Starlight2Travel</span>
+          <h3>Celebrating National Travel Advisor Appreciation Day</h3>
+          <p class="blog-card-meta">May 7, 2025 &nbsp;·&nbsp; 3 min read</p>
+        </div>
+      </a>
+
+      <!-- Post 3 -->
+      <a href="#" class="blog-card">
+        <div class="blog-card-img" style="background: linear-gradient(135deg, #6b3fa0, #3d1a5e);"></div>
+        <div class="blog-card-overlay"></div>
+        <div class="blog-card-content">
+          <span class="blog-tag">Milestone</span>
+          <h3>Starlight2Travel Achieves Pinnacle Gold Agency Status</h3>
+          <p class="blog-card-meta">May 2, 2025 &nbsp;·&nbsp; 2 min read</p>
+        </div>
+      </a>
+
+      <!-- Post 4 -->
+      <a href="#" class="blog-card">
+        <div class="blog-card-img" style="background: linear-gradient(135deg, #8b3a3a, #4a1c1c);"></div>
+        <div class="blog-card-overlay"></div>
+        <div class="blog-card-content">
+          <span class="blog-tag">Destination Guide</span>
+          <h3>Top 5 Reasons to Book a Sandals Resort This Year</h3>
+          <p class="blog-card-meta">April 18, 2025 &nbsp;·&nbsp; 4 min read</p>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- DESTINATIONS -->
+  <section>
+    <div class="destinations">
+      <div class="destinations-header">
+        <span class="section-label">✦ Where Will You Go?</span>
+        <h2>Explore <em>Dream</em> Destinations</h2>
+        <p>From Caribbean shores to European cities, we curate exceptional journeys to every corner of the globe.</p>
+      </div>
+
+      <div class="dest-grid">
+        <a href="#" class="dest-card">
+          <div class="dest-card-bg caribbean"></div>
+          <div class="dest-overlay"></div>
+          <div class="dest-content">
+            <h3>The Caribbean</h3>
+            <p>Islands · Beaches · Culture</p>
+          </div>
+          <div class="dest-arrow">→</div>
+        </a>
+        <a href="#" class="dest-card">
+          <div class="dest-card-bg mexico"></div>
+          <div class="dest-overlay"></div>
+          <div class="dest-content">
+            <h3>Mexico</h3>
+            <p>Resorts · History · Cuisine</p>
+          </div>
+          <div class="dest-arrow">→</div>
+        </a>
+        <a href="#" class="dest-card">
+          <div class="dest-card-bg europe"></div>
+          <div class="dest-overlay"></div>
+          <div class="dest-content">
+            <h3>Europe</h3>
+            <p>Art · Architecture · Romance</p>
+          </div>
+          <div class="dest-arrow">→</div>
+        </a>
+        <a href="#" class="dest-card">
+          <div class="dest-card-bg usa"></div>
+          <div class="dest-overlay"></div>
+          <div class="dest-content">
+            <h3>United States</h3>
+            <p>National Parks · Cities · Disney</p>
+          </div>
+          <div class="dest-arrow">→</div>
+        </a>
+        <a href="#" class="dest-card">
+          <div class="dest-card-bg pacific"></div>
+          <div class="dest-overlay"></div>
+          <div class="dest-content">
+            <h3>South Pacific & Asia</h3>
+            <p>Exotic · Spiritual · Breathtaking</p>
+          </div>
+          <div class="dest-arrow">→</div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY US -->
+  <section class="why-us">
+    <div class="why-us-inner">
+      <div class="why-us-left">
+        <span class="section-label">Why Book With Us</span>
+        <h2>Travel with <em>Confidence</em> & Care</h2>
+      </div>
+      <div class="why-grid">
+        <div class="why-item">
+          <div class="why-num">01</div>
+          <h3>Vacation Your Way</h3>
+          <p>No two people are alike, so why should our vacations be? Custom-created itineraries curated with just you in mind.</p>
+        </div>
+        <div class="why-item">
+          <div class="why-num">02</div>
+          <h3>Reliable Resource</h3>
+          <p>Leave the reservations to us. As your travel agent, we become your single contact for worldwide arrangements.</p>
+        </div>
+        <div class="why-item">
+          <div class="why-num">03</div>
+          <h3>Valuable Investment</h3>
+          <p>We steer travelers clear of travel scams and timeshares. Your trust, our biggest priority — no strings attached.</p>
+        </div>
+        <div class="why-item">
+          <div class="why-num">04</div>
+          <h3>Travel Confidently</h3>
+          <p>Feel prepared knowing someone has your back when things don't go as planned. We're with you every step.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SANDALS BANNER -->
+  <div class="sandals-banner">
+    <span class="section-label">✦ Official Partner</span>
+    <h2>Starlight2Travel is a <em>Certified Sandals Specialist</em></h2>
+    <p>Exclusive access, expert knowledge, and the best in adults-only luxury Caribbean resorts.</p>
+    <a href="https://www.sandals.com/?referral=122840&agentid=KIKE4704" class="btn-primary" target="_blank">Shop Sandals Resorts</a>
+  </div>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <span class="section-label">✦ Ready to Go?</span>
+    <h2>Your Next Adventure<br>Starts <em>Right Here</em></h2>
+    <p>Tell us where you've dreamed of going — we'll take care of everything else. No stress, no guesswork, just magic.</p>
+    <div class="cta-actions">
+      <a href="https://calendly.com/-starlight2travel/travelappointment" class="btn-primary">Book a Free Consultation</a>
+      <a href="tel:4404781181" class="btn-outline">Call (440) 478-1181</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-top">
+      <div class="footer-brand">
+        <h3>Starlight2Travel</h3>
+        <p>Moving the stars to give you the magical adventure of a lifetime. An affiliate of KHM Travel Group.</p>
+        <div class="footer-social">
+          <a href="https://www.facebook.com/starlight2travel" class="social-btn" target="_blank">f</a>
+          <a href="https://www.instagram.com/starlight2travel/" class="social-btn" target="_blank">ig</a>
+          <a href="https://www.linkedin.com/in/kimberly-j-curlin-192a0475/" class="social-btn" target="_blank">in</a>
+          <a href="https://www.pinterest.com/starlight2travel2019/_saved/" class="social-btn" target="_blank">p</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Vacations</h4>
+        <ul>
+          <li><a href="#">All-Inclusive Packages</a></li>
+          <li><a href="#">Family Vacations</a></li>
+          <li><a href="#">Luxury Trips</a></li>
+          <li><a href="#">Tropical Cruises</a></li>
+          <li><a href="#">Couples Trips</a></li>
+          <li><a href="#">Destination Weddings</a></li>
+          <li><a href="#">Honeymoons</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="#">Travel Brochures</a></li>
+          <li><a href="#">Travel Guides</a></li>
+          <li><a href="#">Travel Insurance</a></li>
+          <li><a href="#">Government Resources</a></li>
+          <li><a href="#">Shop Sandals</a></li>
+          <li><a href="#">Shop Beaches</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#">Our Agency</a></li>
+          <li><a href="#">Meet the Team</a></li>
+          <li><a href="#">How Booking Works</a></li>
+          <li><a href="#">Reviews</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="mailto:info@starlight2travel.com">Email Us</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>
+        <p>© 2019–2025 Starlight2Travel, Inc. &nbsp;|&nbsp; An affiliate of KHM Travel Group</p>
+        <p style="margin-top:6px; font-size:0.68rem;">CA Seller of Travel #2089491-50 · FL License #TI103149 · HI License #TAR 7231 · WA UBI #602 775122</p>
+      </div>
+      <div class="footer-legal">
+        <a href="#">Agency Terms</a>
+        <a href="#">Supplier Terms</a>
+        <a href="#">Privacy Policy</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Generate star field
+    const starsEl = document.getElementById('stars');
+    for (let i = 0; i < 180; i++) {
+      const star = document.createElement('div');
+      star.classList.add('star');
+      const size = Math.random() * 2.5 + 0.5;
+      star.style.cssText = `
+        width: ${size}px;
+        height: ${size}px;
+        top: ${Math.random() * 100}%;
+        left: ${Math.random() * 100}%;
+        --dur: ${Math.random() * 4 + 2}s;
+        --delay: ${Math.random() * 5}s;
+        --min-op: ${Math.random() * 0.2 + 0.05};
+        --max-op: ${Math.random() * 0.6 + 0.3};
+      `;
+      starsEl.appendChild(star);
+    }
+  </script>
+</body>
+</html>
