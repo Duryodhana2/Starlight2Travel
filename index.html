@@ -4,7 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Starlight2Travel | Travel Agency</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -19,7 +20,9 @@
       --white: #ffffff;
       --text-muted: #A999F4;
       --accent: #613DBC;
-      --serif: 'Cormorant Garamond', Georgia, serif;
+      --blue: #3B6FBF;
+      --blue-light: #5B8FDF;
+      --serif: 'Playfair Display', Georgia, serif;
       --sans: 'Jost', sans-serif;
     }
 
@@ -73,18 +76,18 @@
       height: 72px;
     }
 
-    .nav-logo img {
-      height: 44px;
+    .nav-logo-img {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+    }
+    .nav-logo-img img {
+      height: 48px;
+      width: auto;
       filter: brightness(0) invert(1);
+      transition: opacity 0.2s;
     }
-    .nav-logo-text {
-      font-family: var(--serif);
-      font-size: 1.5rem;
-      font-weight: 400;
-      color: var(--white);
-      letter-spacing: 0.05em;
-    }
-    .nav-logo-text span { color: var(--gold); }
+    .nav-logo-img:hover img { opacity: 0.85; }
 
     .nav-links {
       display: flex;
@@ -188,7 +191,7 @@
       font-size: 0.72rem;
       letter-spacing: 0.3em;
       text-transform: uppercase;
-      color: var(--gold);
+      color: var(--blue-light);
       margin-bottom: 24px;
       font-weight: 500;
       animation: fadeUp 1s ease 0.2s both;
@@ -311,7 +314,7 @@
       font-size: 0.68rem;
       letter-spacing: 0.3em;
       text-transform: uppercase;
-      color: var(--gold);
+      color: var(--blue-light);
       font-weight: 500;
       margin-bottom: 12px;
       display: block;
@@ -397,7 +400,7 @@
       padding: 40px 32px;
       border: 1px solid rgba(204,119,249,0.1);
     }
-    .stat-box:nth-child(2) { background: var(--accent); border-color: rgba(204,119,249,0.3); }
+    .stat-box:nth-child(2) { background: var(--blue); border-color: rgba(91,143,223,0.3); }
     .stat-box:nth-child(2) .stat-num { color: var(--white); }
     .stat-box:nth-child(2) .stat-label { color: rgba(255,255,255,0.7); }
 
@@ -512,7 +515,7 @@
 
     .blog-tag {
       display: inline-block;
-      background: var(--accent);
+      background: var(--blue);
       color: var(--white);
       font-size: 0.62rem;
       letter-spacing: 0.15em;
@@ -750,39 +753,53 @@
       margin-bottom: 60px;
     }
 
-    .footer-brand h3 {
-      font-family: var(--serif);
-      font-size: 1.5rem;
-      font-weight: 400;
-      margin-bottom: 16px;
-      color: var(--gold-light);
-    }
-
     .footer-brand p {
       color: var(--text-muted);
       font-size: 0.85rem;
       line-height: 1.75;
-      margin-bottom: 24px;
     }
 
     .footer-social {
       display: flex;
       gap: 12px;
+      margin: 20px 0 16px;
     }
     .social-btn {
-      width: 36px;
-      height: 36px;
-      border: 1px solid rgba(204,119,249,0.3);
+      width: 42px;
+      height: 42px;
+      background: var(--blue);
+      border: none;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      color: var(--text-muted);
+      color: var(--white);
       text-decoration: none;
-      font-size: 0.85rem;
+      font-size: 1rem;
       transition: all 0.3s;
     }
-    .social-btn:hover { border-color: var(--gold); color: var(--gold); }
+    .social-btn:hover {
+      background: var(--blue-light);
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(59,111,191,0.4);
+    }
+    .footer-email, .footer-phone {
+      font-size: 0.85rem;
+      margin-bottom: 8px;
+    }
+    .footer-email a, .footer-phone a {
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-email a:hover, .footer-phone a:hover { color: var(--white); }
+    .footer-affiliate {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      letter-spacing: 0.05em;
+      margin-top: 4px;
+      font-style: italic;
+    }
 
     .footer-col h4 {
       font-size: 0.68rem;
@@ -863,7 +880,9 @@
 
   <!-- NAV -->
   <nav>
-    <div class="nav-logo-text">Starlight<span>2</span>Travel</div>
+    <a href="#" class="nav-logo-img">
+      <img src="https://static.wixstatic.com/media/9d01a9_72e7426550b64465806f52624864dffc~mv2.png" alt="Starlight2Travel" />
+    </a>
     <ul class="nav-links">
       <li><a href="#">Home</a></li>
       <li><a href="#">Vacations</a></li>
@@ -1128,14 +1147,16 @@
   <footer>
     <div class="footer-top">
       <div class="footer-brand">
-        <h3>Starlight2Travel</h3>
-        <p>Moving the stars to give you the magical adventure of a lifetime. An affiliate of KHM Travel Group.</p>
+        <a href="#"><img src="https://static.wixstatic.com/media/9d01a9_72e7426550b64465806f52624864dffc~mv2.png" alt="Starlight2Travel" style="height:56px; width:auto; filter:brightness(0) invert(1); margin-bottom:16px; display:block;" /></a>
+        <p class="footer-email"><a href="mailto:team@starlight2travel.com"><i class="fa fa-envelope" style="margin-right:8px; color:var(--blue-light);"></i>team@starlight2travel.com</a></p>
+        <p class="footer-phone"><a href="tel:4404781181"><i class="fa fa-phone" style="margin-right:8px; color:var(--blue-light);"></i>(440) 478-1181</a></p>
         <div class="footer-social">
-          <a href="https://www.facebook.com/starlight2travel" class="social-btn" target="_blank">f</a>
-          <a href="https://www.instagram.com/starlight2travel/" class="social-btn" target="_blank">ig</a>
-          <a href="https://www.linkedin.com/in/kimberly-j-curlin-192a0475/" class="social-btn" target="_blank">in</a>
-          <a href="https://www.pinterest.com/starlight2travel2019/_saved/" class="social-btn" target="_blank">p</a>
+          <a href="https://www.facebook.com/starlight2travel" class="social-btn" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://www.instagram.com/starlight2travel/" class="social-btn" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.linkedin.com/in/kimberly-j-curlin-192a0475/" class="social-btn" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="https://www.pinterest.com/starlight2travel2019/_saved/" class="social-btn" target="_blank" title="Pinterest"><i class="fab fa-pinterest-p"></i></a>
         </div>
+        <p class="footer-affiliate">An affiliate of KHM Travel Group</p>
       </div>
       <div class="footer-col">
         <h4>Vacations</h4>
