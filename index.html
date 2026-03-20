@@ -734,6 +734,88 @@
     .cta-section p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 40px; max-width: 500px; margin-left: auto; margin-right: auto; line-height: 1.8; position: relative; }
     .cta-actions { display: flex; gap: 16px; justify-content: center; position: relative; }
 
+    /* ── STAY CONNECTED ── */
+    .stay-connected {
+      padding: 100px 40px;
+      background: var(--navy-light);
+      border-top: 1px solid rgba(204,119,249,0.12);
+      border-bottom: 1px solid rgba(204,119,249,0.12);
+      text-align: center;
+    }
+    .stay-connected h2 {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 400;
+      margin-bottom: 8px;
+    }
+    .stay-connected h2 em { font-style: italic; color: var(--gold-light); }
+    .stay-connected > p {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin-bottom: 48px;
+      max-width: 440px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.7;
+    }
+    .connect-form {
+      max-width: 560px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .connect-form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+    .connect-form input {
+      width: 100%;
+      padding: 14px 18px;
+      background: rgba(59,111,191,0.15);
+      border: 1px solid rgba(91,143,223,0.3);
+      border-radius: 4px;
+      color: var(--white);
+      font-family: var(--sans);
+      font-size: 0.9rem;
+      font-weight: 300;
+      transition: border-color 0.2s, background 0.2s;
+      outline: none;
+    }
+    .connect-form input::placeholder { color: rgba(169,153,244,0.5); }
+    .connect-form input:focus {
+      border-color: var(--blue-light);
+      background: rgba(59,111,191,0.22);
+    }
+    .connect-form .btn-submit {
+      background: var(--accent);
+      color: var(--white);
+      border: none;
+      padding: 15px 48px;
+      font-family: var(--sans);
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.3s;
+      margin-top: 4px;
+    }
+    .connect-form .btn-submit:hover {
+      background: var(--blue);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(59,111,191,0.35);
+    }
+    .connect-success {
+      display: none;
+      color: var(--blue-light);
+      font-size: 0.9rem;
+      margin-top: 16px;
+      font-style: italic;
+    }
+
     /* ── FOOTER ── */
     footer {
       background: var(--navy-mid);
@@ -1144,8 +1226,8 @@
   <footer>
     <div class="footer-top">
       <div class="footer-brand">
-        <a href="#"><img src="./logo2.png" alt="Starlight2Travel" style="height:56px; width:auto;  margin-bottom:16px; display:block;" /></a>
-        <p class="footer-email"><a href="/cdn-cgi/l/email-protection#c0b4a5a1ad80b3b4a1b2aca9a7a8b4f2b4b2a1b6a5aceea3afad"><i class="fa fa-envelope" style="margin-right:8px; color:var(--blue-light);"></i><span class="__cf_email__" data-cfemail="720617131f32010613001e1b151a064006001304171e5c111d1f">[email&#160;protected]</span></a></p>
+        <a href="#"><img src="./logo2.png" alt="Starlight2Travel" style="height:80px; width:auto; margin-bottom:16px; display:block;" /></a>
+        <p class="footer-email"><a href="mailto:team@starlight2travel.com"><i class="fa fa-envelope" style="margin-right:8px; color:var(--blue-light);"></i>team@starlight2travel.com</a></p>
         <p class="footer-phone"><a href="tel:4404781181"><i class="fa fa-phone" style="margin-right:8px; color:var(--blue-light);"></i>(440) 478-1181</a></p>
         <div class="footer-social">
           <a href="https://www.facebook.com/starlight2travel" class="social-btn" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
