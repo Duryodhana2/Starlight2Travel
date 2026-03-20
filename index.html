@@ -66,7 +66,7 @@
       position: sticky;
       top: 0;
       z-index: 100;
-      background: rgba(29, 12, 67, 0.95);
+      background: rgba(61, 34, 117, 0.97);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid rgba(204, 119, 249, 0.2);
       padding: 0 40px;
@@ -80,18 +80,13 @@
       display: flex;
       align-items: center;
       text-decoration: none;
-      background: rgba(255,255,255,0.92);
-      padding: 6px 14px;
-      border-radius: 6px;
-      transition: background 0.2s;
-    }
-    .nav-logo-img:hover { background: rgba(255,255,255,1); }
-    .nav-logo-img img {
-      height: 48px;
-      width: auto;
       transition: opacity 0.2s;
     }
-    .nav-logo-img:hover img { opacity: 0.9; }
+    .nav-logo-img:hover { opacity: 0.85; }
+    .nav-logo-img img {
+      height: 52px;
+      width: auto;
+    }
 
     .nav-links {
       display: flex;
@@ -741,9 +736,9 @@
     /* ── STAY CONNECTED ── */
     .stay-connected {
       padding: 100px 40px;
-      background: linear-gradient(135deg, #e8d8ff 0%, #d4c5f9 50%, #c5b8f5 100%);
-      border-top: none;
-      border-bottom: none;
+      background: #1a0a38;
+      border-top: 1px solid rgba(204,119,249,0.15);
+      border-bottom: 1px solid rgba(204,119,249,0.15);
       text-align: center;
       position: relative;
       overflow: hidden;
@@ -752,28 +747,28 @@
       content: '✦';
       position: absolute;
       font-size: 20rem;
-      color: rgba(97,61,188,0.06);
+      color: rgba(204,119,249,0.04);
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
       pointer-events: none;
     }
     .stay-connected .section-label {
-      color: var(--accent);
+      color: var(--blue-light);
     }
     .stay-connected h2 {
       font-family: var(--serif);
       font-size: clamp(2rem, 4vw, 3rem);
       font-weight: 700;
-      color: #2B1464;
+      color: var(--white);
       margin-bottom: 8px;
     }
     .stay-connected h2 em {
       font-style: italic;
-      color: var(--blue);
+      color: var(--gold-light);
     }
     .stay-connected > p {
-      color: #4a3a7a;
+      color: var(--text-muted);
       font-size: 0.95rem;
       margin-bottom: 48px;
       max-width: 440px;
@@ -800,20 +795,20 @@
       background: rgba(59,111,191,0.18);
       border: 1.5px solid rgba(59,111,191,0.4);
       border-radius: 6px;
-      color: #1D0C43;
+      color: var(--white);
       font-family: var(--sans);
       font-size: 0.9rem;
       font-weight: 400;
       transition: border-color 0.2s, background 0.2s;
       outline: none;
     }
-    .connect-form input::placeholder { color: rgba(59,111,191,0.55); }
+    .connect-form input::placeholder { color: rgba(169,153,244,0.5); }
     .connect-form input:focus {
-      border-color: var(--blue);
+      border-color: var(--blue-light);
       background: rgba(59,111,191,0.28);
     }
     .connect-form .btn-submit {
-      background: #2B1464;
+      background: var(--accent);
       color: var(--white);
       border: none;
       padding: 16px 48px;
@@ -836,7 +831,7 @@
     }
     .connect-success {
       display: none;
-      color: var(--accent);
+      color: var(--gold-light);
       font-size: 1rem;
       margin-top: 16px;
       font-style: italic;
@@ -845,8 +840,8 @@
 
     /* ── FOOTER ── */
     footer {
-      background: var(--navy-mid);
-      border-top: 1px solid rgba(204,119,249,0.15);
+      background: #3d2275;
+      border-top: 1px solid rgba(204,119,249,0.2);
       padding: 80px 40px 40px;
     }
 
@@ -1269,7 +1264,7 @@
   <footer>
     <div class="footer-top">
       <div class="footer-brand">
-        <a href="#" style="display:inline-block; background:rgba(255,255,255,0.92); padding:10px 18px; border-radius:8px; margin-bottom:18px;"><img src="./logo2.png" alt="Starlight2Travel" style="height:80px; width:auto; display:block;" /></a>
+        <a href="#" style="display:inline-block; margin-bottom:18px;"><img src="./logo2.png" alt="Starlight2Travel" style="height:80px; width:auto; display:block;" /></a>
         <p class="footer-email"><a href="/cdn-cgi/l/email-protection#077362666a47747366756b6e606f733573756671626b2964686a"><i class="fa fa-envelope" style="margin-right:8px; color:var(--blue-light);"></i><span class="__cf_email__" data-cfemail="661203070b26151207140a0f010e125412140710030a4805090b">[email&#160;protected]</span></a></p>
         <p class="footer-phone"><a href="tel:4404781181"><i class="fa fa-phone" style="margin-right:8px; color:var(--blue-light);"></i>(440) 478-1181</a></p>
         <div class="footer-social">
