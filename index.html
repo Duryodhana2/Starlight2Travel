@@ -80,14 +80,18 @@
       display: flex;
       align-items: center;
       text-decoration: none;
+      background: rgba(255,255,255,0.92);
+      padding: 6px 14px;
+      border-radius: 6px;
+      transition: background 0.2s;
     }
+    .nav-logo-img:hover { background: rgba(255,255,255,1); }
     .nav-logo-img img {
       height: 48px;
       width: auto;
-      
       transition: opacity 0.2s;
     }
-    .nav-logo-img:hover img { opacity: 0.85; }
+    .nav-logo-img:hover img { opacity: 0.9; }
 
     .nav-links {
       display: flex;
@@ -737,21 +741,40 @@
     /* ── STAY CONNECTED ── */
     .stay-connected {
       padding: 100px 40px;
-      background: var(--navy-light);
-      border-top: 1px solid rgba(204,119,249,0.12);
-      border-bottom: 1px solid rgba(204,119,249,0.12);
+      background: linear-gradient(135deg, #e8d8ff 0%, #d4c5f9 50%, #c5b8f5 100%);
+      border-top: none;
+      border-bottom: none;
       text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .stay-connected::before {
+      content: '✦';
+      position: absolute;
+      font-size: 20rem;
+      color: rgba(97,61,188,0.06);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+    .stay-connected .section-label {
+      color: var(--accent);
     }
     .stay-connected h2 {
       font-family: var(--serif);
       font-size: clamp(2rem, 4vw, 3rem);
-      font-weight: 400;
+      font-weight: 700;
+      color: #2B1464;
       margin-bottom: 8px;
     }
-    .stay-connected h2 em { font-style: italic; color: var(--gold-light); }
+    .stay-connected h2 em {
+      font-style: italic;
+      color: var(--blue);
+    }
     .stay-connected > p {
-      color: var(--text-muted);
-      font-size: 0.9rem;
+      color: #4a3a7a;
+      font-size: 0.95rem;
       margin-bottom: 48px;
       max-width: 440px;
       margin-left: auto;
@@ -759,11 +782,12 @@
       line-height: 1.7;
     }
     .connect-form {
-      max-width: 560px;
+      max-width: 520px;
       margin: 0 auto;
       display: flex;
       flex-direction: column;
       gap: 14px;
+      position: relative;
     }
     .connect-form-row {
       display: grid;
@@ -772,48 +796,51 @@
     }
     .connect-form input {
       width: 100%;
-      padding: 14px 18px;
-      background: rgba(59,111,191,0.15);
-      border: 1px solid rgba(91,143,223,0.3);
-      border-radius: 4px;
-      color: var(--white);
+      padding: 15px 18px;
+      background: rgba(59,111,191,0.18);
+      border: 1.5px solid rgba(59,111,191,0.4);
+      border-radius: 6px;
+      color: #1D0C43;
       font-family: var(--sans);
       font-size: 0.9rem;
-      font-weight: 300;
+      font-weight: 400;
       transition: border-color 0.2s, background 0.2s;
       outline: none;
     }
-    .connect-form input::placeholder { color: rgba(169,153,244,0.5); }
+    .connect-form input::placeholder { color: rgba(59,111,191,0.55); }
     .connect-form input:focus {
-      border-color: var(--blue-light);
-      background: rgba(59,111,191,0.22);
+      border-color: var(--blue);
+      background: rgba(59,111,191,0.28);
     }
     .connect-form .btn-submit {
-      background: var(--accent);
+      background: #2B1464;
       color: var(--white);
       border: none;
-      padding: 15px 48px;
+      padding: 16px 48px;
       font-family: var(--sans);
-      font-size: 0.78rem;
+      font-size: 0.8rem;
       font-weight: 600;
       letter-spacing: 0.15em;
       text-transform: uppercase;
-      border-radius: 4px;
+      border-radius: 6px;
       cursor: pointer;
       transition: all 0.3s;
       margin-top: 4px;
+      align-self: center;
+      width: 200px;
     }
     .connect-form .btn-submit:hover {
       background: var(--blue);
       transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(59,111,191,0.35);
+      box-shadow: 0 8px 24px rgba(59,111,191,0.4);
     }
     .connect-success {
       display: none;
-      color: var(--blue-light);
-      font-size: 0.9rem;
+      color: var(--accent);
+      font-size: 1rem;
       margin-top: 16px;
       font-style: italic;
+      font-family: var(--serif);
     }
 
     /* ── FOOTER ── */
@@ -1222,12 +1249,28 @@
     </div>
   </section>
 
+  <!-- STAY CONNECTED -->
+  <section class="stay-connected">
+    <span class="section-label">✦ Stay in the Loop</span>
+    <h2>Stay Connected with <em>Starlight2Travel</em></h2>
+    <p>Sign up to receive travel inspiration, exclusive deals, and updates from our team straight to your inbox.</p>
+    <form class="connect-form" onsubmit="handleSubmit(event)">
+      <div class="connect-form-row">
+        <input type="text" placeholder="E.g., Kat" aria-label="First Name" />
+        <input type="text" placeholder="E.g., Jones" aria-label="Last Name" />
+      </div>
+      <input type="email" placeholder="E.g., mail@example.com" aria-label="Email" required />
+      <button type="submit" class="btn-submit">Submit</button>
+    </form>
+    <p class="connect-success" id="connectSuccess">✦ Thanks for signing up! We'll be in touch soon.</p>
+  </section>
+
   <!-- FOOTER -->
   <footer>
     <div class="footer-top">
       <div class="footer-brand">
-        <a href="#"><img src="./logo2.png" alt="Starlight2Travel" style="height:80px; width:auto; margin-bottom:16px; display:block;" /></a>
-        <p class="footer-email"><a href="mailto:team@starlight2travel.com"><i class="fa fa-envelope" style="margin-right:8px; color:var(--blue-light);"></i>team@starlight2travel.com</a></p>
+        <a href="#" style="display:inline-block; background:rgba(255,255,255,0.92); padding:10px 18px; border-radius:8px; margin-bottom:18px;"><img src="./logo2.png" alt="Starlight2Travel" style="height:80px; width:auto; display:block;" /></a>
+        <p class="footer-email"><a href="/cdn-cgi/l/email-protection#077362666a47747366756b6e606f733573756671626b2964686a"><i class="fa fa-envelope" style="margin-right:8px; color:var(--blue-light);"></i><span class="__cf_email__" data-cfemail="661203070b26151207140a0f010e125412140710030a4805090b">[email&#160;protected]</span></a></p>
         <p class="footer-phone"><a href="tel:4404781181"><i class="fa fa-phone" style="margin-right:8px; color:var(--blue-light);"></i>(440) 478-1181</a></p>
         <div class="footer-social">
           <a href="https://www.facebook.com/starlight2travel" class="social-btn" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
@@ -1285,10 +1328,22 @@
     </div>
   </footer>
 
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     // Generate star field
     const starsEl = document.getElementById('stars');
     for (let i = 0; i < 180; i++) {
       const star = document.createElement('div');
       star.classList.add('star');
       const size = Math.random() * 2.5 + 0.5;
+   
+      star.style.cssText = `
+        width: ${size}px;
+        height: ${size}px;
+        top: ${Math.random() * 100}%;
+        left: ${Math.random() * 100}%;
+        --dur: ${Math.random() * 4 + 2}s;
+        --delay: ${Math.random() * 5}s;
+        --min-op: ${Math.random() * 0.2 + 0.05};
+        --max-op: ${Math.random() * 0.6 + 0.3};
+      `;
+      starsEl.appendChi
