@@ -112,10 +112,10 @@
       left: 0;
       width: 0;
       height: 1px;
-      background: var(--gold);
+      background: var(--blue);
       transition: width 0.3s;
     }
-    .nav-links a:hover { color: var(--gold-light); }
+    .nav-links a:hover { color: var(--blue-light); }
     .nav-links a:hover::after { width: 100%; }
 
     .nav-cta {
@@ -158,16 +158,13 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      opacity: 0.45;
+      opacity: 0.75;
     }
     .hero-bg::after {
       content: '';
       position: absolute;
       inset: 0;
-      background:
-        radial-gradient(ellipse at 20% 50%, rgba(204,119,249,0.15) 0%, transparent 60%),
-        radial-gradient(ellipse at 80% 20%, rgba(97,61,188,0.2) 0%, transparent 50%),
-        linear-gradient(180deg, rgba(29,12,67,0.5) 0%, rgba(29,12,67,0.3) 50%, rgba(29,12,67,0.7) 100%);
+      background: linear-gradient(180deg, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.1) 50%, rgba(0,0,0,0.35) 100%);
     }
 
     /* Star field */
@@ -1148,7 +1145,7 @@
     <div class="footer-top">
       <div class="footer-brand">
         <a href="#"><img src="https://static.wixstatic.com/media/9d01a9_72e7426550b64465806f52624864dffc~mv2.png" alt="Starlight2Travel" style="height:56px; width:auto; filter:brightness(0) invert(1); margin-bottom:16px; display:block;" /></a>
-        <p class="footer-email"><a href="mailto:team@starlight2travel.com"><i class="fa fa-envelope" style="margin-right:8px; color:var(--blue-light);"></i>team@starlight2travel.com</a></p>
+        <p class="footer-email"><a href="/cdn-cgi/l/email-protection#c0b4a5a1ad80b3b4a1b2aca9a7a8b4f2b4b2a1b6a5aceea3afad"><i class="fa fa-envelope" style="margin-right:8px; color:var(--blue-light);"></i><span class="__cf_email__" data-cfemail="720617131f32010613001e1b151a064006001304171e5c111d1f">[email&#160;protected]</span></a></p>
         <p class="footer-phone"><a href="tel:4404781181"><i class="fa fa-phone" style="margin-right:8px; color:var(--blue-light);"></i>(440) 478-1181</a></p>
         <div class="footer-social">
           <a href="https://www.facebook.com/starlight2travel" class="social-btn" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
@@ -1157,6 +1154,7 @@
           <a href="https://www.pinterest.com/starlight2travel2019/_saved/" class="social-btn" target="_blank" title="Pinterest"><i class="fab fa-pinterest-p"></i></a>
         </div>
         <p class="footer-affiliate">An affiliate of KHM Travel Group</p>
+        <p style="margin-top:12px; font-size:0.8rem;"><a href="https://tracking.us.nylas.com/l/8098134157114d16bc9fd227d499db1f/0/7a7e036795c15f3cb8e902011428017df6bc692a7a63d643f8a3bd77bf8a4989" target="_blank" style="color:var(--blue-light); text-decoration:underline; text-underline-offset:3px;">Click here for a Travel Planning Questionnaire</a></p>
       </div>
       <div class="footer-col">
         <h4>Vacations</h4>
@@ -1197,27 +1195,18 @@
       <div>
         <p>© 2019–2025 Starlight2Travel, Inc. &nbsp;|&nbsp; An affiliate of KHM Travel Group</p>
         <p style="margin-top:6px; font-size:0.68rem;">CA Seller of Travel #2089491-50 · FL License #TI103149 · HI License #TAR 7231 · WA UBI #602 775122</p>
+        <p style="margin-top:6px; font-size:0.68rem; color:var(--text-muted);">Team Photography Credit: <a href="https://www.instagram.com/annieyuphotos/" target="_blank" style="color:var(--blue-light); text-decoration:none;">Annie Yu Photography</a></p>
       </div>
       <div class="footer-legal">
         <a href="#">Agency Terms</a>
-        <a href="#">Supplier Terms</a>
-        <a href="#">Privacy Policy</a>
       </div>
     </div>
   </footer>
 
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     // Generate star field
     const starsEl = document.getElementById('stars');
     for (let i = 0; i < 180; i++) {
       const star = document.createElement('div');
       star.classList.add('star');
       const size = Math.random() * 2.5 + 0.5;
-      star.style.cssText = `
-        width: ${size}px;
-        height: ${size}px;
-        top: ${Math.random() * 100}%;
-        left: ${Math.random() * 100}%;
-        --dur: ${Math.random() * 4 + 2}s;
-        --delay: ${Math.random() * 5}s;
-        --min-op:
