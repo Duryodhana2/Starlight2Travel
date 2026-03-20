@@ -66,9 +66,9 @@
       position: sticky;
       top: 0;
       z-index: 100;
-      background: rgba(61, 34, 117, 0.97);
+      background: #1a6dbf;
       backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(204, 119, 249, 0.2);
+      border-bottom: 1px solid rgba(255,255,255,0.15);
       padding: 0 40px;
       display: flex;
       align-items: center;
@@ -95,7 +95,7 @@
       align-items: center;
     }
     .nav-links a {
-      color: var(--text-muted);
+      color: rgba(255,255,255,0.85);
       text-decoration: none;
       font-size: 0.75rem;
       font-weight: 500;
@@ -111,16 +111,16 @@
       left: 0;
       width: 0;
       height: 1px;
-      background: var(--blue);
+      background: var(--white);
       transition: width 0.3s;
     }
-    .nav-links a:hover { color: var(--blue-light); }
+    .nav-links a:hover { color: var(--white); }
     .nav-links a:hover::after { width: 100%; }
 
     .nav-cta {
-      background: transparent;
-      border: 1px solid var(--gold);
-      color: var(--gold) !important;
+      background: rgba(255,255,255,0.15) !important;
+      border: 1px solid rgba(255,255,255,0.6) !important;
+      color: var(--white) !important;
       padding: 8px 20px;
       border-radius: 2px;
       font-size: 0.72rem !important;
@@ -128,8 +128,8 @@
       transition: all 0.3s !important;
     }
     .nav-cta:hover {
-      background: var(--gold) !important;
-      color: var(--navy) !important;
+      background: var(--white) !important;
+      color: #1a6dbf !important;
     }
     .nav-cta::after { display: none !important; }
 
@@ -840,8 +840,8 @@
 
     /* ── FOOTER ── */
     footer {
-      background: #3d2275;
-      border-top: 1px solid rgba(204,119,249,0.2);
+      background: #1a6dbf;
+      border-top: 1px solid rgba(255,255,255,0.15);
       padding: 80px 40px 40px;
     }
 
@@ -907,7 +907,7 @@
       letter-spacing: 0.2em;
       text-transform: uppercase;
       font-weight: 500;
-      color: var(--gold);
+      color: rgba(255,255,255,0.5);
       margin-bottom: 20px;
     }
 
@@ -918,18 +918,18 @@
       gap: 10px;
     }
     .footer-col ul a {
-      color: var(--text-muted);
+      color: rgba(255,255,255,0.8);
       text-decoration: none;
       font-size: 0.85rem;
       transition: color 0.2s;
     }
-    .footer-col ul a:hover { color: var(--gold-light); }
+    .footer-col ul a:hover { color: var(--white); }
 
     .footer-bottom {
       max-width: 1200px;
       margin: 0 auto;
       padding-top: 32px;
-      border-top: 1px solid rgba(255,255,255,0.06);
+      border-top: 1px solid rgba(255,255,255,0.15);
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -937,7 +937,7 @@
       gap: 12px;
     }
     .footer-bottom p {
-      color: var(--text-muted);
+      color: rgba(255,255,255,0.7);
       font-size: 0.75rem;
       line-height: 1.6;
     }
@@ -946,13 +946,13 @@
       gap: 24px;
     }
     .footer-legal a {
-      color: var(--text-muted);
+      color: rgba(255,255,255,0.7);
       text-decoration: none;
       font-size: 0.72rem;
       letter-spacing: 0.05em;
       transition: color 0.2s;
     }
-    .footer-legal a:hover { color: var(--gold); }
+    .footer-legal a:hover { color: var(--white); }
 
     /* ── MOBILE ── */
     @media (max-width: 900px) {
@@ -1020,27 +1020,21 @@
   <!-- SERVICES STRIP -->
   <div class="services-strip">
     <a href="#" class="service-item">
-      <div class="service-icon">💑</div>
       <h3>Romance Travel</h3>
     </a>
     <a href="#" class="service-item">
-      <div class="service-icon">🌴</div>
       <h3>All-Inclusive</h3>
     </a>
     <a href="#" class="service-item">
-      <div class="service-icon">✨</div>
       <h3>Luxury Trips</h3>
     </a>
     <a href="#" class="service-item">
-      <div class="service-icon">🚢</div>
       <h3>Cruises</h3>
     </a>
     <a href="#" class="service-item">
-      <div class="service-icon">👨‍👩‍👧</div>
       <h3>Family Vacations</h3>
     </a>
     <a href="#" class="service-item">
-      <div class="service-icon">💒</div>
       <h3>Destination Weddings</h3>
     </a>
   </div>
