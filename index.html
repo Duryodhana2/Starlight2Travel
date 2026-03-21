@@ -72,8 +72,6 @@
       align-items: center;
       justify-content: space-between;
       height: 80px;
-      /* Dark gradient so nav is readable over hero video */
-      background: linear-gradient(to bottom, rgba(10,5,25,0.7) 0%, transparent 100%);
     }
 
     .nav-logo-img {
@@ -1351,10 +1349,10 @@
     const navEl = document.querySelector('nav');
     window.addEventListener('scroll', () => {
       if (window.scrollY > 60) {
-        navEl.style.background = 'rgba(10,5,25,0.88)';
-        navEl.style.backdropFilter = 'blur(12px)';
+        navEl.style.background = 'rgba(10,5,25,0.5)';
+        navEl.style.backdropFilter = 'blur(8px)';
       } else {
-        navEl.style.background = 'linear-gradient(to bottom, rgba(10,5,25,0.7) 0%, transparent 100%)';
+        navEl.style.background = 'transparent';
         navEl.style.backdropFilter = 'none';
       }
     });
