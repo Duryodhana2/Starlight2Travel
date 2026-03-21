@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Vacations | Starlight2Travel</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy: #1D0C43;
+      --navy-mid: #2B1464;
+      --gold: #CC77F9;
+      --gold-light: #A999F4;
+      --white: #ffffff;
+      --text-muted: #A999F4;
+      --accent: #613DBC;
+      --blue: #3B6FBF;
+      --blue-light: #5B8FDF;
+      --blue-nav: #1a6dbf;
+      --serif: 'Playfair Display', Georgia, serif;
+      --sans: 'Jost', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--navy);
+      color: var(--white);
+      font-family: var(--sans);
+      font-weight: 300;
+      overflow-x: hidden;
+    }
+
+    /* ── TOP BAR ── */
+    .topbar {
+      background: var(--accent);
+      color: var(--white);
+      text-align: center;
+      padding: 8px 20px;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+    .topbar a { color: var(--white); text-decoration: none; }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(29,12,67,0.97);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(204,119,249,0.15);
+      padding: 12px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 80px;
+    }
+    .nav-logo-img { display: flex; align-items: center; text-decoration: none; transition: opacity 0.2s; }
+    .nav-logo-img:hover { opacity: 0.85; }
+    .nav-logo-img img { height: 54px; width: auto; }
+    .nav-links {
+      display: flex; list-style: none; gap: 4px; align-items: center;
+      background: var(--blue-nav); padding: 8px 12px; border-radius: 50px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.3);
+    }
+    .nav-links a {
+      color: rgba(255,255,255,0.85); text-decoration: none; font-size: 0.72rem;
+      font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;
+      transition: all 0.2s; padding: 7px 14px; border-radius: 50px; white-space: nowrap;
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--white); background: rgba(255,255,255,0.15); }
+    .nav-cta {
+      background: var(--white) !important; color: var(--blue-nav) !important;
+      font-weight: 600 !important; padding: 7px 18px !important; border-radius: 50px !important;
+      font-size: 0.72rem !important; letter-spacing: 0.1em !important; transition: all 0.3s !important;
+      border: none !important; margin-left: 4px;
+    }
+    .nav-cta:hover { background: #e8f0ff !important; transform: translateY(-1px); }
+
+    /* ── PAGE HERO ── */
+    .page-hero {
+      position: relative;
+      padding: 100px 40px 80px;
+      text-align: center;
+      overflow: hidden;
+      background: linear-gradient(160deg, #1D0C43 0%, #2B1464 40%, #1a0a38 100%);
+    }
+    .page-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 30% 50%, rgba(59,111,191,0.12) 0%, transparent 60%),
+        radial-gradient(ellipse at 75% 30%, rgba(204,119,249,0.08) 0%, transparent 50%);
+    }
+    .page-hero .breadcrumb {
+      font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--blue-light); margin-bottom: 20px; position: relative;
+    }
+    .page-hero .breadcrumb a { color: var(--blue-light); text-decoration: none; transition: color 0.2s; }
+    .page-hero .breadcrumb a:hover { color: var(--white); }
+    .page-hero h1 {
+      font-family: var(--serif); font-size: clamp(2.8rem, 6vw, 5rem);
+      font-weight: 600; line-height: 1.05; margin-bottom: 24px; position: relative;
+    }
+    .page-hero h1 em { font-style: italic; color: var(--gold-light); }
+    .page-hero p {
+      color: var(--text-muted); font-size: 1rem; max-width: 620px;
+      margin: 0 auto; line-height: 1.8; position: relative;
+    }
+
+    /* ── VACATION CATEGORIES NAV ── */
+    .cat-nav {
+      background: var(--navy-mid);
+      border-bottom: 1px solid rgba(204,119,249,0.1);
+      padding: 0 40px;
+      display: flex;
+      justify-content: center;
+      gap: 0;
+      overflow-x: auto;
+    }
+    .cat-nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 18px 20px;
+      border-bottom: 2px solid transparent;
+      white-space: nowrap;
+      transition: all 0.2s;
+    }
+    .cat-nav a:hover { color: var(--white); border-bottom-color: var(--blue-light); }
+    .cat-nav a.active { color: var(--white); border-bottom-color: var(--blue-nav); }
+
+    /* ── INTRO STRIP ── */
+    .intro-strip {
+      max-width: 860px;
+      margin: 72px auto;
+      padding: 0 40px;
+      text-align: center;
+    }
+    .intro-strip .section-label {
+      font-size: 0.68rem; letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--blue-light); font-weight: 500; margin-bottom: 12px; display: block;
+    }
+    .intro-strip p {
+      color: var(--text-muted); font-size: 1rem; line-height: 1.85;
+    }
+
+    /* ── VACATION CARDS GRID ── */
+    .vacations-grid {
+      max-width: 1200px;
+      margin: 0 auto 100px;
+      padding: 0 40px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 3px;
+    }
+
+    /* Featured card spans 2 columns */
+    .vac-card {
+      position: relative;
+      overflow: hidden;
+      text-decoration: none;
+      color: var(--white);
+      display: block;
+      min-height: 380px;
+    }
+    .vac-card.wide { grid-column: span 2; min-height: 420px; }
+    .vac-card.tall { grid-row: span 2; }
+
+    .vac-bg {
+      position: absolute;
+      inset: 0;
+      transition: transform 0.7s ease;
+    }
+    .vac-card:hover .vac-bg { transform: scale(1.06); }
+
+    /* Each card gets a unique gradient */
+    .vac-bg.all-inclusive { background: linear-gradient(135deg, #0d3b6e 0%, #1a7fa8 50%, #0a4a5a 100%); }
+    .vac-bg.family       { background: linear-gradient(135deg, #1a4a2e 0%, #2d8a5a 50%, #1a6040 100%); }
+    .vac-bg.luxury       { background: linear-gradient(135deg, #3d1a00 0%, #8b4a1a 50%, #6b3010 100%); }
+    .vac-bg.cruises      { background: linear-gradient(135deg, #0a1a4e 0%, #1a3a8a 50%, #0d2a6e 100%); }
+    .vac-bg.dream-cruise { background: linear-gradient(135deg, #1a0a38 0%, #4a1a7a 50%, #2a0a5a 100%); }
+    .vac-bg.couples      { background: linear-gradient(135deg, #4a0a2e 0%, #8a1a5e 50%, #6a0a4a 100%); }
+    .vac-bg.honeymoon    { background: linear-gradient(135deg, #3a0a1a 0%, #8a2a4a 60%, #5a1a2a 100%); }
+    .vac-bg.weddings     { background: linear-gradient(135deg, #2a1a00 0%, #7a5a10 50%, #5a3a00 100%); }
+
+    /* Decorative pattern overlay */
+    .vac-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle at 20% 80%, rgba(255,255,255,0.04) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 20%, rgba(255,255,255,0.04) 0%, transparent 50%);
+    }
+
+    .vac-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(10,5,30,0.92) 0%, rgba(10,5,30,0.3) 55%, transparent 100%);
+      transition: background 0.3s;
+    }
+    .vac-card:hover .vac-overlay {
+      background: linear-gradient(to top, rgba(10,5,30,0.95) 0%, rgba(10,5,30,0.5) 60%, rgba(10,5,30,0.1) 100%);
+    }
+
+    .vac-content {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 36px;
+    }
+
+    .vac-tag {
+      display: inline-block;
+      background: var(--blue-nav);
+      color: var(--white);
+      font-size: 0.6rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 50px;
+      margin-bottom: 14px;
+    }
+
+    .vac-content h2 {
+      font-family: var(--serif);
+      font-weight: 600;
+      line-height: 1.15;
+      margin-bottom: 10px;
+    }
+    .vac-card.wide .vac-content h2 { font-size: 2rem; }
+    .vac-card:not(.wide) .vac-content h2 { font-size: 1.4rem; }
+
+    .vac-content p {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.7;
+      margin-bottom: 20px;
+      max-width: 480px;
+      /* Hidden by default, revealed on hover */
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, opacity 0.4s ease;
+      opacity: 0;
+    }
+    .vac-card:hover .vac-content p {
+      max-height: 120px;
+      opacity: 1;
+    }
+
+    .vac-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      transition: gap 0.2s, color 0.2s;
+    }
+    .vac-card:hover .vac-link { gap: 12px; color: var(--white); }
+
+    /* ── CTA BANNER ── */
+    .cta-banner {
+      background: linear-gradient(135deg, #1a0a38 0%, #2B1464 100%);
+      border-top: 1px solid rgba(204,119,249,0.12);
+      border-bottom: 1px solid rgba(204,119,249,0.12);
+      padding: 80px 40px;
+      text-align: center;
+    }
+    .cta-banner .section-label {
+      font-size: 0.68rem; letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--blue-light); font-weight: 500; margin-bottom: 16px; display: block;
+    }
+    .cta-banner h2 {
+      font-family: var(--serif); font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 600; margin-bottom: 16px;
+    }
+    .cta-banner h2 em { font-style: italic; color: var(--gold-light); }
+    .cta-banner p {
+      color: var(--text-muted); font-size: 0.95rem; max-width: 500px;
+      margin: 0 auto 36px; line-height: 1.8;
+    }
+    .btn-primary {
+      background: var(--blue-nav); color: var(--white);
+      padding: 15px 40px; font-family: var(--sans); font-size: 0.78rem;
+      font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase;
+      text-decoration: none; border-radius: 50px; transition: all 0.3s;
+      display: inline-block;
+    }
+    .btn-primary:hover {
+      background: var(--blue-light); transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(59,111,191,0.4);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #1a6dbf;
+      border-top: 1px solid rgba(255,255,255,0.15);
+      padding: 60px 40px 32px;
+    }
+    .footer-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: flex; justify-content: space-between;
+      align-items: flex-start; flex-wrap: wrap; gap: 40px;
+    }
+    .footer-brand img { height: 60px; width: auto; margin-bottom: 16px; display: block; }
+    .footer-brand p { color: rgba(255,255,255,0.75); font-size: 0.82rem; line-height: 1.7; margin-bottom: 8px; }
+    .footer-brand a { color: rgba(255,255,255,0.85); text-decoration: none; }
+    .footer-bottom-bar {
+      max-width: 1200px; margin: 32px auto 0;
+      padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.15);
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 12px;
+    }
+    .footer-bottom-bar p { color: rgba(255,255,255,0.65); font-size: 0.72rem; line-height: 1.6; }
+    .footer-bottom-bar a { color: rgba(255,255,255,0.75); text-decoration: none; font-size: 0.72rem; transition: color 0.2s; }
+    .footer-bottom-bar a:hover { color: var(--white); }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .vac-card { animation: fadeUp 0.6s ease both; }
+    .vac-card:nth-child(1) { animation-delay: 0.05s; }
+    .vac-card:nth-child(2) { animation-delay: 0.1s; }
+    .vac-card:nth-child(3) { animation-delay: 0.15s; }
+    .vac-card:nth-child(4) { animation-delay: 0.2s; }
+    .vac-card:nth-child(5) { animation-delay: 0.25s; }
+    .vac-card:nth-child(6) { animation-delay: 0.3s; }
+    .vac-card:nth-child(7) { animation-delay: 0.35s; }
+    .vac-card:nth-child(8) { animation-delay: 0.4s; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      nav { padding: 12px 20px; }
+      .nav-links { display: none; }
+      .vacations-grid { grid-template-columns: 1fr 1fr; padding: 0 20px; }
+      .vac-card.wide { grid-column: span 2; }
+      .page-hero { padding: 60px 24px 50px; }
+      .cat-nav { padding: 0 20px; }
+      .intro-strip { padding: 0 24px; margin: 48px auto; }
+    }
+    @media (max-width: 600px) {
+      .vacations-grid { grid-template-columns: 1fr; }
+      .vac-card.wide { grid-column: span 1; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOP BAR -->
+  <div class="topbar">
+    <a href="tel:4404781181">✦ Call or Text to Talk Travel: (440) 478-1181 ✦</a>
+  </div>
+
+  <!-- NAV -->
+  <nav>
+    <a href="./index.html" class="nav-logo-img">
+      <img src="./logo1.png" alt="Starlight2Travel" />
+    </a>
+    <ul class="nav-links">
+      <li><a href="./index.html">Home</a></li>
+      <li><a href="./vacations.html" class="active">Vacations</a></li>
+      <li><a href="#">Destinations</a></li>
+      <li><a href="#">Blog</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="https://calendly.com/-starlight2travel/travelappointment" class="nav-cta">Request a Quote</a></li>
+    </ul>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <div class="page-hero">
+    <p class="breadcrumb"><a href="./index.html">Home</a> &nbsp;✦&nbsp; Vacations</p>
+    <h1>Travel <em>Your Way</em></h1>
+    <p>Your trip will be tailor-made for you. Let our vacation packages inspire the journey you're dreaming of — any way you want to travel can be arranged.</p>
+  </div>
+
+  <!-- CATEGORY NAV -->
+  <div class="cat-nav">
+    <a href="#all-inclusive">All-Inclusive</a>
+    <a href="#family">Family</a>
+    <a href="#luxury">Luxury</a>
+    <a href="#cruises">Cruises</a>
+    <a href="#couples">Romance</a>
+    <a href="#honeymoon">Honeymoons</a>
+    <a href="#weddings">Destination Weddings</a>
+  </div>
+
+  <!-- INTRO -->
+  <div class="intro-strip">
+    <span class="section-label">✦ Find Your Perfect Trip</span>
+    <p>You can enjoy hand-picked luxury with an all-inclusive package, romance packages calling your name, family travel, solo adventures in absolute luxury, or cruise your way through smooth seas. Take a look through our featured itineraries — when you find it, let us know. We'll be ready!</p>
+  </div>
+
+  <!-- VACATION CARDS -->
+  <div class="vacations-grid">
+
+    <!-- All-Inclusive — wide featured -->
+    <a href="https://www.starlight2travel.com/all-inclusive-packages" class="vac-card wide" id="all-inclusive" target="_blank">
+      <div class="vac-bg all-inclusive"></div>
+      <div class="vac-overlay"></div>
+      <div class="vac-content">
+        <span class="vac-tag">Most Popular</span>
+        <h2>All-Inclusive Packages</h2>
+        <p>Your vacation is your time to relax — leave the booking, reserving, and planning at home. When you travel all-inclusive, excursions, dining, accommodations, and more are accounted for and tailor-made to fit your family's needs.</p>
+        <span class="vac-link">Explore Packages &nbsp;→</span>
+      </div>
+    </a>
+
+    <!-- Family -->
+    <a href="https://www.starlight2travel.com/family-vacations" class="vac-card" id="family" target="_blank">
+      <div class="vac-bg family"></div>
+      <div class="vac-overlay"></div>
+      <div class="vac-content">
+        <span class="vac-tag">Family</span>
+        <h2>Family Vacations</h2>
+        <p>Time waits for no one. Make lifelong memories with the ones you love most — there's something for every generation.</p>
+        <span class="vac-link">Learn More &nbsp;→</span>
+      </div>
+    </a>
+
+    <!-- Luxury -->
+    <a href="https://www.starlight2travel.com/luxury-trips" class="vac-card" id="luxury" target="_blank">
+      <div class="vac-bg luxury"></div>
+      <div class="vac-overlay"></div>
+      <div class="vac-content">
+        <span class="vac-tag">Luxury</span>
+        <h2>Luxury Travel</h2>
+        <p>Give yourself the gift of indulgence with a vacation completely catered to your most lavish wishes come true.</p>
+        <span class="vac-link">Learn More &nbsp;→</span>
+      </div>
+    </a>
+
+    <!-- Tropical Cruises — wide -->
+    <a href="https://www.starlight2travel.com/tropical-cruises" class="vac-card wide" id="cruises" target="_blank">
+      <div class="vac-bg cruises"></div>
+      <div class="vac-overlay"></div>
+      <div class="vac-content">
+        <span class="vac-tag">Cruises</span>
+        <h2>Tropical Cruises</h2>
+        <p>Step off the deck of luxury onto the soft, pillowy sands of paradise. Your transportation doubles as your time to unwind, then hit breathtaking island ports for once-in-a-lifetime sights and excursions.</p>
+        <span class="vac-link">Explore Cruises &nbsp;→</span>
+      </div>
+    </a>
+
+    <!-- Dream List Cruises -->
+    <a href="https://www.starlight2travel.com/dream-list-cruises" class="vac-card" target="_blank">
+      <div class="vac-bg dream-cruise"></div>
+      <div class="vac-overlay"></div>
+      <div class="vac-content">
+        <span class="vac-tag">Dream List</span>
+        <h2>Dream List Cruises</h2>
+        <p>See yourself in the glow of the northern lights. Find your favorite constellation in the ocean's reflection across the world.</p>
+        <span class="vac-link">Learn More &nbsp;→</span>
+      </div>
+    </a>
+
+    <!-- Couples / Romance -->
+    <a href="https://www.starlight2travel.com/couples-trips" class="vac-card" id="couples" target="_blank">
+      <div class="vac-bg couples"></div>
+      <div class="vac-overlay"></div>
+      <div class="vac-content">
+        <span class="vac-tag">Romance</span>
+        <h2>Trips for Two</h2>
+        <p>Traveling through destinations unknown, just you and your person — the perfect romantic getaway for any occasion.</p>
+        <span class="vac-link">Learn More &nbsp;→</span>
+      </div>
+    </a>
+
+    <!-- Honeymoons -->
+    <a href="https://www.starlight2travel.com/honeymoons" class="vac-card" id="honeymoon" target="_blank">
+      <div class="vac-bg honeymoon"></div>
+      <div class="vac-overlay"></div>
+      <div class="vac-content">
+        <span class="vac-tag">Honeymoons</span>
+        <h2>Honeymoons</h2>
+        <p>The first weeks of marriage are the most magical. Your honeymoon is only celebrated once — let's make it special and personalized.</p>
+        <span class="vac-link">Learn More &nbsp;→</span>
+      </div>
+    </a>
+
+    <!-- Destination Weddings -->
+    <a href="https://www.starlight2travel.com/destination-weddings" class="vac-card wide" id="weddings" target="_blank">
+      <div class="vac-bg weddings"></div>
+      <div class="vac-overlay"></div>
+      <div class="vac-content">
+        <span class="vac-tag">Destination Weddings</span>
+        <h2>Destination Weddings</h2>
+        <p>Celebrate the first day of forever in any one of the most beautiful locations in the world — on a white sand beach, up on a hillside, or in a historical church hundreds of years old. Your vows will last forever.</p>
+        <span class="vac-link">Learn More &nbsp;→</span>
+      </div>
+    </a>
+
+  </div>
+
+  <!-- CTA BANNER -->
+  <div class="cta-banner">
+    <span class="section-label">✦ Ready to Start Planning?</span>
+    <h2>Let's Build Your <em>Dream Trip</em></h2>
+    <p>Tell us which vacation style speaks to you and we'll craft a custom itinerary from scratch — just for you.</p>
+    <a href="https://calendly.com/-starlight2travel/travelappointment" class="btn-primary" target="_blank">Book a Free Consultation</a>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="./logo2.png" alt="Starlight2Travel" />
+        <p><a href="mailto:team@starlight2travel.com"><i class="fa fa-envelope" style="margin-right:6px;"></i>team@starlight2travel.com</a></p>
+        <p><a href="tel:4404781181"><i class="fa fa-phone" style="margin-right:6px;"></i>(440) 478-1181</a></p>
+        <p style="margin-top:8px; font-style:italic; font-size:0.78rem; opacity:0.8;">An affiliate of KHM Travel Group</p>
+      </div>
+      <div style="display:flex; gap:60px; flex-wrap:wrap;">
+        <div>
+          <p style="font-size:0.68rem; letter-spacing:0.2em; text-transform:uppercase; color:rgba(255,255,255,0.5); margin-bottom:16px;">Vacations</p>
+          <ul style="list-style:none; display:flex; flex-direction:column; gap:10px;">
+            <li><a href="https://www.starlight2travel.com/all-inclusive-packages" target="_blank" style="color:rgba(255,255,255,0.8); text-decoration:none; font-size:0.85rem;">All-Inclusive Packages</a></li>
+            <li><a href="https://www.starlight2travel.com/family-vacations" target="_blank" style="color:rgba(255,255,255,0.8); text-decoration:none; font-size:0.85rem;">Family Vacations</a></li>
+            <li><a href="https://www.starlight2travel.com/luxury-trips" target="_blank" style="color:rgba(255,255,255,0.8); text-decoration:none; font-size:0.85rem;">Luxury Trips</a></li>
+            <li><a href="https://www.starlight2travel.com/tropical-cruises" target="_blank" style="color:rgba(255,255,255,0.8); text-decoration:none; font-size:0.85rem;">Tropical Cruises</a></li>
+            <li><a href="https://www.starlight2travel.com/couples-trips" target="_blank" style="color:rgba(255,255,255,0.8); text-decoration:none; font-size:0.85rem;">Couples Trips</a></li>
+            <li><a href="https://www.starlight2travel.com/destination-weddings" target="_blank" style="color:rgba(255,255,255,0.8); text-decoration:none; font-size:0.85rem;">Destination Weddings</a></li>
+            <li><a href="https://www.starlight2travel.com/honeymoons" target="_blank" style="color:rgba(255,255,255,0.8); text-decoration:none; font-size:0.85rem;">Honeymoons</a></li>
+          </ul>
+        </div>
+        <div>
+          <p style="font-size:0.68rem; letter-spacing:0.2em; text-transform:uppercase; color:rgba(255,255,255,0.5); margin-bottom:16px;">Quick Links</p>
+          <ul style="list-style:none; display:flex; flex-direction:column; gap:10px;">
+            <li><a href="./index.html" style="color:rgba(255,255,255,0.8); text-decoration:none; font-size:0.85rem;">Home</a></li>
+            <li><a href="#" style="color:rgba(255,255,255,0.8); text-decoration:none; font-size:0.85rem;">Destinations</a></li>
+            <li><a href="#" style="color:rgba(255,255,255,0.8); text-decoration:none; font-size:0.85rem;">Blog</a></li>
+            <li><a href="./terms.html" style="color:rgba(255,255,255,0.8); text-decoration:none; font-size:0.85rem;">Agency Terms</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom-bar">
+      <div>
+        <p>© 2019–2025 Starlight2Travel, Inc. &nbsp;|&nbsp; An affiliate of KHM Travel Group</p>
+        <p style="margin-top:4px; font-size:0.65rem;">CA Seller of Travel #2089491-50 · FL License #TI103149 · HI License #TAR 7231 · WA UBI #602 775122</p>
+        <p style="margin-top:4px; font-size:0.65rem;">Team Photography Credit: <a href="https://www.instagram.com/annieyuphotos/" target="_blank">Annie Yu Photography</a></p>
+      </div>
+      <a href="./index.html">← Back to Home</a>
+    </div>
+  </footer>
+
+  <script>
+    // Highlight active cat-nav item on scroll
+    const sections = document.querySelectorAll('[id]');
+    const catLinks = document.querySelectorAll('.cat-nav a');
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(s => {
+        if (window.scrollY >= s.offsetTop - 160) current = s.id;
+      });
+      catLinks.forEach(a => {
+        a.classList.remove('active');
+        if (a.getAttribute('href') === '#' + current) a.classList.add('active');
+      });
+    });
+  </script>
+
+</body>
+</html>
