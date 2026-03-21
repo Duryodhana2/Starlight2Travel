@@ -66,14 +66,14 @@
       position: sticky;
       top: 0;
       z-index: 100;
-      background: #1a6dbf;
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(255,255,255,0.15);
-      padding: 0 40px;
+      background: transparent;
+      padding: 12px 40px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      height: 72px;
+      height: 80px;
+      /* Dark gradient so nav is readable over hero video */
+      background: linear-gradient(to bottom, rgba(10,5,25,0.7) 0%, transparent 100%);
     }
 
     .nav-logo-img {
@@ -84,54 +84,63 @@
     }
     .nav-logo-img:hover { opacity: 0.85; }
     .nav-logo-img img {
-      height: 52px;
+      height: 54px;
       width: auto;
     }
 
+    /* The pill that wraps just the links */
     .nav-links {
       display: flex;
       list-style: none;
-      gap: 32px;
+      gap: 4px;
       align-items: center;
+      background: #1a6dbf;
+      padding: 8px 12px;
+      border-radius: 50px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.3);
     }
+
     .nav-links a {
       color: rgba(255,255,255,0.85);
       text-decoration: none;
-      font-size: 0.75rem;
+      font-size: 0.72rem;
       font-weight: 500;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
-      transition: color 0.2s;
-      position: relative;
+      transition: all 0.2s;
+      padding: 7px 14px;
+      border-radius: 50px;
+      white-space: nowrap;
     }
-    .nav-links a::after {
-      content: '';
-      position: absolute;
-      bottom: -4px;
-      left: 0;
-      width: 0;
-      height: 1px;
-      background: var(--white);
-      transition: width 0.3s;
+    .nav-links a:hover {
+      color: var(--white);
+      background: rgba(255,255,255,0.15);
     }
-    .nav-links a:hover { color: var(--white); }
-    .nav-links a:hover::after { width: 100%; }
+
+    /* Active/current page highlight */
+    .nav-links a.active {
+      background: rgba(255,255,255,0.2);
+      color: var(--white);
+    }
 
     .nav-cta {
-      background: rgba(255,255,255,0.15) !important;
-      border: 1px solid rgba(255,255,255,0.6) !important;
-      color: var(--white) !important;
-      padding: 8px 20px;
-      border-radius: 2px;
-      font-size: 0.72rem !important;
-      letter-spacing: 0.15em !important;
-      transition: all 0.3s !important;
-    }
-    .nav-cta:hover {
       background: var(--white) !important;
       color: #1a6dbf !important;
+      font-weight: 600 !important;
+      padding: 7px 18px !important;
+      border-radius: 50px !important;
+      font-size: 0.72rem !important;
+      letter-spacing: 0.1em !important;
+      transition: all 0.3s !important;
+      border: none !important;
+      margin-left: 4px;
     }
-    .nav-cta::after { display: none !important; }
+    .nav-cta:hover {
+      background: #e8f0ff !important;
+      color: #1a6dbf !important;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2) !important;
+    }
 
     /* ── HERO ── */
     .hero {
@@ -1335,4 +1344,27 @@
         --min-op: ${Math.random() * 0.2 + 0.05};
         --max-op: ${Math.random() * 0.6 + 0.3};
       `;
-      starsEl.appendChi
+      starsEl.appendChild(star);
+    }
+
+    // Scroll-aware nav background
+    const navEl = document.querySelector('nav');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 60) {
+        navEl.style.background = 'rgba(10,5,25,0.88)';
+        navEl.style.backdropFilter = 'blur(12px)';
+      } else {
+        navEl.style.background = 'linear-gradient(to bottom, rgba(10,5,25,0.7) 0%, transparent 100%)';
+        navEl.style.backdropFilter = 'none';
+      }
+    });
+
+    // Stay Connected form handler
+    function handleSubmit(e) {
+      e.preventDefault();
+      e.target.style.display = 'none';
+      document.getElementById('connectSuccess').style.display = 'block';
+    }
+  </script>
+</body>
+</html>
