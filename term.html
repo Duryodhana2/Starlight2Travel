@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Agency Terms & Conditions | Starlight2Travel</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy: #1D0C43;
+      --navy-mid: #2B1464;
+      --navy-light: #2B1464;
+      --gold: #CC77F9;
+      --gold-light: #A999F4;
+      --gold-pale: #e8d8ff;
+      --white: #ffffff;
+      --text-muted: #A999F4;
+      --accent: #613DBC;
+      --blue: #3B6FBF;
+      --blue-light: #5B8FDF;
+      --blue-nav: #1a6dbf;
+      --serif: 'Playfair Display', Georgia, serif;
+      --sans: 'Jost', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--navy);
+      color: var(--white);
+      font-family: var(--sans);
+      font-weight: 300;
+      overflow-x: hidden;
+    }
+
+    /* ── TOP BAR ── */
+    .topbar {
+      background: var(--accent);
+      color: var(--white);
+      text-align: center;
+      padding: 8px 20px;
+      font-family: var(--sans);
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+    .topbar a { color: var(--white); text-decoration: none; }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(29,12,67,0.97);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(204,119,249,0.15);
+      padding: 12px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 80px;
+    }
+
+    .nav-logo-img {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+    .nav-logo-img:hover { opacity: 0.85; }
+    .nav-logo-img img { height: 54px; width: auto; }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 4px;
+      align-items: center;
+      background: var(--blue-nav);
+      padding: 8px 12px;
+      border-radius: 50px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.3);
+    }
+    .nav-links a {
+      color: rgba(255,255,255,0.85);
+      text-decoration: none;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: all 0.2s;
+      padding: 7px 14px;
+      border-radius: 50px;
+      white-space: nowrap;
+    }
+    .nav-links a:hover {
+      color: var(--white);
+      background: rgba(255,255,255,0.15);
+    }
+    .nav-cta {
+      background: var(--white) !important;
+      color: var(--blue-nav) !important;
+      font-weight: 600 !important;
+      padding: 7px 18px !important;
+      border-radius: 50px !important;
+      font-size: 0.72rem !important;
+      letter-spacing: 0.1em !important;
+      transition: all 0.3s !important;
+      border: none !important;
+      margin-left: 4px;
+    }
+    .nav-cta:hover {
+      background: #e8f0ff !important;
+      transform: translateY(-1px);
+    }
+
+    /* ── PAGE HERO ── */
+    .page-hero {
+      background: linear-gradient(135deg, #1D0C43 0%, #2B1464 50%, #1a0a38 100%);
+      padding: 80px 40px 60px;
+      text-align: center;
+      border-bottom: 1px solid rgba(204,119,249,0.15);
+      position: relative;
+      overflow: hidden;
+    }
+    .page-hero::before {
+      content: '✦';
+      position: absolute;
+      font-size: 24rem;
+      color: rgba(204,119,249,0.03);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+    .page-hero .breadcrumb {
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--blue-light);
+      margin-bottom: 16px;
+      position: relative;
+    }
+    .page-hero .breadcrumb a {
+      color: var(--blue-light);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .page-hero .breadcrumb a:hover { color: var(--white); }
+    .page-hero h1 {
+      font-family: var(--serif);
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      font-weight: 600;
+      line-height: 1.1;
+      margin-bottom: 16px;
+      position: relative;
+    }
+    .page-hero p {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      max-width: 500px;
+      margin: 0 auto;
+      line-height: 1.7;
+      position: relative;
+    }
+    .page-hero .print-btn {
+      display: inline-block;
+      margin-top: 24px;
+      background: transparent;
+      border: 1px solid rgba(204,119,249,0.4);
+      color: var(--gold-light);
+      padding: 10px 28px;
+      border-radius: 50px;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: all 0.3s;
+      position: relative;
+    }
+    .page-hero .print-btn:hover {
+      border-color: var(--gold);
+      color: var(--white);
+      background: rgba(204,119,249,0.1);
+    }
+
+    /* ── TERMS CONTENT ── */
+    .terms-wrapper {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 80px 40px 100px;
+    }
+
+    .terms-intro {
+      background: rgba(204,119,249,0.06);
+      border: 1px solid rgba(204,119,249,0.15);
+      border-left: 4px solid var(--gold);
+      padding: 24px 28px;
+      border-radius: 4px;
+      margin-bottom: 56px;
+      font-size: 0.88rem;
+      line-height: 1.8;
+      color: var(--text-muted);
+    }
+    .terms-intro strong {
+      color: var(--white);
+      font-weight: 600;
+      display: block;
+      margin-bottom: 8px;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .terms-section {
+      margin-bottom: 48px;
+      padding-bottom: 48px;
+      border-bottom: 1px solid rgba(204,119,249,0.08);
+    }
+    .terms-section:last-child {
+      border-bottom: none;
+    }
+
+    .terms-section h2 {
+      font-family: var(--serif);
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: var(--gold-light);
+      margin-bottom: 16px;
+      letter-spacing: 0.02em;
+    }
+
+    .terms-section h3 {
+      font-family: var(--sans);
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--blue-light);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin: 24px 0 10px;
+    }
+
+    .terms-section p {
+      color: rgba(255,255,255,0.75);
+      font-size: 0.9rem;
+      line-height: 1.85;
+      margin-bottom: 14px;
+    }
+
+    .terms-section p a {
+      color: var(--blue-light);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      transition: color 0.2s;
+    }
+    .terms-section p a:hover { color: var(--white); }
+
+    .terms-section ol {
+      margin: 12px 0 14px 24px;
+      color: rgba(255,255,255,0.75);
+      font-size: 0.9rem;
+      line-height: 1.85;
+    }
+    .terms-section ol li { margin-bottom: 8px; }
+
+    .terms-section ul {
+      margin: 12px 0 14px 24px;
+      color: rgba(255,255,255,0.75);
+      font-size: 0.9rem;
+      line-height: 1.85;
+    }
+    .terms-section ul li { margin-bottom: 8px; }
+
+    .terms-caps {
+      background: rgba(59,111,191,0.08);
+      border: 1px solid rgba(59,111,191,0.2);
+      border-radius: 4px;
+      padding: 20px 24px;
+      font-size: 0.82rem;
+      line-height: 1.8;
+      color: rgba(255,255,255,0.7);
+      margin: 16px 0;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #1a6dbf;
+      border-top: 1px solid rgba(255,255,255,0.15);
+      padding: 60px 40px 32px;
+    }
+    .footer-bottom {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .footer-bottom p {
+      color: rgba(255,255,255,0.75);
+      font-size: 0.75rem;
+      line-height: 1.6;
+    }
+    .footer-bottom a {
+      color: rgba(255,255,255,0.75);
+      text-decoration: none;
+      font-size: 0.72rem;
+      transition: color 0.2s;
+    }
+    .footer-bottom a:hover { color: var(--white); }
+    .footer-logo { margin-bottom: 16px; }
+    .footer-logo img { height: 60px; width: auto; }
+
+    @media (max-width: 768px) {
+      nav { padding: 12px 20px; }
+      .nav-links { display: none; }
+      .terms-wrapper { padding: 40px 24px 60px; }
+      .page-hero { padding: 60px 24px 40px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOP BAR -->
+  <div class="topbar">
+    <a href="tel:4404781181">✦ Call or Text to Talk Travel: (440) 478-1181 ✦</a>
+  </div>
+
+  <!-- NAV -->
+  <nav>
+    <a href="./index.html" class="nav-logo-img">
+      <img src="./logo1.png" alt="Starlight2Travel" />
+    </a>
+    <ul class="nav-links">
+      <li><a href="./index.html">Home</a></li>
+      <li><a href="#">Vacations</a></li>
+      <li><a href="#">Destinations</a></li>
+      <li><a href="#">Blog</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="https://calendly.com/-starlight2travel/travelappointment" class="nav-cta">Request a Quote</a></li>
+    </ul>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <div class="page-hero">
+    <p class="breadcrumb"><a href="./index.html">Home</a> &nbsp;✦&nbsp; Agency Terms</p>
+    <h1>Agency Terms & Conditions</h1>
+    <p>Please read this document in full. It constitutes part of your contract for your trip and all related services.</p>
+    <a href="https://www.starlight2travel.com/_files/ugd/9d01a9_352b272d258b40ec89e31cf3149dd5f9.pdf" target="_blank" class="print-btn">
+      <i class="fa fa-print" style="margin-right:8px;"></i>Print & Sign PDF
+    </a>
+  </div>
+
+  <!-- TERMS CONTENT -->
+  <div class="terms-wrapper">
+
+    <div class="terms-intro">
+      <strong>⚠ Important Notice</strong>
+      Please thoroughly review these terms and conditions of Starlight2Travel, Inc. and www.starlight2travel.com (hereinafter referred to collectively and singularly as "S2T"). The booking passenger shall be the only recipient of this booking receipt and terms and conditions. It is the sole responsibility of booking passenger to inform all other parties traveling under booking passenger's reservation of the contents of these terms and conditions. By accepting this document and making payment to the service providers, you acknowledge that you have reviewed and accept all terms herein.
+    </div>
+
+    <div class="terms-section">
+      <h2>Booking Accuracy / Legal Names</h2>
+      <p>Booking passenger shall immediately review all booking details, including but not limited to: (1) each passenger's full legal name, mailing address, email address, telephone number, and date of birth; (2) each passenger's possession of valid, legal and required forms of identification, including passports and other government-issued identification, and all required visas; (3) all pricing, airfare, arrival/departure airports and times; and (4) all accommodations and organized activities on your booking receipt.</p>
+      <p>Please notify S2T immediately if any booking details require corrections. Booking passenger hereby voluntarily assumes full and sole responsibility for any and all risks and/or costs relating to failure to report such corrections to S2T in a timely fashion. Each passenger's name on all booking and travel documents must be identical to the passenger's legal name as it appears on their government-issued identification.</p>
+    </div>
+
+    <div class="terms-section">
+      <h2>Travel Documents</h2>
+      <p>Each person traveling under booking passenger's reservation shall be solely responsible to independently confirm all documentation requirements for passport, visa, vaccination, or other entry and/or travel requirements of each destination. Booking passenger assumes sole responsibility for, and hereby releases S2T from all claims relating to the failure by any passenger to comply with applicable documentation requirements.</p>
+      <p>S2T recommends that all passengers consult with the appropriate domestic and foreign governmental agencies for current document requirements. Please note: effective January 23, 2007 a valid passport will be the only acceptable document for travel to Mexico.</p>
+      <p>Suggested reference materials for US Citizens:</p>
+      <ul>
+        <li><a href="http://travel.state.gov" target="_blank">US State Department — travel.state.gov</a></li>
+        <li><a href="http://www.cdc.gov/travel" target="_blank">CDC Travel Health — cdc.gov/travel</a></li>
+        <li><a href="https://travel.state.gov/content/travel/en/traveladvisories/ea/covid-19-information.html" target="_blank">COVID-19 Travel Information</a></li>
+      </ul>
+    </div>
+
+    <div class="terms-section">
+      <h2>Payment</h2>
+      <p>S2T accepts payment of its service fee via PayPal through a form available at S2T Booking Management. All other payments for your reservation shall be paid directly to the suppliers on behalf of KHM Travel Group. Failure to remit payments on a timely basis will automatically put your booking at risk of cancellation. Please contact us immediately and in advance of your payment due date if you will be unable to meet any payment deadline.</p>
+    </div>
+
+    <div class="terms-section">
+      <h2>Pricing</h2>
+      <p>Prices and availability quoted by S2T are not guaranteed until your deposit is fully paid. Pricing and availability may change without notice. Passenger agrees that S2T is not responsible for any errors or omissions in any quotes or advertisements, including those on our website, resulting in inventory, content, or pricing discrepancies.</p>
+      <p>Suppliers reserve the right not to honor any published prices that were determined to be erroneous due to electronic, printing, or clerical errors. S2T reserves the right to charge booking passenger for all increases in taxes, fees, or surcharges (e.g., fuel) relating to their reservation.</p>
+    </div>
+
+    <div class="terms-section">
+      <h2>Airfare</h2>
+      <h3>a. General Conditions</h3>
+      <p>Airline tickets are highly restrictive, non-refundable, and non-transferable. Modification of passenger names, dates, times, routings, or airports is at the sole discretion of the airline and will likely be subject to a substantial change fee. With regard to the purchase of air tickets, S2T acts simply as an intermediary between you and the airline.</p>
+      <p>Seat assignments are subject to each airline's policies and might not be available until the day of departure. S2T recommends confirming all bookings with the airline at least one week prior to departure.</p>
+      <h3>b. Prohibited Practices</h3>
+      <p>The following ticketing practices are strictly prohibited: Hidden City Ticketing, Point Beyond Ticketing, Throwaway Ticketing, and Back-to-Back Ticketing. Where a ticket is purchased and used in violation of these rules, S2T and the applicable air carrier have the right to invalidate tickets, cancel remaining itinerary portions, refuse boarding, or take legal action.</p>
+      <h3>c. Luggage</h3>
+      <p>Each airline has its own policy regarding luggage. We recommend checking with your airline ahead of time for weight restrictions and additional charges relating to checked baggage. You will be responsible for all additional fees for checked or overweight baggage.</p>
+      <h3>d. Limitation of Liability for Air Transport</h3>
+      <div class="terms-caps">
+        S2T IS NOT LIABLE FOR ANY DAMAGES ARISING FROM OR RELATED TO ANY AIRLINE TIMETABLE CHANGES, DELAYS, CANCELLATIONS, MISSED CONNECTIONS, MECHANICAL PROBLEMS, INCLEMENT WEATHER, SEATING REASSIGNMENTS, LOST/DELAYED BAGGAGE, SCREENING AND SECURITY DELAYS, REFUSED BOARDING OR FAILURE TO CHECK-IN PROPERLY.
+      </div>
+    </div>
+
+    <div class="terms-section">
+      <h2>Accommodations & Activities</h2>
+      <p>The star ratings attributed to hotels quoted by S2T correspond to a classification system based on local standards in the host country. S2T makes no guarantee about the suitability or availability of accommodations, and if the particular accommodations sought are unavailable, we will do our best to reserve comparable accommodations.</p>
+      <h3>Meal Plans</h3>
+      <ul>
+        <li><strong>All-inclusive</strong> — accommodation, breakfast, lunch, dinner and normal drinks.</li>
+        <li><strong>Full board</strong> — accommodation, breakfast, lunch and dinner, no drinks.</li>
+        <li><strong>Half board</strong> — accommodation, breakfast and either dinner or lunch, no drinks.</li>
+      </ul>
+      <h3>Travelers with Special Needs</h3>
+      <p>If anyone traveling on booking passenger's reservation has special needs or a disability, you must call each provider ahead of time and verify that the special needs can be met. S2T makes no guarantee as to the ability of any accommodations to meet special needs.</p>
+    </div>
+
+    <div class="terms-section">
+      <h2>Cancellation / Modification Policies</h2>
+      <p>All cancellations or no-shows are subject to penalties imposed by the suppliers. Additionally, all booking cancellations, transfers to another agency, or no-shows are subject to a non-refundable <strong>$50 fee per person</strong> payable to S2T. This fee is waived if the written request is received within a 3-business day grace period immediately following the date the full deposit is paid.</p>
+      <p>For all cancellations, the booking party must submit a complete S2T Cancellation Request Form. Cancellations received before 5:00 p.m. EST on a business day will post that day. All other cancellations will post on the following business day.</p>
+    </div>
+
+    <div class="terms-section">
+      <h2>Travel Protection</h2>
+      <p>Travel insurance protection is <strong>strongly recommended</strong>. As your travel agent, we have a professional responsibility to recommend travel protection to protect both you and your vacation. By declining travel protection, you acknowledge and accept liability for any cancellation penalties, damages and/or out-of-pocket expenses incurred, including responsibility for arranging and paying for any treatment in case of a medical emergency while traveling.</p>
+    </div>
+
+    <div class="terms-section">
+      <h2>Agent / Intermediary</h2>
+      <p>S2T is simply an intermediary between the suppliers and the public. S2T does not own or operate any of the hotels, shore excursions, tours, transportation providers, cruise lines, vessels, airlines, travel protection companies, attractions, or other travel-related suppliers who provide goods or services for the booking passenger's trip.</p>
+      <p>S2T recommends that all passengers be in good physical and mental health and have medical approval/clearance to travel. Any physical disabilities must be reported to S2T at the time of initial booking.</p>
+    </div>
+
+    <div class="terms-section">
+      <h2>Limitation of Liability</h2>
+      <p>Booking passenger acknowledges that travel plans may be interrupted or cancelled by suppliers, a government or political body, or other third-party over which S2T has no control. The supplier's own cancellation, rebooking, and refund policies will govern your rights and remedies.</p>
+      <p>Without limitation, booking passenger assumes the risk of, and agrees that S2T is not liable for, all damages arising from acts of God, arrest, government restraints, piracy, war, terrorism, civil unrest, fire, weather conditions, mechanical failures, diseases, local laws, theft, or lost/damaged/delayed luggage.</p>
+    </div>
+
+    <div class="terms-section">
+      <h2>Modification of Terms</h2>
+      <p>These Terms and Conditions may be amended or modified by S2T at any time without notice. It is therefore essential that you consult the Terms and Conditions prior to making each booking.</p>
+    </div>
+
+    <div class="terms-section">
+      <h2>Severability</h2>
+      <p>If any provision of this agreement shall be unlawful, void, or for any reason unenforceable, then that provision shall be deemed severable from this agreement and shall not affect the validity and enforceability of any remaining provisions.</p>
+    </div>
+
+    <div class="terms-section">
+      <h2>Mandatory Arbitration / Forum / Choice of Law</h2>
+      <p>Any and all disputes arising out of or relating to this Agreement shall be submitted to final binding arbitration in accordance with the Commercial Arbitration Rules of the American Arbitration Association and shall be governed by the laws of the State of Ohio. Arbitration shall take place only in Lake County, Ohio and will be conducted by a single mutually agreed upon arbitrator.</p>
+      <p>Judgment upon the award rendered by the arbitrator may be entered only in courts located in Cuyahoga County or Lake County. The Parties acknowledge and agree that this arbitration is their sole recourse and that they may not file a lawsuit against S2T.</p>
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-bottom">
+      <div>
+        <div class="footer-logo">
+          <img src="./logo2.png" alt="Starlight2Travel" />
+        </div>
+        <p>© 2019–2025 Starlight2Travel, Inc. &nbsp;|&nbsp; An affiliate of KHM Travel Group</p>
+        <p style="margin-top:6px; font-size:0.68rem;">CA Seller of Travel #2089491-50 · FL License #TI103149 · HI License #TAR 7231 · WA UBI #602 775122</p>
+        <p style="margin-top:6px; font-size:0.68rem;">Team Photography Credit: <a href="https://www.instagram.com/annieyuphotos/" target="_blank" style="color:rgba(255,255,255,0.85);">Annie Yu Photography</a></p>
+      </div>
+      <div>
+        <a href="./terms.html">Agency Terms</a>
+        &nbsp;&nbsp;|&nbsp;&nbsp;
+        <a href="./index.html">← Back to Home</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
