@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Destinations | Starlight2Travel</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy: #1D0C43;
+      --navy-mid: #2B1464;
+      --navy-light: #2B1464;
+      --gold: #CC77F9;
+      --gold-light: #A999F4;
+      --white: #ffffff;
+      --text-muted: #A999F4;
+      --accent: #613DBC;
+      --blue: #1a6dbf;
+      --blue-light: #5B8FDF;
+      --serif: 'Playfair Display', Georgia, serif;
+      --sans: 'Jost', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--navy);
+      color: var(--white);
+      font-family: var(--sans);
+      font-weight: 300;
+      overflow-x: hidden;
+    }
+
+    /* ── TOP BAR ── */
+    .topbar {
+      background: var(--accent);
+      color: var(--white);
+      text-align: center;
+      padding: 8px 20px;
+      font-size: 0.88rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+    .topbar a { color: var(--white); text-decoration: none; }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(29,12,67,0.97);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(204,119,249,0.15);
+      padding: 12px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 80px;
+    }
+    .nav-logo-img { display: flex; align-items: center; text-decoration: none; transition: opacity 0.2s; }
+    .nav-logo-img:hover { opacity: 0.85; }
+    .nav-logo-img img { height: 54px; width: auto; }
+    .nav-links {
+      display: flex; list-style: none; gap: 4px; align-items: center;
+      background: var(--blue); padding: 8px 12px; border-radius: 50px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.3);
+    }
+    .nav-links a {
+      color: rgba(255,255,255,0.85); text-decoration: none; font-size: 0.88rem;
+      font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;
+      transition: all 0.2s; padding: 7px 14px; border-radius: 50px; white-space: nowrap;
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--white); background: rgba(255,255,255,0.15); }
+    .nav-cta {
+      background: var(--white) !important; color: var(--blue) !important;
+      font-weight: 600 !important; padding: 7px 18px !important; border-radius: 50px !important;
+      font-size: 0.88rem !important; letter-spacing: 0.1em !important;
+      transition: all 0.3s !important; border: none !important; margin-left: 4px;
+    }
+    .nav-cta:hover { background: #e8f0ff !important; transform: translateY(-1px); }
+
+    /* ── PAGE HERO ── */
+    .page-hero {
+      position: relative;
+      padding: 110px 40px 90px;
+      text-align: center;
+      overflow: hidden;
+    }
+    .page-hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 15% 60%, rgba(59,111,191,0.18) 0%, transparent 55%),
+        radial-gradient(ellipse at 85% 30%, rgba(204,119,249,0.1) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 100%, rgba(26,109,191,0.12) 0%, transparent 60%),
+        linear-gradient(160deg, #1D0C43 0%, #2B1464 50%, #1a0838 100%);
+    }
+    /* World map SVG dots pattern */
+    .page-hero-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle, rgba(169,153,244,0.15) 1px, transparent 1px);
+      background-size: 28px 28px;
+      mask-image: radial-gradient(ellipse at center, black 40%, transparent 75%);
+    }
+    .page-hero .breadcrumb {
+      font-size: 0.82rem; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--blue-light); margin-bottom: 20px; position: relative; z-index: 1;
+    }
+    .page-hero .breadcrumb a { color: var(--blue-light); text-decoration: none; transition: color 0.2s; }
+    .page-hero .breadcrumb a:hover { color: var(--white); }
+    .page-hero h1 {
+      font-family: var(--serif); font-size: clamp(3rem, 6vw, 5.5rem);
+      font-weight: 600; line-height: 1.05; margin-bottom: 24px; position: relative; z-index: 1;
+    }
+    .page-hero h1 em { font-style: italic; color: var(--gold-light); }
+    .page-hero p {
+      color: var(--text-muted); font-size: 1.05rem; max-width: 660px;
+      margin: 0 auto 40px; line-height: 1.85; position: relative; z-index: 1;
+    }
+
+    /* Region quick-jump pills */
+    .region-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      position: relative;
+      z-index: 1;
+    }
+    .region-pill {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(169,153,244,0.3);
+      color: var(--gold-light);
+      padding: 9px 22px;
+      border-radius: 50px;
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: all 0.3s;
+      white-space: nowrap;
+    }
+    .region-pill:hover {
+      background: var(--blue);
+      border-color: var(--blue);
+      color: var(--white);
+      transform: translateY(-2px);
+    }
+
+    /* ── DESTINATIONS GRID ── */
+    .destinations-section {
+      max-width: 1280px;
+      margin: 80px auto 100px;
+      padding: 0 40px;
+    }
+
+    .destinations-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 3px;
+    }
+
+    .dest-card {
+      position: relative;
+      overflow: hidden;
+      min-height: 420px;
+      text-decoration: none;
+      color: var(--white);
+      display: block;
+      cursor: pointer;
+    }
+    .dest-card.large { grid-column: span 2; min-height: 480px; }
+    .dest-card.tall  { grid-row: span 2; }
+
+    .dest-bg {
+      position: absolute;
+      inset: 0;
+      transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    .dest-card:hover .dest-bg { transform: scale(1.07); }
+
+    /* Each destination gets a unique, geographically-inspired gradient */
+    .dest-bg.mexico {
+      background:
+        radial-gradient(ellipse at 30% 70%, rgba(34,139,34,0.4) 0%, transparent 50%),
+        radial-gradient(ellipse at 70% 20%, rgba(210,105,30,0.5) 0%, transparent 50%),
+        linear-gradient(145deg, #1a3d1a 0%, #2d5a1e 30%, #8b4513 70%, #5c3317 100%);
+    }
+    .dest-bg.caribbean {
+      background:
+        radial-gradient(ellipse at 40% 60%, rgba(0,191,255,0.4) 0%, transparent 50%),
+        radial-gradient(ellipse at 70% 30%, rgba(0,128,128,0.5) 0%, transparent 50%),
+        linear-gradient(145deg, #003366 0%, #005580 30%, #007a99 60%, #004466 100%);
+    }
+    .dest-bg.usa {
+      background:
+        radial-gradient(ellipse at 30% 60%, rgba(178,34,34,0.3) 0%, transparent 50%),
+        radial-gradient(ellipse at 70% 30%, rgba(70,130,180,0.4) 0%, transparent 50%),
+        linear-gradient(145deg, #1a1a4e 0%, #2e2e8a 30%, #8b1a1a 70%, #4a1515 100%);
+    }
+    .dest-bg.europe {
+      background:
+        radial-gradient(ellipse at 40% 60%, rgba(139,90,43,0.4) 0%, transparent 50%),
+        radial-gradient(ellipse at 65% 25%, rgba(72,61,139,0.5) 0%, transparent 50%),
+        linear-gradient(145deg, #2a1a5e 0%, #4a3080 30%, #6b4226 60%, #3d2415 100%);
+    }
+    .dest-bg.pacific {
+      background:
+        radial-gradient(ellipse at 40% 65%, rgba(0,139,139,0.4) 0%, transparent 55%),
+        radial-gradient(ellipse at 70% 25%, rgba(34,139,34,0.35) 0%, transparent 50%),
+        linear-gradient(145deg, #001a3d 0%, #003355 30%, #004d4d 60%, #002233 100%);
+    }
+    .dest-bg.dream {
+      background:
+        radial-gradient(ellipse at 35% 65%, rgba(148,0,211,0.3) 0%, transparent 50%),
+        radial-gradient(ellipse at 70% 25%, rgba(255,165,0,0.25) 0%, transparent 50%),
+        linear-gradient(145deg, #1a0533 0%, #3d1a6b 30%, #6b1a6b 60%, #2d0a4a 100%);
+    }
+
+    /* SVG-style decorative overlay per destination */
+    .dest-bg::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle at 80% 80%, rgba(255,255,255,0.05) 0%, transparent 40%);
+    }
+
+    .dest-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to top,
+        rgba(10,5,30,0.95) 0%,
+        rgba(10,5,30,0.4) 50%,
+        rgba(10,5,30,0.1) 100%
+      );
+      transition: background 0.4s;
+    }
+    .dest-card:hover .dest-overlay {
+      background: linear-gradient(
+        to top,
+        rgba(10,5,30,0.97) 0%,
+        rgba(10,5,30,0.55) 55%,
+        rgba(10,5,30,0.15) 100%
+      );
+    }
+
+    /* Region icon / globe decoration */
+    .dest-globe {
+      position: absolute;
+      top: 24px;
+      right: 24px;
+      width: 48px;
+      height: 48px;
+      border: 1px solid rgba(169,153,244,0.3);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      opacity: 0.6;
+      transition: opacity 0.3s, transform 0.3s;
+      z-index: 2;
+    }
+    .dest-card:hover .dest-globe { opacity: 1; transform: scale(1.1); }
+
+    .dest-content {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 36px;
+      z-index: 2;
+    }
+
+    .dest-tag {
+      display: inline-block;
+      background: var(--blue);
+      color: var(--white);
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      font-weight: 600;
+      padding: 5px 14px;
+      border-radius: 50px;
+      margin-bottom: 14px;
+    }
+
+    .dest-content h2 {
+      font-family: var(--serif);
+      font-weight: 700;
+      line-height: 1.1;
+      margin-bottom: 12px;
+    }
+    .dest-card.large .dest-content h2 { font-size: 2.4rem; }
+    .dest-card:not(.large) .dest-content h2 { font-size: 1.6rem; }
+
+    .dest-content p {
+      font-size: 0.92rem;
+      color: rgba(255,255,255,0.75);
+      line-height: 1.75;
+      margin-bottom: 22px;
+      max-width: 520px;
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      transition: max-height 0.5s ease, opacity 0.4s ease;
+    }
+    .dest-card:hover .dest-content p {
+      max-height: 150px;
+      opacity: 1;
+    }
+
+    .dest-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      transition: gap 0.25s, color 0.25s;
+    }
+    .dest-card:hover .dest-link { gap: 14px; color: var(--white); }
+
+    /* ── DREAM DESTINATIONS CALLOUT ── */
+    .dream-callout {
+      max-width: 1280px;
+      margin: 3px auto 0;
+      padding: 0 40px;
+    }
+    .dream-callout-inner {
+      background: linear-gradient(135deg, #1a0838 0%, #2B1464 50%, #1a0838 100%);
+      border: 1px solid rgba(204,119,249,0.15);
+      padding: 60px 80px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+    .dream-callout h3 {
+      font-family: var(--serif);
+      font-size: clamp(1.6rem, 3vw, 2.5rem);
+      font-weight: 600;
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+    .dream-callout h3 em { font-style: italic; color: var(--gold-light); }
+    .dream-callout p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.8; }
+    .dream-callout-actions { display: flex; flex-direction: column; gap: 14px; align-items: flex-start; }
+    .btn-primary {
+      background: var(--blue); color: var(--white);
+      padding: 14px 36px; font-family: var(--sans); font-size: 0.88rem;
+      font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase;
+      text-decoration: none; border-radius: 50px; transition: all 0.3s; display: inline-block;
+    }
+    .btn-primary:hover {
+      background: var(--blue-light); transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(59,111,191,0.4);
+    }
+    .btn-outline {
+      background: transparent; color: var(--gold-light);
+      padding: 14px 36px; font-family: var(--sans); font-size: 0.88rem;
+      font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase;
+      text-decoration: none; border: 1px solid rgba(169,153,244,0.4);
+      border-radius: 50px; transition: all 0.3s; display: inline-block;
+    }
+    .btn-outline:hover { border-color: var(--gold-light); color: var(--white); background: rgba(169,153,244,0.08); }
+
+    /* ── SUBSCRIBE REMINDER ── */
+    .subscribe-reminder {
+      background: var(--navy-mid);
+      border-top: 1px solid rgba(204,119,249,0.1);
+      padding: 60px 40px;
+      text-align: center;
+    }
+    .subscribe-reminder .section-label {
+      font-size: 0.85rem; letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--blue-light); font-weight: 500; margin-bottom: 12px; display: block;
+    }
+    .subscribe-reminder h3 {
+      font-family: var(--serif); font-size: clamp(1.6rem, 3vw, 2.4rem);
+      font-weight: 600; margin-bottom: 12px;
+    }
+    .subscribe-reminder h3 em { font-style: italic; color: var(--gold-light); }
+    .subscribe-reminder p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 28px; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #1a6dbf;
+      border-top: 1px solid rgba(255,255,255,0.15);
+      padding: 60px 40px 32px;
+    }
+    .footer-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: flex; justify-content: space-between;
+      align-items: flex-start; flex-wrap: wrap; gap: 40px;
+    }
+    .footer-brand img { height: 60px; width: auto; margin-bottom: 16px; display: block; }
+    .footer-brand p, .footer-brand a {
+      color: rgba(255,255,255,0.8); font-size: 0.88rem;
+      line-height: 1.7; margin-bottom: 6px; text-decoration: none; display: block;
+    }
+    .footer-brand a:hover { color: var(--white); }
+    .footer-affiliate { font-size: 0.82rem !important; font-style: italic; opacity: 0.75; margin-top: 8px !important; }
+    .footer-social { display: flex; gap: 10px; margin-top: 16px; }
+    .social-btn {
+      width: 38px; height: 38px; background: rgba(255,255,255,0.15);
+      border-radius: 50%; display: flex; align-items: center;
+      justify-content: center; color: var(--white); text-decoration: none;
+      font-size: 0.95rem; transition: all 0.3s;
+    }
+    .social-btn:hover { background: rgba(255,255,255,0.3); transform: translateY(-2px); }
+    .footer-col h4 {
+      font-size: 0.82rem; letter-spacing: 0.2em; text-transform: uppercase;
+      color: rgba(255,255,255,0.5); margin-bottom: 16px; font-weight: 500;
+    }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-col ul a { color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.88rem; transition: color 0.2s; }
+    .footer-col ul a:hover { color: var(--white); }
+    .footer-bottom-bar {
+      max-width: 1200px; margin: 32px auto 0;
+      padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.15);
+      display: flex; justify-content: space-between;
+      align-items: flex-start; flex-wrap: wrap; gap: 12px;
+    }
+    .footer-bottom-bar p { color: rgba(255,255,255,0.65); font-size: 0.78rem; line-height: 1.7; max-width: 700px; }
+    .footer-bottom-bar a { color: rgba(255,255,255,0.75); text-decoration: none; font-size: 0.78rem; transition: color 0.2s; }
+    .footer-bottom-bar a:hover { color: var(--white); }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .dest-card {
+      animation: fadeUp 0.65s ease both;
+    }
+    .dest-card:nth-child(1) { animation-delay: 0.05s; }
+    .dest-card:nth-child(2) { animation-delay: 0.12s; }
+    .dest-card:nth-child(3) { animation-delay: 0.18s; }
+    .dest-card:nth-child(4) { animation-delay: 0.24s; }
+    .dest-card:nth-child(5) { animation-delay: 0.30s; }
+    .dest-card:nth-child(6) { animation-delay: 0.36s; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 960px) {
+      nav { padding: 12px 20px; }
+      .nav-links { display: none; }
+      .destinations-grid { grid-template-columns: 1fr 1fr; }
+      .dest-card.large { grid-column: span 2; }
+      .dest-card.tall  { grid-row: span 1; }
+      .page-hero { padding: 70px 24px 60px; }
+      .destinations-section { padding: 0 20px; margin: 48px auto 60px; }
+      .dream-callout { padding: 0 20px; }
+      .dream-callout-inner { grid-template-columns: 1fr; padding: 40px 32px; gap: 32px; }
+    }
+    @media (max-width: 580px) {
+      .destinations-grid { grid-template-columns: 1fr; }
+      .dest-card.large { grid-column: span 1; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOP BAR -->
+  <div class="topbar">
+    <a href="tel:4404781181">✦ Call or Text to Talk Travel: (440) 478-1181 ✦</a>
+  </div>
+
+  <!-- NAV -->
+  <nav>
+    <a href="./index.html" class="nav-logo-img">
+      <img src="./logo1.png" alt="Starlight2Travel" />
+    </a>
+    <ul class="nav-links">
+      <li><a href="./index.html">Home</a></li>
+      <li><a href="./vacations.html">Vacations</a></li>
+      <li><a href="./destinations.html" class="active">Destinations</a></li>
+      <li><a href="#">Blog</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="https://app.tern.travel/public/forms/OxLptYEYs-iKrRUMpwZ_Jg/responses/new" class="nav-cta" target="_blank">Request a Quote</a></li>
+    </ul>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <div class="page-hero">
+    <div class="page-hero-bg"></div>
+    <p class="breadcrumb"><a href="./index.html">Home</a> &nbsp;✦&nbsp; Destinations</p>
+    <h1>Shore to Shore,<br><em>Coast to Coast</em></h1>
+    <p>There's a whole world of possibilities to discover and explore. Whether you're craving culture, adventure, luxury, or pure relaxation — there's a perfect destination for every kind of traveler.</p>
+    <div class="region-pills">
+      <a href="#mexico" class="region-pill">🌮 Mexico</a>
+      <a href="#caribbean" class="region-pill">🌊 Caribbean</a>
+      <a href="#usa" class="region-pill">🗽 United States</a>
+      <a href="#europe" class="region-pill">🏛 Europe</a>
+      <a href="#pacific" class="region-pill">🌺 South Pacific & Asia</a>
+      <a href="#dream" class="region-pill">✨ Dream List</a>
+    </div>
+  </div>
+
+  <!-- DESTINATIONS GRID -->
+  <div class="destinations-section">
+    <div class="destinations-grid">
+
+      <!-- Caribbean — large featured -->
+      <a href="https://www.starlight2travel.com/caribbean" class="dest-card large" id="caribbean" target="_blank">
+        <div class="dest-bg caribbean"></div>
+        <div class="dest-overlay"></div>
+        <div class="dest-globe">🌊</div>
+        <div class="dest-content">
+          <span class="dest-tag">Most Popular</span>
+          <h2>The Caribbean</h2>
+          <p>Island-hopping is the most popular cruise option for a reason. With each island different in its own unique way, all sharing gorgeous views and everything you could want in a luxury vacation, the Caribbean islands aren't just one tropical paradise — they're several!</p>
+          <span class="dest-link">Explore the Caribbean &nbsp;→</span>
+        </div>
+      </a>
+
+      <!-- Mexico -->
+      <a href="https://www.starlight2travel.com/mexico" class="dest-card" id="mexico" target="_blank">
+        <div class="dest-bg mexico"></div>
+        <div class="dest-overlay"></div>
+        <div class="dest-globe">🌮</div>
+        <div class="dest-content">
+          <span class="dest-tag">Adventure</span>
+          <h2>Mexico</h2>
+          <p>A dynamic country full of rich history, authentic cuisine, and adventure awaits you south of the border.</p>
+          <span class="dest-link">Explore Mexico &nbsp;→</span>
+        </div>
+      </a>
+
+      <!-- Europe -->
+      <a href="https://www.starlight2travel.com/europe" class="dest-card" id="europe" target="_blank">
+        <div class="dest-bg europe"></div>
+        <div class="dest-overlay"></div>
+        <div class="dest-globe">🏛</div>
+        <div class="dest-content">
+          <span class="dest-tag">Culture</span>
+          <h2>Europe</h2>
+          <p>Where the next country is just a drive away and the sites have lasted for century after century. Grab your walking shoes for endless culture and world-famous landmarks.</p>
+          <span class="dest-link">Explore Europe &nbsp;→</span>
+        </div>
+      </a>
+
+      <!-- United States — large -->
+      <a href="https://www.starlight2travel.com/united-states" class="dest-card large" id="usa" target="_blank">
+        <div class="dest-bg usa"></div>
+        <div class="dest-overlay"></div>
+        <div class="dest-globe">🗽</div>
+        <div class="dest-content">
+          <span class="dest-tag">Domestic</span>
+          <h2>United States</h2>
+          <p>No need to locate the passport when there's so much to cross off the bucket list in the states! Much like island destinations, each state in the U.S. has its own unique flavor and charm, appealing to a wide variety of vacationers.</p>
+          <span class="dest-link">Explore the USA &nbsp;→</span>
+        </div>
+      </a>
+
+      <!-- South Pacific & Asia -->
+      <a href="https://www.starlight2travel.com/south-pacific-asia" class="dest-card" id="pacific" target="_blank">
+        <div class="dest-bg pacific"></div>
+        <div class="dest-overlay"></div>
+        <div class="dest-globe">🌺</div>
+        <div class="dest-content">
+          <span class="dest-tag">Exotic</span>
+          <h2>South Pacific & Asia</h2>
+          <p>Fully immerse yourself in a culture entirely new. The perfect blend of luxury, culture, and adventure for the explorer at heart.</p>
+          <span class="dest-link">Explore the Pacific &nbsp;→</span>
+        </div>
+      </a>
+
+      <!-- Dream List -->
+      <a href="https://www.starlight2travel.com/dream-list-destinations" class="dest-card" id="dream" target="_blank">
+        <div class="dest-bg dream"></div>
+        <div class="dest-overlay"></div>
+        <div class="dest-globe">✨</div>
+        <div class="dest-content">
+          <span class="dest-tag">Dream List</span>
+          <h2>Dream List Destinations</h2>
+          <p>Don't see your dream destination? Don't let that stop you. The world is your oyster — your personalized adventure is waiting.</p>
+          <span class="dest-link">See Dream List &nbsp;→</span>
+        </div>
+      </a>
+
+    </div>
+  </div>
+
+  <!-- DREAM DESTINATIONS CALLOUT -->
+  <div class="dream-callout">
+    <div class="dream-callout-inner">
+      <div>
+        <span style="font-size:0.82rem; letter-spacing:0.25em; text-transform:uppercase; color:var(--blue-light); font-weight:500; display:block; margin-bottom:14px;">✦ Can't Find Your Destination?</span>
+        <h3>Your Dream is <em>Our Specialty</em></h3>
+        <p>The possibilities are truly endless. Starlight2Travel services can take you anywhere in the world — if you have a dream destination in mind, we will find a way to get you there. When you're ready to talk about your next trip, we're available by chat, email, phone, and appointment.</p>
+      </div>
+      <div class="dream-callout-actions">
+        <a href="https://app.tern.travel/public/forms/OxLptYEYs-iKrRUMpwZ_Jg/responses/new" class="btn-primary" target="_blank">Request a Quote</a>
+        <a href="https://calendly.com/-starlight2travel/travelappointment?month=2026-04" class="btn-outline" target="_blank">Schedule Time to Talk</a>
+        <a href="tel:4404781181" class="btn-outline">Call (440) 478-1181</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- SUBSCRIBE REMINDER -->
+  <div class="subscribe-reminder">
+    <span class="section-label">✦ Stay Inspired</span>
+    <h3>Don't Forget to <em>Stay Connected</em></h3>
+    <p>Subscribe below for destination inspiration, travel tips, and exclusive deals from the Starlight2Travel team.</p>
+    <a href="./index.html#stay-connected" class="btn-primary">Subscribe on Homepage</a>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="./logo2.png" alt="Starlight2Travel" />
+        <a href="mailto:team@starlight2travel.com"><i class="fa fa-envelope" style="margin-right:7px;"></i>team@starlight2travel.com</a>
+        <a href="tel:4404781181"><i class="fa fa-phone" style="margin-right:7px;"></i>(440) 478-1181</a>
+        <p class="footer-affiliate">An affiliate of KHM Travel Group</p>
+        <div class="footer-social">
+          <a href="https://www.facebook.com/starlight2travel" class="social-btn" target="_blank"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://www.instagram.com/starlight2travel/" class="social-btn" target="_blank"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.linkedin.com/in/kimberly-j-curlin-192a0475/" class="social-btn" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+          <a href="https://www.pinterest.com/starlight2travel2019/_saved/" class="social-btn" target="_blank"><i class="fab fa-pinterest-p"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Destinations</h4>
+        <ul>
+          <li><a href="https://www.starlight2travel.com/caribbean" target="_blank">Caribbean</a></li>
+          <li><a href="https://www.starlight2travel.com/mexico" target="_blank">Mexico</a></li>
+          <li><a href="https://www.starlight2travel.com/europe" target="_blank">Europe</a></li>
+          <li><a href="https://www.starlight2travel.com/united-states" target="_blank">United States</a></li>
+          <li><a href="https://www.starlight2travel.com/south-pacific-asia" target="_blank">South Pacific & Asia</a></li>
+          <li><a href="https://www.starlight2travel.com/dream-list-destinations" target="_blank">Dream List</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="./index.html">Home</a></li>
+          <li><a href="./vacations.html">Vacations</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="./terms.html">Agency Terms</a></li>
+          <li><a href="https://app.tern.travel/public/forms/OxLptYEYs-iKrRUMpwZ_Jg/responses/new" target="_blank">Request a Quote</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom-bar">
+      <div>
+        <p>© 2019–2025 Starlight2Travel, Inc. &nbsp;|&nbsp; An affiliate of KHM Travel Group</p>
+        <p style="margin-top:6px;">California Seller of Travel Registration # 2089491-50. Registration as a seller of travel in California does not constitute the state's approval. Agent is not a participant in the Travel Consumer Restitution Fund. Florida Seller of Travel License #TI103149. Hawaii Seller of Travel License # TAR 7231. Washington Seller of Travel UBI # 602 775122.</p>
+        <p style="margin-top:6px;">Team Photography Credit: <a href="https://www.instagram.com/annieyuphotos/" target="_blank">Annie Yu Photography</a></p>
+      </div>
+      <a href="./index.html">← Back to Home</a>
+    </div>
+  </footer>
+
+</body>
+</html>
