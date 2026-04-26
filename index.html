@@ -57,7 +57,7 @@
       text-align: center;
       padding: 8px 20px;
       font-family: var(--sans);
-      font-size: 0.72rem;
+      font-size: 0.88rem;
       font-weight: 500;
       letter-spacing: 0.15em;
       text-transform: uppercase;
@@ -104,7 +104,7 @@
     .nav-links a {
       color: rgba(255,255,255,0.85);
       text-decoration: none;
-      font-size: 0.72rem;
+      font-size: 0.88rem;
       font-weight: 500;
       letter-spacing: 0.1em;
       text-transform: uppercase;
@@ -194,7 +194,7 @@
     }
 
     .hero-eyebrow {
-      font-size: 0.72rem;
+      font-size: 0.9rem;
       letter-spacing: 0.3em;
       text-transform: uppercase;
       color: var(--blue-light);
@@ -205,7 +205,7 @@
 
     .hero-title {
       font-family: var(--serif);
-      font-size: clamp(3rem, 8vw, 7rem);
+      font-size: clamp(3.8rem, 10vw, 9rem);
       font-weight: 300;
       line-height: 1.0;
       letter-spacing: -0.01em;
@@ -219,7 +219,7 @@
 
     .hero-tagline {
       font-family: var(--serif);
-      font-size: clamp(1rem, 2.5vw, 1.5rem);
+      font-size: clamp(1.2rem, 3vw, 2rem);
       font-weight: 300;
       font-style: italic;
       color: var(--text-muted);
@@ -238,7 +238,7 @@
       color: #1D0C43;
       padding: 14px 36px;
       font-family: var(--sans);
-      font-size: 0.75rem;
+      font-size: 0.9rem;
       font-weight: 600;
       letter-spacing: 0.15em;
       text-transform: uppercase;
@@ -258,7 +258,7 @@
       color: var(--white);
       padding: 14px 36px;
       font-family: var(--sans);
-      font-size: 0.75rem;
+      font-size: 0.9rem;
       font-weight: 500;
       letter-spacing: 0.15em;
       text-transform: uppercase;
@@ -282,7 +282,7 @@
       animation: fadeUp 1s ease 1.2s both;
     }
     .hero-scroll span {
-      font-size: 0.65rem;
+      font-size: 0.8rem;
       letter-spacing: 0.2em;
       text-transform: uppercase;
       color: var(--text-muted);
@@ -317,7 +317,7 @@
     section { position: relative; z-index: 1; }
 
     .section-label {
-      font-size: 0.68rem;
+      font-size: 0.85rem;
       letter-spacing: 0.3em;
       text-transform: uppercase;
       color: var(--blue-light);
@@ -419,7 +419,7 @@
       margin-bottom: 8px;
     }
     .stat-label {
-      font-size: 0.72rem;
+      font-size: 0.88rem;
       letter-spacing: 0.15em;
       text-transform: uppercase;
       color: var(--text-muted);
@@ -460,7 +460,7 @@
     .see-all-link {
       color: var(--gold);
       text-decoration: none;
-      font-size: 0.72rem;
+      font-size: 0.88rem;
       letter-spacing: 0.2em;
       text-transform: uppercase;
       font-weight: 500;
@@ -523,7 +523,7 @@
       display: inline-block;
       background: var(--blue);
       color: var(--white);
-      font-size: 0.62rem;
+      font-size: 0.92rem;
       letter-spacing: 0.15em;
       text-transform: uppercase;
       font-weight: 600;
@@ -542,7 +542,7 @@
     .blog-card:not(.featured) .blog-card-content h3 { font-size: 1.1rem; }
 
     .blog-card-meta {
-      font-size: 0.72rem;
+      font-size: 0.88rem;
       color: var(--text-muted);
       letter-spacing: 0.08em;
     }
@@ -615,7 +615,7 @@
       margin-bottom: 4px;
     }
     .dest-card:first-child .dest-content h3 { font-size: 2.2rem; }
-    .dest-content p { font-size: 0.75rem; color: var(--text-muted); letter-spacing: 0.1em; }
+    .dest-content p { font-size: 0.9rem; color: var(--text-muted); letter-spacing: 0.1em; }
 
     .dest-arrow {
       position: absolute;
@@ -905,7 +905,7 @@
     }
     .footer-email a:hover, .footer-phone a:hover { color: var(--white); }
     .footer-affiliate {
-      font-size: 0.78rem;
+      font-size: 0.92rem;
       color: var(--text-muted);
       letter-spacing: 0.05em;
       margin-top: 4px;
@@ -913,7 +913,7 @@
     }
 
     .footer-col h4 {
-      font-size: 0.68rem;
+      font-size: 0.82rem;
       letter-spacing: 0.2em;
       text-transform: uppercase;
       font-weight: 500;
@@ -948,7 +948,7 @@
     }
     .footer-bottom p {
       color: rgba(255,255,255,0.7);
-      font-size: 0.75rem;
+      font-size: 0.9rem;
       line-height: 1.6;
     }
     .footer-legal {
@@ -958,7 +958,7 @@
     .footer-legal a {
       color: rgba(255,255,255,0.7);
       text-decoration: none;
-      font-size: 0.72rem;
+      font-size: 0.88rem;
       letter-spacing: 0.05em;
       transition: color 0.2s;
     }
@@ -1353,11 +1353,13 @@
     const navEl = document.querySelector('nav');
     window.addEventListener('scroll', () => {
       if (window.scrollY > 60) {
-        navEl.style.background = 'rgba(10,5,25,0.5)';
-        navEl.style.backdropFilter = 'blur(8px)';
+        navEl.style.background = 'rgba(29,12,67,0.96)';
+        navEl.style.backdropFilter = 'blur(14px)';
+        navEl.style.borderBottom = '1px solid rgba(204,119,249,0.2)';
       } else {
         navEl.style.background = 'transparent';
         navEl.style.backdropFilter = 'none';
+        navEl.style.borderBottom = 'none';
       }
     });
 
