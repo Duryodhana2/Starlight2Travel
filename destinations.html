@@ -300,6 +300,77 @@
     }
     .dest-card:hover .dest-link { gap: 14px; color: var(--white); }
 
+    /* ── SUB-DESTINATION GRIDS ── */
+    .sub-dest-section {
+      max-width: 1280px;
+      margin: 3px auto 0;
+      padding: 0 40px;
+    }
+    .sub-dest-header {
+      background: var(--navy-mid);
+      padding: 28px 36px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      border-bottom: 1px solid rgba(204,119,249,0.1);
+    }
+    .sub-dest-header h3 {
+      font-family: var(--serif);
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: var(--white);
+    }
+    .sub-dest-header span {
+      font-size: 0.78rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--blue-light);
+      font-weight: 500;
+    }
+    .sub-dest-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 3px;
+      background: var(--navy);
+    }
+    .sub-card {
+      position: relative;
+      overflow: hidden;
+      height: 200px;
+      text-decoration: none;
+      color: var(--white);
+      display: block;
+    }
+    .sub-card-bg {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      transition: transform 0.6s ease;
+    }
+    .sub-card:hover .sub-card-bg { transform: scale(1.08); }
+    .sub-card-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.78) 0%, rgba(0,0,0,0.2) 50%, transparent 100%);
+      transition: background 0.3s;
+    }
+    .sub-card:hover .sub-card-overlay {
+      background: linear-gradient(to top, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.35) 60%, rgba(0,0,0,0.05) 100%);
+    }
+    .sub-card-name {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 16px 18px;
+      font-family: var(--serif);
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--white);
+      text-shadow: 0 2px 8px rgba(0,0,0,0.6);
+    }
+
     /* ── DREAM DESTINATIONS CALLOUT ── */
     .dream-callout {
       max-width: 1280px;
@@ -558,6 +629,181 @@
         </div>
       </a>
 
+    </div>
+  </div>
+
+  <!-- ── MEXICO SUB-DESTINATIONS ── -->
+  <div class="sub-dest-section">
+    <div class="sub-dest-header">
+      <span>Explore</span>
+      <h3>Mexico</h3>
+    </div>
+    <div class="sub-dest-grid">
+      <a href="https://app.tern.travel/public/forms/OxLptYEYs-iKrRUMpwZ_Jg/responses/new" class="sub-card" target="_blank">
+        <div class="sub-card-bg" style="background-image:url('https://images.unsplash.com/photo-1552074284-5e88ef1aef18?w=600'); background-color:#1a4a2e;"></div>
+        <div class="sub-card-overlay"></div>
+        <div class="sub-card-name">Cancun</div>
+      </a>
+      <a href="https://app.tern.travel/public/forms/OxLptYEYs-iKrRUMpwZ_Jg/responses/new" class="sub-card" target="_blank">
+        <div class="sub-card-bg" style="background-image:url('https://images.unsplash.com/photo-1518638150340-f706e86654de?w=600'); background-color:#1a3d1a;"></div>
+        <div class="sub-card-overlay"></div>
+        <div class="sub-card-name">Los Cabos</div>
+      </a>
+      <a href="https://app.tern.travel/public/forms/OxLptYEYs-iKrRUMpwZ_Jg/responses/new" class="sub-card" target="_blank">
+        <div class="sub-card-bg" style="background-image:url('https://images.unsplash.com/photo-1561501900-3701fa6a0864?w=600'); background-color:#2d5a1e;"></div>
+        <div class="sub-card-overlay"></div>
+        <div class="sub-card-name">Riviera Maya</div>
+      </a>
+      <a href="https://app.tern.travel/public/forms/OxLptYEYs-iKrRUMpwZ_Jg/responses/new" class="sub-card" target="_blank">
+        <div class="sub-card-bg" style="background-image:url('https://images.unsplash.com/photo-1585464231875-d9ef1f5ad396?w=600'); background-color:#3d5a1e;"></div>
+        <div class="sub-card-overlay"></div>
+        <div class="sub-card-name">Puerto Vallarta</div>
+      </a>
+      <a href="https://app.tern.travel/public/forms/OxLptYEYs-iKrRUMpwZ_Jg/responses/new" class="sub-card" target="_blank">
+        <div class="sub-card-bg" style="background-image:url('https://images.unsplash.com/photo-1512813195386-6cf811ad3542?w=600'); background-color:#8b4513;"></div>
+        <div class="sub-card-overlay"></div>
+        <div class="sub-card-name">Mexico City</div>
+      </a>
+    </div>
+  </div>
+
+  <!-- ── CARIBBEAN SUB-DESTINATIONS ── -->
+  <div class="sub-dest-section" style="margin-top:3px;">
+    <div class="sub-dest-header">
+      <span>Explore</span>
+      <h3>The Caribbean</h3>
+    </div>
+    <div class="sub-dest-grid">
+      <a href="https://app.tern.travel/public/forms/OxLptYEYs-iKrRUMpwZ_Jg/responses/new" class="sub-card" target="_blank">
+        <div class="sub-card-bg" style="background-image:url('https://images.unsplash.com/photo-1548574505-5e239809ee19?w=600'); background-color:#003366;"></div>
+        <div class="sub-card-overlay"></div>
+        <div class="sub-card-name">Jamaica</div>
+      </a>
+      <a href="https://app.tern.travel/public/forms/OxLptYEYs-iKrRUMpwZ_Jg/responses/new" class="sub-card" target="_blank">
+        <div class="sub-card-bg" style="background-image:url('https://images.unsplash.com/photo-1614082242765-7c98ca0f3df3?w=600'); background-color:#005580;"></div>
+        <div class="sub-card-overlay"></div>
+        <div class="sub-card-name">Turks & Caicos</div>
+      </a>
+      <a href="https://app.tern.travel/public/forms/OxLptYEYs-iKrRUMpwZ_Jg/responses/new" class="sub-card" target="_blank">
+        <div class="sub-card-bg" style="background-image:url('https://images.unsplash.com/photo-1567971710716-9b4e4e5c2b0c?w=600'); background-color:#007a99;"></div>
+        <div class="sub-card-overlay"></div>
+        <div class="sub-card-name">Bahamas</div>
+      </a>
+      <a href="https://app.tern.travel/public/forms/OxLptYEYs-iKrRUMpwZ_Jg/responses/new" class="sub-card" target="_blank">
+        <div class="sub-card-bg" style="background-image:url('https://images.unsplash.com/photo-1570737209810-87a8e7245f88?w=600'); background-color:#004466;"></div>
+        <div class="sub-card-overlay"></div>
+        <div class="sub-card-name">St. Lucia</div>
+      </a>
+      <a href="https://app.tern.travel/public/forms/OxLptYEYs-iKrRUMpwZ_Jg/responses/new" class="sub-card" target="_blank">
+        <div class="sub-card-bg" style="background-image:url('https://images.unsplash.com/photo-1559494007-9f5847c49d94?w=600'); background-color:#002a4a;"></div>
+        <div class="sub-card-overlay"></div>
+        <div class="sub-card-name">Barbados</div>
+      </a>
+    </div>
+  </div>
+
+  <!-- ── UNITED STATES SUB-DESTINATIONS ── -->
+  <div class="sub-dest-section" style="margin-top:3px;">
+    <div class="sub-dest-header">
+      <span>Explore</span>
+      <h3>United States</h3>
+    </div>
+    <div class="sub-dest-grid">
+      <a href="https://app.tern.travel/public/forms/OxLptYEYs-iKrRUMpwZ_Jg/responses/new" class="sub-card" target="_blank">
+        <div class="sub-card-bg" style="background-image:url('https://images.unsplash.com/photo-1518235506717-e1ed3306a89b?w=600'); background-color:#1a1a4e;"></div>
+        <div class="sub-card-overlay"></div>
+        <div class="sub-card-name">Hawaii</div>
+      </a>
+      <a href="https://app.tern.travel/public/forms/OxLptYEYs-iKrRUMpwZ_Jg/responses/new" class="sub-card" target="_blank">
+        <div class="sub-card-bg" style="background-image:url('https://images.unsplash.com/photo-1540541338537-71acf5965d6b?w=600'); background-color:#2e2e8a;"></div>
+        <div class="sub-card-overlay"></div>
+        <div class="sub-card-name">Orlando / Disney</div>
+      </a>
+      <a href="https://app.tern.travel/public/forms/OxLptYEYs-iKrRUMpwZ_Jg/responses/new" class="sub-card" target="_blank">
+        <div class="sub-card-bg" style="background-image:url('https://images.unsplash.com/photo-1555109307-f7d9da25c244?w=600'); background-color:#3a3a7e;"></div>
+        <div class="sub-card-overlay"></div>
+        <div class="sub-card-name">New York City</div>
+      </a>
+      <a href="https://app.tern.travel/public/forms/OxLptYEYs-iKrRUMpwZ_Jg/responses/new" class="sub-card" target="_blank">
+        <div class="sub-card-bg" style="background-image:url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600'); background-color:#8b1a1a;"></div>
+        <div class="sub-card-overlay"></div>
+        <div class="sub-card-name">National Parks</div>
+      </a>
+      <a href="https://app.tern.travel/public/forms/OxLptYEYs-iKrRUMpwZ_Jg/responses/new" class="sub-card" target="_blank">
+        <div class="sub-card-bg" style="background-image:url('https://images.unsplash.com/photo-1605833556294-ea5c7a74f57d?w=600'); background-color:#4a1515;"></div>
+        <div class="sub-card-overlay"></div>
+        <div class="sub-card-name">Las Vegas</div>
+      </a>
+    </div>
+  </div>
+
+  <!-- ── EUROPE SUB-DESTINATIONS ── -->
+  <div class="sub-dest-section" style="margin-top:3px;">
+    <div class="sub-dest-header">
+      <span>Explore</span>
+      <h3>Europe</h3>
+    </div>
+    <div class="sub-dest-grid">
+      <a href="https://app.tern.travel/public/forms/OxLptYEYs-iKrRUMpwZ_Jg/responses/new" class="sub-card" target="_blank">
+        <div class="sub-card-bg" style="background-image:url('https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=600'); background-color:#2a1a5e;"></div>
+        <div class="sub-card-overlay"></div>
+        <div class="sub-card-name">Paris</div>
+      </a>
+      <a href="https://app.tern.travel/public/forms/OxLptYEYs-iKrRUMpwZ_Jg/responses/new" class="sub-card" target="_blank">
+        <div class="sub-card-bg" style="background-image:url('https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=600'); background-color:#4a3080;"></div>
+        <div class="sub-card-overlay"></div>
+        <div class="sub-card-name">Rome</div>
+      </a>
+      <a href="https://app.tern.travel/public/forms/OxLptYEYs-iKrRUMpwZ_Jg/responses/new" class="sub-card" target="_blank">
+        <div class="sub-card-bg" style="background-image:url('https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=600'); background-color:#3a2070;"></div>
+        <div class="sub-card-overlay"></div>
+        <div class="sub-card-name">London</div>
+      </a>
+      <a href="https://app.tern.travel/public/forms/OxLptYEYs-iKrRUMpwZ_Jg/responses/new" class="sub-card" target="_blank">
+        <div class="sub-card-bg" style="background-image:url('https://images.unsplash.com/photo-1555993539-1732b0258235?w=600'); background-color:#6b4226;"></div>
+        <div class="sub-card-overlay"></div>
+        <div class="sub-card-name">Santorini</div>
+      </a>
+      <a href="https://app.tern.travel/public/forms/OxLptYEYs-iKrRUMpwZ_Jg/responses/new" class="sub-card" target="_blank">
+        <div class="sub-card-bg" style="background-image:url('https://images.unsplash.com/photo-1467269204594-9661b134dd2b?w=600'); background-color:#3d2415;"></div>
+        <div class="sub-card-overlay"></div>
+        <div class="sub-card-name">Barcelona</div>
+      </a>
+    </div>
+  </div>
+
+  <!-- ── SOUTH PACIFIC & ASIA SUB-DESTINATIONS ── -->
+  <div class="sub-dest-section" style="margin-top:3px;">
+    <div class="sub-dest-header">
+      <span>Explore</span>
+      <h3>South Pacific & Asia</h3>
+    </div>
+    <div class="sub-dest-grid">
+      <a href="https://app.tern.travel/public/forms/OxLptYEYs-iKrRUMpwZ_Jg/responses/new" class="sub-card" target="_blank">
+        <div class="sub-card-bg" style="background-image:url('https://images.unsplash.com/photo-1537996194471-e657df975ab4?w=600'); background-color:#001a3d;"></div>
+        <div class="sub-card-overlay"></div>
+        <div class="sub-card-name">Bali</div>
+      </a>
+      <a href="https://app.tern.travel/public/forms/OxLptYEYs-iKrRUMpwZ_Jg/responses/new" class="sub-card" target="_blank">
+        <div class="sub-card-bg" style="background-image:url('https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=600'); background-color:#003355;"></div>
+        <div class="sub-card-overlay"></div>
+        <div class="sub-card-name">Maldives</div>
+      </a>
+      <a href="https://app.tern.travel/public/forms/OxLptYEYs-iKrRUMpwZ_Jg/responses/new" class="sub-card" target="_blank">
+        <div class="sub-card-bg" style="background-image:url('https://images.unsplash.com/photo-1508193638397-1c4234db14d8?w=600'); background-color:#004d4d;"></div>
+        <div class="sub-card-overlay"></div>
+        <div class="sub-card-name">Fiji</div>
+      </a>
+      <a href="https://app.tern.travel/public/forms/OxLptYEYs-iKrRUMpwZ_Jg/responses/new" class="sub-card" target="_blank">
+        <div class="sub-card-bg" style="background-image:url('https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?w=600'); background-color:#002233;"></div>
+        <div class="sub-card-overlay"></div>
+        <div class="sub-card-name">Tokyo</div>
+      </a>
+      <a href="https://app.tern.travel/public/forms/OxLptYEYs-iKrRUMpwZ_Jg/responses/new" class="sub-card" target="_blank">
+        <div class="sub-card-bg" style="background-image:url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600'); background-color:#001a2e;"></div>
+        <div class="sub-card-overlay"></div>
+        <div class="sub-card-name">New Zealand</div>
+      </a>
     </div>
   </div>
 
