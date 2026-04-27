@@ -599,7 +599,7 @@
     .dest-overlay {
       position: absolute;
       inset: 0;
-      background: linear-gradient(to top, rgba(29,12,67,0.85) 0%, rgba(29,12,67,0.2) 100%);
+      background: linear-gradient(to top, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.4) 35%, transparent 65%);
     }
 
     .dest-content {
@@ -611,11 +611,13 @@
     .dest-content h3 {
       font-family: var(--serif);
       font-size: 1.5rem;
-      font-weight: 400;
+      font-weight: 600;
       margin-bottom: 4px;
+      color: var(--white);
+      text-shadow: 0 2px 8px rgba(0,0,0,0.5);
     }
     .dest-card:first-child .dest-content h3 { font-size: 2.2rem; }
-    .dest-content p { font-size: 0.9rem; color: var(--text-muted); letter-spacing: 0.1em; }
+    .dest-content p { font-size: 0.9rem; color: rgba(255,255,255,0.85); letter-spacing: 0.1em; text-shadow: 0 1px 4px rgba(0,0,0,0.5); }
 
     .dest-arrow {
       position: absolute;
