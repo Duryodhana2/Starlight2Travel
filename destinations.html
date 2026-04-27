@@ -186,42 +186,12 @@
     .dest-card:hover .dest-bg { transform: scale(1.07); }
 
     /* Each destination gets a unique, geographically-inspired gradient */
-    .dest-bg.mexico {
-      background:
-        radial-gradient(ellipse at 30% 70%, rgba(34,139,34,0.4) 0%, transparent 50%),
-        radial-gradient(ellipse at 70% 20%, rgba(210,105,30,0.5) 0%, transparent 50%),
-        linear-gradient(145deg, #1a3d1a 0%, #2d5a1e 30%, #8b4513 70%, #5c3317 100%);
-    }
-    .dest-bg.caribbean {
-      background:
-        radial-gradient(ellipse at 40% 60%, rgba(0,191,255,0.4) 0%, transparent 50%),
-        radial-gradient(ellipse at 70% 30%, rgba(0,128,128,0.5) 0%, transparent 50%),
-        linear-gradient(145deg, #003366 0%, #005580 30%, #007a99 60%, #004466 100%);
-    }
-    .dest-bg.usa {
-      background:
-        radial-gradient(ellipse at 30% 60%, rgba(178,34,34,0.3) 0%, transparent 50%),
-        radial-gradient(ellipse at 70% 30%, rgba(70,130,180,0.4) 0%, transparent 50%),
-        linear-gradient(145deg, #1a1a4e 0%, #2e2e8a 30%, #8b1a1a 70%, #4a1515 100%);
-    }
-    .dest-bg.europe {
-      background:
-        radial-gradient(ellipse at 40% 60%, rgba(139,90,43,0.4) 0%, transparent 50%),
-        radial-gradient(ellipse at 65% 25%, rgba(72,61,139,0.5) 0%, transparent 50%),
-        linear-gradient(145deg, #2a1a5e 0%, #4a3080 30%, #6b4226 60%, #3d2415 100%);
-    }
-    .dest-bg.pacific {
-      background:
-        radial-gradient(ellipse at 40% 65%, rgba(0,139,139,0.4) 0%, transparent 55%),
-        radial-gradient(ellipse at 70% 25%, rgba(34,139,34,0.35) 0%, transparent 50%),
-        linear-gradient(145deg, #001a3d 0%, #003355 30%, #004d4d 60%, #002233 100%);
-    }
-    .dest-bg.dream {
-      background:
-        radial-gradient(ellipse at 35% 65%, rgba(148,0,211,0.3) 0%, transparent 50%),
-        radial-gradient(ellipse at 70% 25%, rgba(255,165,0,0.25) 0%, transparent 50%),
-        linear-gradient(145deg, #1a0533 0%, #3d1a6b 30%, #6b1a6b 60%, #2d0a4a 100%);
-    }
+    .dest-bg.mexico { background-image: url('https://static.wixstatic.com/media/b0753b_d51d461bd10f4af28a75a18187101f79~mv2.jpg'); background-size: cover; background-position: center; }
+    .dest-bg.caribbean { background-image: url('https://static.wixstatic.com/media/b0753b_efa94177caa14ccab0593079f882b4b6~mv2.jpg'); background-size: cover; background-position: center; }
+    .dest-bg.europe { background-image: url('https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png'); background-size: cover; background-position: center; }
+    .dest-bg.usa { background-image: url('https://static.wixstatic.com/media/b0753b_eb25b1d71a3f46e0971dcf47a1e285b3~mv2.jpg'); background-size: cover; background-position: center; }
+    .dest-bg.pacific { background-image: url('https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png'); background-size: cover; background-position: center; }
+    .dest-bg.dream { background-image: url('https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png'); background-size: cover; background-position: center; }
 
     /* SVG-style decorative overlay per destination */
     .dest-bg::before {
@@ -497,12 +467,12 @@
     <h1>Shore to Shore,<br><em>Coast to Coast</em></h1>
     <p>There's a whole world of possibilities to discover and explore. Whether you're craving culture, adventure, luxury, or pure relaxation — there's a perfect destination for every kind of traveler.</p>
     <div class="region-pills">
-      <a href="#mexico" class="region-pill">🌮 Mexico</a>
-      <a href="#caribbean" class="region-pill">🌊 Caribbean</a>
-      <a href="#usa" class="region-pill">🗽 United States</a>
-      <a href="#europe" class="region-pill">🏛 Europe</a>
-      <a href="#pacific" class="region-pill">🌺 South Pacific & Asia</a>
-      <a href="#dream" class="region-pill">✨ Dream List</a>
+      <a href="#mexico" class="region-pill">Mexico</a>
+      <a href="#caribbean" class="region-pill">Caribbean</a>
+      <a href="#usa" class="region-pill">United States</a>
+      <a href="#europe" class="region-pill">Europe</a>
+      <a href="#pacific" class="region-pill">South Pacific & Asia</a>
+      <a href="#dream" class="region-pill">Dream List</a>
     </div>
   </div>
 
@@ -514,7 +484,7 @@
       <a href="https://www.starlight2travel.com/caribbean" class="dest-card large" id="caribbean" target="_blank">
         <div class="dest-bg caribbean"></div>
         <div class="dest-overlay"></div>
-        <div class="dest-globe">🌊</div>
+        
         <div class="dest-content">
           <span class="dest-tag">Most Popular</span>
           <h2>The Caribbean</h2>
@@ -527,7 +497,7 @@
       <a href="https://www.starlight2travel.com/mexico" class="dest-card" id="mexico" target="_blank">
         <div class="dest-bg mexico"></div>
         <div class="dest-overlay"></div>
-        <div class="dest-globe">🌮</div>
+        
         <div class="dest-content">
           <span class="dest-tag">Adventure</span>
           <h2>Mexico</h2>
@@ -540,7 +510,7 @@
       <a href="https://www.starlight2travel.com/europe" class="dest-card" id="europe" target="_blank">
         <div class="dest-bg europe"></div>
         <div class="dest-overlay"></div>
-        <div class="dest-globe">🏛</div>
+        
         <div class="dest-content">
           <span class="dest-tag">Culture</span>
           <h2>Europe</h2>
@@ -553,7 +523,7 @@
       <a href="https://www.starlight2travel.com/united-states" class="dest-card large" id="usa" target="_blank">
         <div class="dest-bg usa"></div>
         <div class="dest-overlay"></div>
-        <div class="dest-globe">🗽</div>
+        
         <div class="dest-content">
           <span class="dest-tag">Domestic</span>
           <h2>United States</h2>
@@ -566,7 +536,7 @@
       <a href="https://www.starlight2travel.com/south-pacific-asia" class="dest-card" id="pacific" target="_blank">
         <div class="dest-bg pacific"></div>
         <div class="dest-overlay"></div>
-        <div class="dest-globe">🌺</div>
+        
         <div class="dest-content">
           <span class="dest-tag">Exotic</span>
           <h2>South Pacific & Asia</h2>
@@ -579,7 +549,7 @@
       <a href="https://www.starlight2travel.com/dream-list-destinations" class="dest-card" id="dream" target="_blank">
         <div class="dest-bg dream"></div>
         <div class="dest-overlay"></div>
-        <div class="dest-globe">✨</div>
+        
         <div class="dest-content">
           <span class="dest-tag">Dream List</span>
           <h2>Dream List Destinations</h2>
