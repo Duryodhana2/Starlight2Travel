@@ -316,7 +316,7 @@
     .team-header h2 em { font-style: italic; color: var(--gold-light); }
     .team-header p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.8; }
 
-    /* Pillar cards - like the infographic reference */
+    /* Pillar cards - elevated middle */
     .team-pillars {
       max-width: 1100px;
       margin: 0 auto;
@@ -333,8 +333,13 @@
       position: relative;
     }
 
-    /* Each pillar has a different height accent bar on top */
-    .team-pillar:nth-child(1) .pillar-bar { height: 6px; background: var(--blue); }
+    /* Middle pillar elevated with transform */
+    .team-pillar:nth-child(1) { transform: translateY(40px); }
+    .team-pillar:nth-child(2) { transform: translateY(0); }
+    .team-pillar:nth-child(3) { transform: translateY(40px); }
+
+    /* Each pillar has a different color bar on top */
+    .team-pillar:nth-child(1) .pillar-bar { height: 6px; background: var(--blue-light); }
     .team-pillar:nth-child(2) .pillar-bar { height: 6px; background: var(--gold); }
     .team-pillar:nth-child(3) .pillar-bar { height: 6px; background: var(--blue-light); }
 
@@ -705,6 +710,72 @@
     </div>
   </section>
 
+  <!-- MEET THE TEAM (moved here - right after Our Story) -->
+  <section class="team-section" id="team">
+    <div class="team-header">
+      <span class="section-label">✦ The People Behind the Magic</span>
+      <h2>Meet the <em>Team</em></h2>
+      <p>At Starlight2Travel, we believe in the power of personal connection. What better way to introduce our team than to meet them virtually — the faces behind your next great adventure.</p>
+    </div>
+
+    <div class="team-pillars">
+
+      <!-- Debbie - left pillar -->
+      <div class="team-pillar">
+        <div class="pillar-bar"></div>
+        <div class="pillar-card">
+          <div class="pillar-photo-placeholder">★</div>
+          <div class="pillar-content">
+            <h3 class="pillar-name">Debbie Neuhofs</h3>
+            <span class="pillar-title">Cruise & Resort Travel Advisor</span>
+            <p class="pillar-bio">Debbie joins the S2T team as an experienced cruise and resort travel advisor based in Painesville, Ohio. Her passion for travel began through her local community college's travel program. With over a decade of experience and her Certified Travel Counselor Accreditation, she became an independent travel agent in 2019. Some of her favorite destinations include Paris, Antigua, and the Caribbean islands.</p>
+            <div class="pillar-social">
+              <a href="mailto:debbie@starlight2travel.com"><i class="fa fa-envelope"></i></a>
+              <a href="tel:4404781181"><i class="fa fa-phone"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Kim - center elevated pillar -->
+      <div class="team-pillar">
+        <div class="pillar-bar"></div>
+        <div class="pillar-card">
+          <div class="pillar-photo-placeholder">★</div>
+          <div class="pillar-content">
+            <h3 class="pillar-name">Kim Curlin</h3>
+            <span class="pillar-title">Agency Owner, ACC, Expert Travel Advisor</span>
+            <p class="pillar-bio">Hi! I am Kim Curlin, the passionate agency owner and expert travel advisor behind Starlight2Travel! A born and raised Cleveland native, my love of travel started with Disney and has since set sail for cruising. With 25+ years in the corporate world, I've become a travel coordination expert managing every detail with ease. My agency specializes in romance, family, and cruise travel — and we've been turning travel dreams into reality for almost five years. I'm certified with CLIA, Sandals & Beaches Resorts, Royal Caribbean, Special Needs at Sea, and more. I will reach for the stars to plan the perfect itinerary so you can experience traveling like a star!</p>
+            <div class="pillar-social">
+              <a href="mailto:kim@starlight2travel.com"><i class="fa fa-envelope"></i></a>
+              <a href="https://www.linkedin.com/in/kimberly-j-curlin-192a0475/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+              <a href="https://www.facebook.com/starlight2travel" target="_blank"><i class="fab fa-facebook-f"></i></a>
+              <a href="https://www.instagram.com/starlight2travel/" target="_blank"><i class="fab fa-instagram"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Jamie - right pillar -->
+      <div class="team-pillar">
+        <div class="pillar-bar"></div>
+        <div class="pillar-card">
+          <div class="pillar-photo-placeholder">★</div>
+          <div class="pillar-content">
+            <h3 class="pillar-name">Jamie Alesci</h3>
+            <span class="pillar-title">Travel Coordination Assistant</span>
+            <p class="pillar-bio">Jamie is Starlight2Travel's travel coordination assistant, based in Mentor, Ohio! She has an immense passion for travel, particularly cruises and beach vacations — and she's already LOYAL TO ROYAL, making her an excellent fit at S2T. Jamie brings captivating energy to the team, introducing innovative ideas to assist travelers organizing family trips, cruises, and romantic getaways. As a caring, honest, and exceptionally organized wife and mother of three, Jamie ensures a stress-free and enjoyable travel experience for every client.</p>
+            <div class="pillar-social">
+              <a href="mailto:jamie@starlight2travel.com"><i class="fa fa-envelope"></i></a>
+              <a href="tel:4404781181"><i class="fa fa-phone"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
   <!-- MISSION STRIP -->
   <div class="mission-strip">
     <span class="section-label" style="text-align:center;">✦ Our Mission</span>
@@ -780,71 +851,6 @@
       </div>
     </div>
   </div>
-
-  <!-- MEET THE TEAM -->
-  <section class="team-section" id="team">
-    <div class="team-header">
-      <span class="section-label">✦ The People Behind the Magic</span>
-      <h2>Meet the <em>Team</em></h2>
-      <p>At Starlight2Travel, we believe in the power of personal connection. What better way to introduce our team than to meet them virtually — the faces behind your next great adventure.</p>
-    </div>
-
-    <div class="team-pillars">
-
-      <!-- Team Member 1 -->
-      <div class="team-pillar">
-        <div class="pillar-bar"></div>
-        <div class="pillar-card">
-          <div class="pillar-photo-placeholder">★</div>
-          <div class="pillar-content">
-            <h3 class="pillar-name">Kimberly Curlin</h3>
-            <span class="pillar-title">Founder & Lead Travel Advisor</span>
-            <p class="pillar-bio">Kimberly founded Starlight2Travel in 2019 with a passion for helping others experience the world. A certified Sandals Specialist and KHM Travel Group affiliate, she brings warmth, expertise, and dedication to every trip she plans.</p>
-            <div class="pillar-social">
-              <a href="https://www.linkedin.com/in/kimberly-j-curlin-192a0475/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-              <a href="https://www.facebook.com/starlight2travel" target="_blank"><i class="fab fa-facebook-f"></i></a>
-              <a href="https://www.instagram.com/starlight2travel/" target="_blank"><i class="fab fa-instagram"></i></a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Team Member 2 -->
-      <div class="team-pillar">
-        <div class="pillar-bar"></div>
-        <div class="pillar-card">
-          <div class="pillar-photo-placeholder">★</div>
-          <div class="pillar-content">
-            <h3 class="pillar-name">Team Member</h3>
-            <span class="pillar-title">Travel Advisor</span>
-            <p class="pillar-bio">Add team member bio here. Describe their background, specialties, favorite destinations, and what they love most about helping clients travel the world.</p>
-            <div class="pillar-social">
-              <a href="#"><i class="fab fa-linkedin-in"></i></a>
-              <a href="#"><i class="fab fa-instagram"></i></a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Team Member 3 -->
-      <div class="team-pillar">
-        <div class="pillar-bar"></div>
-        <div class="pillar-card">
-          <div class="pillar-photo-placeholder">★</div>
-          <div class="pillar-content">
-            <h3 class="pillar-name">Team Member</h3>
-            <span class="pillar-title">Travel Advisor</span>
-            <p class="pillar-bio">Add team member bio here. Describe their background, specialties, favorite destinations, and what they love most about helping clients travel the world.</p>
-            <div class="pillar-social">
-              <a href="#"><i class="fab fa-linkedin-in"></i></a>
-              <a href="#"><i class="fab fa-instagram"></i></a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </section>
 
   <!-- HOW IT WORKS -->
   <section class="how-section">
