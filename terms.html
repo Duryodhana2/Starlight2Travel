@@ -11,15 +11,17 @@
 
     :root {
       --navy: #1D0C43;
+      
+      
       --navy-mid: #2B1464;
       --navy-light: #2B1464;
-      --gold: #CC77F9;
+      --gold: #613DBC;
       --gold-light: #A999F4;
-      --gold-pale: #e8d8ff;
+      --gold-pale: #A999F4;
       --white: #ffffff;
       --text-muted: #A999F4;
       --accent: #613DBC;
-      --blue: #3B6FBF;
+      --blue: #1a6dbf;
       --blue-light: #5B8FDF;
       --blue-nav: #1a6dbf;
       --serif: 'Playfair Display', Georgia, serif;
@@ -79,7 +81,7 @@
       list-style: none;
       gap: 4px;
       align-items: center;
-      background: var(--blue-nav);
+      background: #1a6dbf;
       padding: 8px 12px;
       border-radius: 50px;
       box-shadow: 0 4px 24px rgba(0,0,0,0.3);
@@ -102,7 +104,7 @@
     }
     .nav-cta {
       background: var(--white) !important;
-      color: var(--blue-nav) !important;
+      color: #1a6dbf !important;
       font-weight: 600 !important;
       padding: 7px 18px !important;
       border-radius: 50px !important;
@@ -113,13 +115,13 @@
       margin-left: 4px;
     }
     .nav-cta:hover {
-      background: #e8f0ff !important;
+      background: #d4f0f7 !important;
       transform: translateY(-1px);
     }
 
     /* ── PAGE HERO ── */
     .page-hero {
-      background: linear-gradient(135deg, #1D0C43 0%, #2B1464 50%, #1a0a38 100%);
+      background: linear-gradient(135deg, #1D0C43 0%, #2B1464 50%, #1D0C43 100%);
       padding: 80px 40px 60px;
       text-align: center;
       border-bottom: 1px solid rgba(204,119,249,0.15);
@@ -322,6 +324,97 @@
       .terms-wrapper { padding: 40px 24px 60px; }
       .page-hero { padding: 60px 24px 40px; }
     }
+
+    /* ── HAMBURGER MENU ── */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 5px;
+      width: 44px;
+      height: 44px;
+      background: #1a6dbf;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      z-index: 200;
+      transition: background 0.3s;
+      flex-shrink: 0;
+    }
+    .hamburger:hover { background: #2a7dcf; }
+    .hamburger span {
+      display: block;
+      width: 20px;
+      height: 2px;
+      background: var(--white);
+      border-radius: 2px;
+      transition: all 0.35s cubic-bezier(0.23, 1, 0.32, 1);
+      transform-origin: center;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(29,12,67,0.98);
+      backdrop-filter: blur(16px);
+      z-index: 150;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 100px 40px 40px;
+      opacity: 0;
+      transform: translateY(-20px);
+      transition: opacity 0.35s ease, transform 0.35s ease;
+      pointer-events: none;
+    }
+    .mobile-menu.open {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: all;
+    }
+    .mobile-menu a {
+      color: var(--white);
+      text-decoration: none;
+      font-family: var(--serif);
+      font-size: 2rem;
+      font-weight: 400;
+      letter-spacing: 0.05em;
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      width: 100%;
+      text-align: center;
+      transition: color 0.2s;
+    }
+    .mobile-menu a:hover { color: var(--blue-light); }
+    .mobile-menu a:last-child { border-bottom: none; }
+    .mobile-menu .mobile-cta {
+      margin-top: 24px;
+      background: #1a6dbf;
+      color: var(--white) !important;
+      padding: 16px 48px !important;
+      border-radius: 50px;
+      font-family: var(--sans) !important;
+      font-size: 0.88rem !important;
+      font-weight: 600 !important;
+      letter-spacing: 0.15em !important;
+      text-transform: uppercase !important;
+      border-bottom: none !important;
+      width: auto !important;
+      transition: background 0.3s !important;
+    }
+    .mobile-menu .mobile-cta:hover { background: #2a7dcf !important; }
+
+    @media (max-width: 900px) {
+      .hamburger { display: flex; }
+      nav { padding: 0 20px !important; height: 70px !important; }
+      .nav-links { display: none !important; }
+    }
   </style>
 </head>
 <body>
@@ -331,15 +424,28 @@
     <a href="tel:4404781181">✦ Call or Text to Talk Travel: (440) 478-1181 ✦</a>
   </div>
 
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="./index.html" onclick="closeMobile()">Home</a>
+    <a href="./vacations.html" onclick="closeMobile()">Vacations</a>
+    <a href="./destinations.html" onclick="closeMobile()">Destinations</a>
+    <a href="#" onclick="closeMobile()">Blog</a>
+    <a href="#" onclick="closeMobile()">About</a>
+    <a href="https://app.tern.travel/public/forms/OxLptYEYs-iKrRUMpwZ_Jg/responses/new" class="mobile-cta" target="_blank" onclick="closeMobile()">Request a Quote</a>
+  </div>
+
   <!-- NAV -->
   <nav>
     <a href="./index.html" class="nav-logo-img">
       <img src="./logo1.png" alt="Starlight2Travel" />
     </a>
+      <button class="hamburger" id="hamburgerBtn" aria-label="Open menu" onclick="toggleMobile()">
+        <span></span><span></span><span></span>
+      </button>
     <ul class="nav-links">
       <li><a href="./index.html">Home</a></li>
       <li><a href="#">Vacations</a></li>
-      <li><a href="#">Destinations</a></li>
+      <li><a href="./destinations.html">Destinations</a></li>
       <li><a href="#">Blog</a></li>
       <li><a href="#">About</a></li>
       <li><a href="https://calendly.com/-starlight2travel/travelappointment" class="nav-cta">Request a Quote</a></li>
