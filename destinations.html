@@ -507,6 +507,97 @@
       .destinations-grid { grid-template-columns: 1fr; }
       .dest-card.large { grid-column: span 1; }
     }
+
+    /* ── HAMBURGER MENU ── */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 5px;
+      width: 44px;
+      height: 44px;
+      background: #1a6dbf;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      z-index: 200;
+      transition: background 0.3s;
+      flex-shrink: 0;
+    }
+    .hamburger:hover { background: #2a7dcf; }
+    .hamburger span {
+      display: block;
+      width: 20px;
+      height: 2px;
+      background: var(--white);
+      border-radius: 2px;
+      transition: all 0.35s cubic-bezier(0.23, 1, 0.32, 1);
+      transform-origin: center;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(29,12,67,0.98);
+      backdrop-filter: blur(16px);
+      z-index: 150;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 100px 40px 40px;
+      opacity: 0;
+      transform: translateY(-20px);
+      transition: opacity 0.35s ease, transform 0.35s ease;
+      pointer-events: none;
+    }
+    .mobile-menu.open {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: all;
+    }
+    .mobile-menu a {
+      color: var(--white);
+      text-decoration: none;
+      font-family: var(--serif);
+      font-size: 2rem;
+      font-weight: 400;
+      letter-spacing: 0.05em;
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      width: 100%;
+      text-align: center;
+      transition: color 0.2s;
+    }
+    .mobile-menu a:hover { color: var(--blue-light); }
+    .mobile-menu a:last-child { border-bottom: none; }
+    .mobile-menu .mobile-cta {
+      margin-top: 24px;
+      background: #1a6dbf;
+      color: var(--white) !important;
+      padding: 16px 48px !important;
+      border-radius: 50px;
+      font-family: var(--sans) !important;
+      font-size: 0.88rem !important;
+      font-weight: 600 !important;
+      letter-spacing: 0.15em !important;
+      text-transform: uppercase !important;
+      border-bottom: none !important;
+      width: auto !important;
+      transition: background 0.3s !important;
+    }
+    .mobile-menu .mobile-cta:hover { background: #2a7dcf !important; }
+
+    @media (max-width: 900px) {
+      .hamburger { display: flex; }
+      nav { padding: 0 20px !important; height: 70px !important; }
+      .nav-links { display: none !important; }
+    }
   </style>
 </head>
 <body>
@@ -516,11 +607,24 @@
     <a href="tel:4404781181">✦ Call or Text to Talk Travel: (440) 478-1181 ✦</a>
   </div>
 
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="./index.html" onclick="closeMobile()">Home</a>
+    <a href="./vacations.html" onclick="closeMobile()">Vacations</a>
+    <a href="./destinations.html" onclick="closeMobile()">Destinations</a>
+    <a href="#" onclick="closeMobile()">Blog</a>
+    <a href="#" onclick="closeMobile()">About</a>
+    <a href="https://app.tern.travel/public/forms/OxLptYEYs-iKrRUMpwZ_Jg/responses/new" class="mobile-cta" target="_blank" onclick="closeMobile()">Request a Quote</a>
+  </div>
+
   <!-- NAV -->
   <nav>
     <a href="./index.html" class="nav-logo-img">
       <img src="./logo1.png" alt="Starlight2Travel" />
     </a>
+      <button class="hamburger" id="hamburgerBtn" aria-label="Open menu" onclick="toggleMobile()">
+        <span></span><span></span><span></span>
+      </button>
     <ul class="nav-links">
       <li><a href="./index.html">Home</a></li>
       <li><a href="./vacations.html">Vacations</a></li>
