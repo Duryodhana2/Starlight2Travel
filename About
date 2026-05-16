@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About Us | Starlight2Travel</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy: #1D0C43;
+      --navy-mid: #2B1464;
+      --navy-light: #2B1464;
+      --gold: #CC77F9;
+      --gold-light: #A999F4;
+      --white: #ffffff;
+      --text-muted: #A999F4;
+      --accent: #613DBC;
+      --blue: #1a6dbf;
+      --blue-light: #5B8FDF;
+      --serif: 'Playfair Display', Georgia, serif;
+      --sans: 'Jost', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--navy);
+      color: var(--white);
+      font-family: var(--sans);
+      font-weight: 300;
+      overflow-x: hidden;
+    }
+
+    /* ── TOP BAR ── */
+    .topbar {
+      background: var(--accent);
+      color: var(--white);
+      text-align: center;
+      padding: 8px 20px;
+      font-size: 0.88rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+    .topbar a { color: var(--white); text-decoration: none; }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(29,12,67,0.97);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(204,119,249,0.15);
+      padding: 12px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 80px;
+    }
+    .nav-logo-img { display: flex; align-items: center; text-decoration: none; transition: opacity 0.2s; }
+    .nav-logo-img:hover { opacity: 0.85; }
+    .nav-logo-img img { height: 54px; width: auto; }
+    .nav-links {
+      display: flex; list-style: none; gap: 4px; align-items: center;
+      background: var(--blue); padding: 8px 12px; border-radius: 50px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.3);
+    }
+    .nav-links a {
+      color: rgba(255,255,255,0.85); text-decoration: none; font-size: 0.88rem;
+      font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;
+      transition: all 0.2s; padding: 7px 14px; border-radius: 50px; white-space: nowrap;
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--white); background: rgba(255,255,255,0.15); }
+    .nav-cta {
+      background: var(--white) !important; color: var(--blue) !important;
+      font-weight: 600 !important; padding: 7px 18px !important; border-radius: 50px !important;
+      font-size: 0.88rem !important; letter-spacing: 0.1em !important;
+      transition: all 0.3s !important; border: none !important; margin-left: 4px;
+    }
+    .nav-cta:hover { background: #e8f0ff !important; transform: translateY(-1px); }
+
+    /* ── HAMBURGER ── */
+    .hamburger {
+      display: none; flex-direction: column; justify-content: center;
+      align-items: center; gap: 5px; width: 44px; height: 44px;
+      background: var(--blue); border: none; border-radius: 50%;
+      cursor: pointer; z-index: 200; transition: background 0.3s; flex-shrink: 0;
+    }
+    .hamburger span {
+      display: block; width: 20px; height: 2px; background: var(--white);
+      border-radius: 2px; transition: all 0.35s cubic-bezier(0.23, 1, 0.32, 1); transform-origin: center;
+    }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .mobile-menu {
+      display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(29,12,67,0.98); backdrop-filter: blur(16px); z-index: 150;
+      flex-direction: column; align-items: center; justify-content: center;
+      gap: 8px; padding: 100px 40px 40px; opacity: 0; transform: translateY(-20px);
+      transition: opacity 0.35s ease, transform 0.35s ease; pointer-events: none;
+    }
+    .mobile-menu.open { opacity: 1; transform: translateY(0); pointer-events: all; }
+    .mobile-menu a {
+      color: var(--white); text-decoration: none; font-family: var(--serif);
+      font-size: 2rem; font-weight: 400; padding: 12px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.08); width: 100%; text-align: center; transition: color 0.2s;
+    }
+    .mobile-menu a:hover { color: var(--blue-light); }
+    .mobile-menu .mobile-cta {
+      margin-top: 24px; background: var(--blue); color: var(--white) !important;
+      padding: 16px 48px !important; border-radius: 50px; font-family: var(--sans) !important;
+      font-size: 0.88rem !important; font-weight: 600 !important; letter-spacing: 0.15em !important;
+      text-transform: uppercase !important; border-bottom: none !important; width: auto !important;
+    }
+    @media (max-width: 900px) {
+      .hamburger { display: flex; }
+      nav { padding: 0 20px !important; height: 70px !important; }
+      .nav-links { display: none !important; }
+    }
+
+    /* ── PAGE HERO ── */
+    .page-hero {
+      position: relative;
+      padding: 110px 40px 90px;
+      text-align: center;
+      overflow: hidden;
+      background: linear-gradient(160deg, #1D0C43 0%, #2B1464 50%, #1a0838 100%);
+    }
+    .page-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 20% 50%, rgba(26,109,191,0.15) 0%, transparent 55%),
+        radial-gradient(ellipse at 80% 30%, rgba(204,119,249,0.08) 0%, transparent 50%);
+    }
+    .page-hero .breadcrumb {
+      font-size: 0.82rem; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--blue-light); margin-bottom: 20px; position: relative; z-index: 1;
+    }
+    .page-hero .breadcrumb a { color: var(--blue-light); text-decoration: none; }
+    .page-hero .breadcrumb a:hover { color: var(--white); }
+    .page-hero h1 {
+      font-family: var(--serif); font-size: clamp(3rem, 6vw, 5rem);
+      font-weight: 600; line-height: 1.05; margin-bottom: 24px; position: relative; z-index: 1;
+    }
+    .page-hero h1 em { font-style: italic; color: var(--gold-light); }
+    .page-hero p {
+      color: var(--text-muted); font-size: 1.05rem; max-width: 680px;
+      margin: 0 auto; line-height: 1.85; position: relative; z-index: 1;
+    }
+
+    /* ── SECTION LABEL ── */
+    .section-label {
+      font-size: 0.85rem; letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--blue-light); font-weight: 500; margin-bottom: 12px; display: block;
+    }
+
+    /* ── STORY SECTION ── */
+    .story-section {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 100px 40px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .story-text h2 {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 600;
+      line-height: 1.15;
+      margin-bottom: 24px;
+    }
+    .story-text h2 em { font-style: italic; color: var(--gold-light); }
+    .story-text p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.9;
+      margin-bottom: 16px;
+    }
+    .story-img {
+      position: relative;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    .story-img img {
+      width: 100%;
+      height: 500px;
+      object-fit: cover;
+      display: block;
+      border-radius: 4px;
+    }
+    .story-img::before {
+      content: '';
+      position: absolute;
+      inset: -8px;
+      border: 2px solid rgba(204,119,249,0.2);
+      border-radius: 6px;
+      z-index: -1;
+    }
+
+    /* ── MISSION STRIP ── */
+    .mission-strip {
+      background: var(--navy-mid);
+      border-top: 1px solid rgba(204,119,249,0.1);
+      border-bottom: 1px solid rgba(204,119,249,0.1);
+      padding: 80px 40px;
+      text-align: center;
+    }
+    .mission-strip h2 {
+      font-family: var(--serif);
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      font-weight: 400;
+      font-style: italic;
+      color: var(--gold-light);
+      max-width: 800px;
+      margin: 0 auto 20px;
+      line-height: 1.4;
+    }
+    .mission-strip p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.8;
+    }
+
+    /* ── VALUES GRID ── */
+    .values-section {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 100px 40px;
+    }
+    .values-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+    .values-header h2 {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
+    .values-header h2 em { font-style: italic; color: var(--gold-light); }
+    .values-header p { color: var(--text-muted); font-size: 0.95rem; max-width: 500px; margin: 0 auto; line-height: 1.8; }
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 3px;
+    }
+    .value-card {
+      background: var(--navy-mid);
+      padding: 48px 36px;
+      border: 1px solid rgba(204,119,249,0.08);
+      transition: border-color 0.3s, transform 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+    .value-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--blue);
+      transform: scaleX(0);
+      transition: transform 0.3s;
+      transform-origin: left;
+    }
+    .value-card:hover { border-color: rgba(204,119,249,0.25); transform: translateY(-4px); }
+    .value-card:hover::before { transform: scaleX(1); }
+    .value-num {
+      font-family: var(--serif);
+      font-size: 3.5rem;
+      font-weight: 300;
+      color: rgba(26,109,191,0.2);
+      line-height: 1;
+      margin-bottom: 20px;
+    }
+    .value-icon {
+      font-size: 1.8rem;
+      margin-bottom: 16px;
+      display: block;
+    }
+    .value-card h3 {
+      font-family: var(--serif);
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 12px;
+    }
+    .value-card p { color: var(--text-muted); font-size: 0.9rem; line-height: 1.8; }
+
+    /* ── TEAM SECTION ── */
+    .team-section {
+      background: linear-gradient(180deg, var(--navy) 0%, var(--navy-mid) 100%);
+      border-top: 1px solid rgba(204,119,249,0.1);
+      padding: 100px 40px;
+    }
+    .team-header {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 80px;
+    }
+    .team-header h2 {
+      font-family: var(--serif);
+      font-size: clamp(2.2rem, 4vw, 3.5rem);
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
+    .team-header h2 em { font-style: italic; color: var(--gold-light); }
+    .team-header p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.8; }
+
+    /* Pillar cards - like the infographic reference */
+    .team-pillars {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      align-items: end;
+    }
+
+    .team-pillar {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+    }
+
+    /* Each pillar has a different height accent bar on top */
+    .team-pillar:nth-child(1) .pillar-bar { height: 6px; background: var(--blue); }
+    .team-pillar:nth-child(2) .pillar-bar { height: 6px; background: var(--gold); }
+    .team-pillar:nth-child(3) .pillar-bar { height: 6px; background: var(--blue-light); }
+
+    .pillar-bar {
+      width: 100%;
+      border-radius: 3px 3px 0 0;
+      margin-bottom: 0;
+    }
+
+    .pillar-card {
+      background: var(--navy);
+      border: 1px solid rgba(204,119,249,0.12);
+      border-top: none;
+      width: 100%;
+      padding: 0 0 40px;
+      text-align: center;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .team-pillar:hover .pillar-card {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+    }
+
+    .pillar-photo {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      object-position: top;
+      display: block;
+      filter: grayscale(20%);
+      transition: filter 0.3s;
+    }
+    .team-pillar:hover .pillar-photo { filter: grayscale(0%); }
+
+    .pillar-photo-placeholder {
+      width: 100%;
+      height: 300px;
+      background: linear-gradient(135deg, #2B1464 0%, #1a6dbf 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 4rem;
+      color: rgba(255,255,255,0.15);
+    }
+
+    .pillar-content {
+      padding: 28px 28px 0;
+    }
+
+    .pillar-name {
+      font-family: var(--serif);
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 4px;
+    }
+
+    .pillar-title {
+      font-size: 0.78rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--blue-light);
+      font-weight: 500;
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    .pillar-bio {
+      color: var(--text-muted);
+      font-size: 0.88rem;
+      line-height: 1.8;
+      margin-bottom: 20px;
+    }
+
+    .pillar-social {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+    }
+    .pillar-social a {
+      width: 36px;
+      height: 36px;
+      border: 1px solid rgba(26,109,191,0.4);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--blue-light);
+      text-decoration: none;
+      font-size: 0.85rem;
+      transition: all 0.3s;
+    }
+    .pillar-social a:hover { background: var(--blue); border-color: var(--blue); color: var(--white); }
+
+    /* ── CREDENTIALS STRIP ── */
+    .credentials-strip {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 80px 40px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 3px;
+    }
+    .credential-box {
+      background: var(--navy-mid);
+      padding: 40px 28px;
+      text-align: center;
+      border: 1px solid rgba(204,119,249,0.08);
+    }
+    .credential-icon {
+      font-size: 2rem;
+      margin-bottom: 16px;
+      display: block;
+      color: var(--blue-light);
+    }
+    .credential-box h3 {
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 8px;
+    }
+    .credential-box p { color: var(--text-muted); font-size: 0.85rem; line-height: 1.7; }
+
+    /* ── HOW IT WORKS ── */
+    .how-section {
+      background: var(--navy-mid);
+      border-top: 1px solid rgba(204,119,249,0.1);
+      border-bottom: 1px solid rgba(204,119,249,0.1);
+      padding: 100px 40px;
+    }
+    .how-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .how-header {
+      text-align: center;
+      margin-bottom: 70px;
+    }
+    .how-header h2 {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
+    .how-header h2 em { font-style: italic; color: var(--gold-light); }
+    .how-header p { color: var(--text-muted); font-size: 0.95rem; max-width: 500px; margin: 0 auto; line-height: 1.8; }
+
+    .how-steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      position: relative;
+    }
+    .how-steps::before {
+      content: '';
+      position: absolute;
+      top: 36px;
+      left: 12.5%;
+      right: 12.5%;
+      height: 2px;
+      background: linear-gradient(to right, var(--blue), var(--gold-light));
+      z-index: 0;
+    }
+
+    .how-step {
+      text-align: center;
+      padding: 0 20px;
+      position: relative;
+      z-index: 1;
+    }
+    .step-circle {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: var(--navy);
+      border: 2px solid var(--blue);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 24px;
+      font-family: var(--serif);
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--blue-light);
+      transition: all 0.3s;
+    }
+    .how-step:hover .step-circle {
+      background: var(--blue);
+      color: var(--white);
+      transform: scale(1.1);
+    }
+    .how-step h3 {
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 10px;
+    }
+    .how-step p { color: var(--text-muted); font-size: 0.85rem; line-height: 1.75; }
+
+    /* ── CTA ── */
+    .about-cta {
+      padding: 100px 40px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .about-cta::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at center, rgba(26,109,191,0.08) 0%, transparent 70%);
+    }
+    .about-cta h2 {
+      font-family: var(--serif);
+      font-size: clamp(2.2rem, 4vw, 3.5rem);
+      font-weight: 600;
+      margin-bottom: 20px;
+      position: relative;
+    }
+    .about-cta h2 em { font-style: italic; color: var(--gold-light); }
+    .about-cta p {
+      color: var(--text-muted); font-size: 0.95rem; max-width: 520px;
+      margin: 0 auto 40px; line-height: 1.85; position: relative;
+    }
+    .cta-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; position: relative; }
+    .btn-primary {
+      background: var(--blue); color: var(--white); padding: 15px 40px;
+      font-family: var(--sans); font-size: 0.88rem; font-weight: 600;
+      letter-spacing: 0.15em; text-transform: uppercase; text-decoration: none;
+      border-radius: 50px; transition: all 0.3s; display: inline-block;
+    }
+    .btn-primary:hover { background: var(--blue-light); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(26,109,191,0.4); }
+    .btn-outline {
+      background: transparent; color: var(--gold-light); padding: 15px 40px;
+      font-family: var(--sans); font-size: 0.88rem; font-weight: 500;
+      letter-spacing: 0.15em; text-transform: uppercase; text-decoration: none;
+      border: 1px solid rgba(169,153,244,0.4); border-radius: 50px; transition: all 0.3s; display: inline-block;
+    }
+    .btn-outline:hover { border-color: var(--gold-light); color: var(--white); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #1a6dbf;
+      border-top: 1px solid rgba(255,255,255,0.15);
+      padding: 60px 40px 32px;
+    }
+    .footer-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: flex; justify-content: space-between;
+      align-items: flex-start; flex-wrap: wrap; gap: 40px;
+    }
+    .footer-brand img { height: 60px; width: auto; margin-bottom: 16px; display: block; }
+    .footer-brand p, .footer-brand a {
+      color: rgba(255,255,255,0.8); font-size: 0.88rem;
+      line-height: 1.7; margin-bottom: 6px; text-decoration: none; display: block;
+    }
+    .footer-brand a:hover { color: var(--white); }
+    .footer-affiliate { font-size: 0.82rem !important; font-style: italic; opacity: 0.75; margin-top: 8px !important; }
+    .footer-social { display: flex; gap: 10px; margin-top: 16px; }
+    .social-btn {
+      width: 38px; height: 38px; background: rgba(255,255,255,0.15);
+      border-radius: 50%; display: flex; align-items: center;
+      justify-content: center; color: var(--white); text-decoration: none;
+      font-size: 0.95rem; transition: all 0.3s;
+    }
+    .social-btn:hover { background: rgba(255,255,255,0.3); transform: translateY(-2px); }
+    .footer-col h4 {
+      font-size: 0.82rem; letter-spacing: 0.2em; text-transform: uppercase;
+      color: rgba(255,255,255,0.5); margin-bottom: 16px; font-weight: 500;
+    }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-col ul a { color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.88rem; transition: color 0.2s; }
+    .footer-col ul a:hover { color: var(--white); }
+    .footer-bottom-bar {
+      max-width: 1200px; margin: 32px auto 0;
+      padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.15);
+      display: flex; justify-content: space-between; align-items: flex-start;
+      flex-wrap: wrap; gap: 12px;
+    }
+    .footer-bottom-bar p { color: rgba(255,255,255,0.65); font-size: 0.78rem; line-height: 1.7; max-width: 700px; }
+    .footer-bottom-bar a { color: rgba(255,255,255,0.75); text-decoration: none; font-size: 0.78rem; transition: color 0.2s; }
+    .footer-bottom-bar a:hover { color: var(--white); }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .team-pillar { animation: fadeUp 0.6s ease both; }
+    .team-pillar:nth-child(1) { animation-delay: 0.1s; }
+    .team-pillar:nth-child(2) { animation-delay: 0.2s; }
+    .team-pillar:nth-child(3) { animation-delay: 0.3s; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 960px) {
+      .story-section { grid-template-columns: 1fr; gap: 48px; padding: 60px 24px; }
+      .values-grid { grid-template-columns: 1fr 1fr; }
+      .team-pillars { grid-template-columns: 1fr; max-width: 500px; }
+      .credentials-strip { grid-template-columns: 1fr 1fr; }
+      .how-steps { grid-template-columns: 1fr 1fr; gap: 40px; }
+      .how-steps::before { display: none; }
+      .page-hero { padding: 70px 24px 60px; }
+    }
+    @media (max-width: 580px) {
+      .values-grid { grid-template-columns: 1fr; }
+      .credentials-strip { grid-template-columns: 1fr; }
+      .how-steps { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="./index.html" onclick="closeMobile()">Home</a>
+    <a href="./vacations.html" onclick="closeMobile()">Vacations</a>
+    <a href="./destinations.html" onclick="closeMobile()">Destinations</a>
+    <a href="#" onclick="closeMobile()">Blog</a>
+    <a href="./about.html" onclick="closeMobile()">About</a>
+    <a href="https://app.tern.travel/public/forms/OxLptYEYs-iKrRUMpwZ_Jg/responses/new" class="mobile-cta" target="_blank" onclick="closeMobile()">Request a Quote</a>
+  </div>
+
+  <!-- TOP BAR -->
+  <div class="topbar">
+    <a href="tel:4404781181">✦ Call or Text to Talk Travel: (440) 478-1181 ✦</a>
+  </div>
+
+  <!-- NAV -->
+  <nav>
+    <a href="./index.html" class="nav-logo-img">
+      <img src="./logo1.png" alt="Starlight2Travel" />
+    </a>
+    <button class="hamburger" id="hamburgerBtn" aria-label="Open menu" onclick="toggleMobile()">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links">
+      <li><a href="./index.html">Home</a></li>
+      <li><a href="./vacations.html">Vacations</a></li>
+      <li><a href="./destinations.html">Destinations</a></li>
+      <li><a href="#">Blog</a></li>
+      <li><a href="./about.html" class="active">About</a></li>
+      <li><a href="https://app.tern.travel/public/forms/OxLptYEYs-iKrRUMpwZ_Jg/responses/new" class="nav-cta" target="_blank">Request a Quote</a></li>
+    </ul>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <div class="page-hero">
+    <p class="breadcrumb"><a href="./index.html">Home</a> &nbsp;✦&nbsp; About Us</p>
+    <h1>Inspired by the <em>World Around Us</em></h1>
+    <p>Our team is composed of true dreamers. Creating travels that inspire is our mission — we love helping our clients discover the magic of the world through custom itineraries crafted just for them.</p>
+  </div>
+
+  <!-- STORY SECTION -->
+  <section>
+    <div class="story-section">
+      <div class="story-text">
+        <span class="section-label">✦ Our Story</span>
+        <h2>We'll Move the Stars to Give You a <em>Magical Adventure</em></h2>
+        <p>Starlight2Travel, Inc. was founded in 2019 with one simple goal: to give every traveler the vacation of their dreams. What started as a passion for helping friends and family plan unforgettable trips has grown into a full-service travel agency serving clients across the country.</p>
+        <p>With 25+ years of combined travel experience, our team has the knowledge, connections, and passion to turn your dream trip into reality — whether that's a romantic getaway on a Caribbean island, a family adventure at Disney, or a destination wedding on the beach.</p>
+        <p>We are proud members of KHM Travel Group and certified Sandals Specialists, giving our clients access to exclusive deals, insider knowledge, and the best resorts in the world.</p>
+      </div>
+      <div class="story-img">
+        <img src="https://images.unsplash.com/photo-1488085061387-422e29b40080?w=800" alt="Travel planning" />
+      </div>
+    </div>
+  </section>
+
+  <!-- MISSION STRIP -->
+  <div class="mission-strip">
+    <span class="section-label" style="text-align:center;">✦ Our Mission</span>
+    <h2>"Creating travels that inspire is our true mission."</h2>
+    <p>We believe every journey should be as unique as the person taking it. From the first conversation to the moment you arrive home, we're with you every step of the way.</p>
+  </div>
+
+  <!-- VALUES -->
+  <section>
+    <div class="values-section">
+      <div class="values-header">
+        <span class="section-label">✦ What We Stand For</span>
+        <h2>Our <em>Core Values</em></h2>
+        <p>Everything we do is guided by a commitment to exceptional service, personal connection, and unforgettable experiences.</p>
+      </div>
+      <div class="values-grid">
+        <div class="value-card">
+          <div class="value-num">01</div>
+          <h3>Vacation Your Way</h3>
+          <p>No two people are alike, so why should your vacation be? We craft custom itineraries tailored specifically to you — your interests, your pace, your budget.</p>
+        </div>
+        <div class="value-card">
+          <div class="value-num">02</div>
+          <h3>Reliable Resource</h3>
+          <p>Leave the reservations to us. As your travel agent, we become your single contact for all worldwide arrangements — flights, hotels, excursions, and more.</p>
+        </div>
+        <div class="value-card">
+          <div class="value-num">03</div>
+          <h3>Valuable Investment</h3>
+          <p>We steer travelers clear of travel scams and timeshares. Your trust is our biggest priority — there are never any strings attached when you work with us.</p>
+        </div>
+        <div class="value-card">
+          <div class="value-num">04</div>
+          <h3>Travel Confidently</h3>
+          <p>Feel prepared knowing someone has your back when things don't go as planned. We're advocates for our clients before, during, and after every trip.</p>
+        </div>
+        <div class="value-card">
+          <div class="value-num">05</div>
+          <h3>Personal Connection</h3>
+          <p>We believe in the power of personal connection. Getting to know our clients isn't just good service — it's how we craft experiences that truly resonate.</p>
+        </div>
+        <div class="value-card">
+          <div class="value-num">06</div>
+          <h3>Community & Outreach</h3>
+          <p>We're passionate about sharing the joy of travel with everyone. From community events to outreach programs, we love inspiring the next generation of explorers.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CREDENTIALS -->
+  <div style="background: var(--navy-mid); border-top: 1px solid rgba(204,119,249,0.1); border-bottom: 1px solid rgba(204,119,249,0.1);">
+    <div class="credentials-strip">
+      <div class="credential-box">
+        <span class="credential-icon"><i class="fa fa-star"></i></span>
+        <h3>Certified Sandals Specialist</h3>
+        <p>Official certification for the world's leading luxury all-inclusive resorts.</p>
+      </div>
+      <div class="credential-box">
+        <span class="credential-icon"><i class="fa fa-users"></i></span>
+        <h3>KHM Travel Group</h3>
+        <p>Proud affiliate of one of the nation's largest host travel agencies.</p>
+      </div>
+      <div class="credential-box">
+        <span class="credential-icon"><i class="fa fa-award"></i></span>
+        <h3>Pinnacle Gold Status</h3>
+        <p>Achieved Pinnacle Gold Agency status — recognizing our excellence in service.</p>
+      </div>
+      <div class="credential-box">
+        <span class="credential-icon"><i class="fa fa-globe"></i></span>
+        <h3>25+ Years Combined</h3>
+        <p>Our team brings over 25 years of combined travel planning experience to every trip.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- MEET THE TEAM -->
+  <section class="team-section" id="team">
+    <div class="team-header">
+      <span class="section-label">✦ The People Behind the Magic</span>
+      <h2>Meet the <em>Team</em></h2>
+      <p>At Starlight2Travel, we believe in the power of personal connection. What better way to introduce our team than to meet them virtually — the faces behind your next great adventure.</p>
+    </div>
+
+    <div class="team-pillars">
+
+      <!-- Team Member 1 -->
+      <div class="team-pillar">
+        <div class="pillar-bar"></div>
+        <div class="pillar-card">
+          <div class="pillar-photo-placeholder">★</div>
+          <div class="pillar-content">
+            <h3 class="pillar-name">Kimberly Curlin</h3>
+            <span class="pillar-title">Founder & Lead Travel Advisor</span>
+            <p class="pillar-bio">Kimberly founded Starlight2Travel in 2019 with a passion for helping others experience the world. A certified Sandals Specialist and KHM Travel Group affiliate, she brings warmth, expertise, and dedication to every trip she plans.</p>
+            <div class="pillar-social">
+              <a href="https://www.linkedin.com/in/kimberly-j-curlin-192a0475/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+              <a href="https://www.facebook.com/starlight2travel" target="_blank"><i class="fab fa-facebook-f"></i></a>
+              <a href="https://www.instagram.com/starlight2travel/" target="_blank"><i class="fab fa-instagram"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Team Member 2 -->
+      <div class="team-pillar">
+        <div class="pillar-bar"></div>
+        <div class="pillar-card">
+          <div class="pillar-photo-placeholder">★</div>
+          <div class="pillar-content">
+            <h3 class="pillar-name">Team Member</h3>
+            <span class="pillar-title">Travel Advisor</span>
+            <p class="pillar-bio">Add team member bio here. Describe their background, specialties, favorite destinations, and what they love most about helping clients travel the world.</p>
+            <div class="pillar-social">
+              <a href="#"><i class="fab fa-linkedin-in"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Team Member 3 -->
+      <div class="team-pillar">
+        <div class="pillar-bar"></div>
+        <div class="pillar-card">
+          <div class="pillar-photo-placeholder">★</div>
+          <div class="pillar-content">
+            <h3 class="pillar-name">Team Member</h3>
+            <span class="pillar-title">Travel Advisor</span>
+            <p class="pillar-bio">Add team member bio here. Describe their background, specialties, favorite destinations, and what they love most about helping clients travel the world.</p>
+            <div class="pillar-social">
+              <a href="#"><i class="fab fa-linkedin-in"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="how-section">
+    <div class="how-inner">
+      <div class="how-header">
+        <span class="section-label">✦ Simple Process</span>
+        <h2>How <em>Booking Works</em></h2>
+        <p>Planning your dream trip with Starlight2Travel is easy. Here's what to expect from start to finish.</p>
+      </div>
+      <div class="how-steps">
+        <div class="how-step">
+          <div class="step-circle">1</div>
+          <h3>Connect With Us</h3>
+          <p>Reach out by phone, email, or by filling out our travel questionnaire. Tell us about your dream trip.</p>
+        </div>
+        <div class="how-step">
+          <div class="step-circle">2</div>
+          <h3>We Plan Together</h3>
+          <p>We research options, get quotes, and build a custom itinerary tailored to your preferences and budget.</p>
+        </div>
+        <div class="how-step">
+          <div class="step-circle">3</div>
+          <h3>Confirm & Book</h3>
+          <p>Once you love the plan, we handle all reservations, confirmations, and travel documentation.</p>
+        </div>
+        <div class="how-step">
+          <div class="step-circle">4</div>
+          <h3>Travel & Enjoy</h3>
+          <p>Pack your bags! We're available throughout your trip if you need anything at all.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="about-cta">
+    <span class="section-label">✦ Let's Start Planning</span>
+    <h2>Ready to Meet Your <em>Travel Advisor?</em></h2>
+    <p>We'd love to get to know you and start planning the trip of a lifetime. Reach out today — your adventure is waiting.</p>
+    <div class="cta-actions">
+      <a href="https://app.tern.travel/public/forms/OxLptYEYs-iKrRUMpwZ_Jg/responses/new" class="btn-primary" target="_blank">Request a Quote</a>
+      <a href="https://calendly.com/-starlight2travel/travelappointment?month=2026-05" class="btn-outline" target="_blank">Schedule a Consultation</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="./logo2.png" alt="Starlight2Travel" />
+        <a href="mailto:team@starlight2travel.com"><i class="fa fa-envelope" style="margin-right:7px;"></i>team@starlight2travel.com</a>
+        <a href="tel:4404781181"><i class="fa fa-phone" style="margin-right:7px;"></i>(440) 478-1181</a>
+        <p class="footer-affiliate">An affiliate of KHM Travel Group</p>
+        <div class="footer-social">
+          <a href="https://www.facebook.com/starlight2travel" class="social-btn" target="_blank"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://www.instagram.com/starlight2travel/" class="social-btn" target="_blank"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.linkedin.com/in/kimberly-j-curlin-192a0475/" class="social-btn" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+          <a href="https://www.pinterest.com/starlight2travel2019/_saved/" class="social-btn" target="_blank"><i class="fab fa-pinterest-p"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Navigate</h4>
+        <ul>
+          <li><a href="./index.html">Home</a></li>
+          <li><a href="./vacations.html">Vacations</a></li>
+          <li><a href="./destinations.html">Destinations</a></li>
+          <li><a href="./about.html">About Us</a></li>
+          <li><a href="./terms.html">Agency Terms</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Get In Touch</h4>
+        <ul>
+          <li><a href="https://app.tern.travel/public/forms/OxLptYEYs-iKrRUMpwZ_Jg/responses/new" target="_blank">Request a Quote</a></li>
+          <li><a href="https://calendly.com/-starlight2travel/travelappointment?month=2026-05" target="_blank">Schedule a Consultation</a></li>
+          <li><a href="mailto:team@starlight2travel.com">Email Us</a></li>
+          <li><a href="tel:4404781181">Call Us</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom-bar">
+      <div>
+        <p>© 2019–2025 Starlight2Travel, Inc. &nbsp;|&nbsp; An affiliate of KHM Travel Group</p>
+        <p style="margin-top:6px;">California Seller of Travel Registration # 2089491-50. Registration as a seller of travel in California does not constitute the state's approval. Agent is not a participant in the Travel Consumer Restitution Fund. Florida Seller of Travel License #TI103149. Hawaii Seller of Travel License # TAR 7231. Washington Seller of Travel UBI # 602 775122.</p>
+        <p style="margin-top:6px;">Team Photography Credit: <a href="https://www.instagram.com/annieyuphotos/" target="_blank">Annie Yu Photography</a></p>
+      </div>
+      <a href="./index.html">← Back to Home</a>
+    </div>
+  </footer>
+
+  <script>
+    function toggleMobile() {
+      const btn = document.getElementById('hamburgerBtn');
+      const menu = document.getElementById('mobileMenu');
+      const isOpen = btn.classList.contains('open');
+      btn.classList.toggle('open');
+      menu.classList.toggle('open');
+      menu.style.display = isOpen ? 'none' : 'flex';
+      document.body.style.overflow = isOpen ? '' : 'hidden';
+    }
+    function closeMobile() {
+      const btn = document.getElementById('hamburgerBtn');
+      const menu = document.getElementById('mobileMenu');
+      btn.classList.remove('open');
+      menu.classList.remove('open');
+      menu.style.display = 'none';
+      document.body.style.overflow = '';
+    }
+  </script>
+
+</body>
+</html>
