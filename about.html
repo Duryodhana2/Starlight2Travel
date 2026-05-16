@@ -416,23 +416,40 @@
 
     .pillar-social {
       display: flex;
+      flex-direction: column;
       gap: 10px;
-      justify-content: center;
+      align-items: flex-start;
+      padding: 0 4px;
     }
     .pillar-social a {
-      width: 36px;
-      height: 36px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--blue-light);
+      text-decoration: none;
+      font-size: 0.85rem;
+      transition: color 0.2s;
+    }
+    .pillar-social a:hover { color: var(--white); }
+    .pillar-social a i {
+      width: 32px;
+      height: 32px;
       border: 1px solid rgba(26,109,191,0.4);
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      color: var(--blue-light);
-      text-decoration: none;
-      font-size: 0.85rem;
+      font-size: 0.8rem;
+      flex-shrink: 0;
       transition: all 0.3s;
     }
-    .pillar-social a:hover { background: var(--blue); border-color: var(--blue); color: var(--white); }
+    .pillar-social a:hover i { background: var(--blue); border-color: var(--blue); color: var(--white); }
+    .pillar-social-divider {
+      width: 100%;
+      height: 1px;
+      background: rgba(204,119,249,0.1);
+      margin: 4px 0;
+    }
 
     /* ── CREDENTIALS STRIP ── */
     .credentials-strip {
@@ -724,14 +741,14 @@
       <div class="team-pillar">
         <div class="pillar-bar"></div>
         <div class="pillar-card">
-          <div class="pillar-photo-placeholder">★</div>
+          <img src="./debbie.png" alt="Debbie Neuhofs" class="pillar-photo" />
           <div class="pillar-content">
             <h3 class="pillar-name">Debbie Neuhofs</h3>
             <span class="pillar-title">Cruise & Resort Travel Advisor</span>
             <p class="pillar-bio">Debbie joins the S2T team as an experienced cruise and resort travel advisor based in Painesville, Ohio. Her passion for travel began through her local community college's travel program. With over a decade of experience and her Certified Travel Counselor Accreditation, she became an independent travel agent in 2019. Some of her favorite destinations include Paris, Antigua, and the Caribbean islands.</p>
             <div class="pillar-social">
-              <a href="mailto:debbie@starlight2travel.com"><i class="fa fa-envelope"></i></a>
-              <a href="tel:4404781181"><i class="fa fa-phone"></i></a>
+              <a href="mailto:debbie@starlight2travel.com"><i class="fa fa-envelope"></i>debbie@starlight2travel.com</a>
+              <a href="tel:4404781181"><i class="fa fa-phone"></i>(440) 478-1181</a>
             </div>
           </div>
         </div>
@@ -741,16 +758,18 @@
       <div class="team-pillar">
         <div class="pillar-bar"></div>
         <div class="pillar-card">
-          <div class="pillar-photo-placeholder">★</div>
+          <img src="./kim.png" alt="Kim Curlin" class="pillar-photo" />
           <div class="pillar-content">
             <h3 class="pillar-name">Kim Curlin</h3>
             <span class="pillar-title">Agency Owner, ACC, Expert Travel Advisor</span>
             <p class="pillar-bio">Hi! I am Kim Curlin, the passionate agency owner and expert travel advisor behind Starlight2Travel! A born and raised Cleveland native, my love of travel started with Disney and has since set sail for cruising. With 25+ years in the corporate world, I've become a travel coordination expert managing every detail with ease. My agency specializes in romance, family, and cruise travel — and we've been turning travel dreams into reality for almost five years. I'm certified with CLIA, Sandals & Beaches Resorts, Royal Caribbean, Special Needs at Sea, and more. I will reach for the stars to plan the perfect itinerary so you can experience traveling like a star!</p>
             <div class="pillar-social">
-              <a href="mailto:kim@starlight2travel.com"><i class="fa fa-envelope"></i></a>
-              <a href="https://www.linkedin.com/in/kimberly-j-curlin-192a0475/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-              <a href="https://www.facebook.com/starlight2travel" target="_blank"><i class="fab fa-facebook-f"></i></a>
-              <a href="https://www.instagram.com/starlight2travel/" target="_blank"><i class="fab fa-instagram"></i></a>
+              <a href="mailto:kim@starlight2travel.com"><i class="fa fa-envelope"></i>kim@starlight2travel.com</a>
+              <a href="tel:4404781181"><i class="fa fa-phone"></i>(440) 478-1181</a>
+              <div class="pillar-social-divider"></div>
+              <a href="https://www.linkedin.com/in/kimberly-j-curlin-192a0475/" target="_blank"><i class="fab fa-linkedin-in"></i>LinkedIn</a>
+              <a href="https://www.facebook.com/starlight2travel" target="_blank"><i class="fab fa-facebook-f"></i>Facebook</a>
+              <a href="https://www.instagram.com/starlight2travel/" target="_blank"><i class="fab fa-instagram"></i>Instagram</a>
             </div>
           </div>
         </div>
@@ -760,14 +779,14 @@
       <div class="team-pillar">
         <div class="pillar-bar"></div>
         <div class="pillar-card">
-          <div class="pillar-photo-placeholder">★</div>
+          <img src="./jamie.png" alt="Jamie Alesci" class="pillar-photo" />
           <div class="pillar-content">
             <h3 class="pillar-name">Jamie Alesci</h3>
             <span class="pillar-title">Travel Coordination Assistant</span>
             <p class="pillar-bio">Jamie is Starlight2Travel's travel coordination assistant, based in Mentor, Ohio! She has an immense passion for travel, particularly cruises and beach vacations — and she's already LOYAL TO ROYAL, making her an excellent fit at S2T. Jamie brings captivating energy to the team, introducing innovative ideas to assist travelers organizing family trips, cruises, and romantic getaways. As a caring, honest, and exceptionally organized wife and mother of three, Jamie ensures a stress-free and enjoyable travel experience for every client.</p>
             <div class="pillar-social">
-              <a href="mailto:jamie@starlight2travel.com"><i class="fa fa-envelope"></i></a>
-              <a href="tel:4404781181"><i class="fa fa-phone"></i></a>
+              <a href="mailto:jamie@starlight2travel.com"><i class="fa fa-envelope"></i>jamie@starlight2travel.com</a>
+              <a href="tel:4404781181"><i class="fa fa-phone"></i>(440) 478-1181</a>
             </div>
           </div>
         </div>
