@@ -71,11 +71,14 @@
       z-index: 100;
       background: transparent;
       padding: 12px 40px;
-      display: flex;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
       align-items: center;
-      justify-content: space-between;
       height: 80px;
     }
+    nav .nav-logo-img { justify-self: start; }
+    nav .hamburger { justify-self: end; display: none; }
+    nav .nav-links { justify-self: center; }
 
     .nav-logo-img {
       display: flex;
@@ -1106,7 +1109,7 @@
       <li><a href="./destinations.html">Destinations</a></li>
       <li><a href="./blog.html">Blog</a></li>
       <li><a href="./about.html">About</a></li>
-      <li><a href="#" class="nav-cta">Request a Quote</a></li>
+      <li><a href="https://app.tern.travel/public/forms/OxLptYEYs-iKrRUMpwZ_Jg/responses/new" class="nav-cta" target="_blank">Request a Quote</a></li>
     </ul>
   </nav>
 
@@ -1171,8 +1174,8 @@
           <div class="stat-label">Years in Business</div>
         </div>
         <div class="stat-box">
-          <div class="stat-num">★</div>
-          <div class="stat-label">Certified Sandals Specialist</div>
+          <div class="stat-num">5★</div>
+          <div class="stat-label">Tons of 5-Star Reviews</div>
         </div>
         <div class="stat-box">
           <div class="stat-num">25+</div>
@@ -1374,7 +1377,7 @@
     <div class="footer-top">
       <div class="footer-brand">
         <a href="#" style="display:inline-block; margin-bottom:18px;"><img src="./logo2.png" alt="Starlight2Travel" style="height:80px; width:auto; display:block;" /></a>
-        <p class="footer-email"><a href="/cdn-cgi/l/email-protection#077362666a47747366756b6e606f733573756671626b2964686a"><i class="fa fa-envelope" style="margin-right:8px; color:var(--blue-light);"></i><span class="__cf_email__" data-cfemail="661203070b26151207140a0f010e125412140710030a4805090b">[email&#160;protected]</span></a></p>
+        <p class="footer-email"><a href="mailto:team@starlight2travel.com"><i class="fa fa-envelope" style="margin-right:8px; color:var(--blue-light);"></i>team@starlight2travel.com</a></p>
         <p class="footer-phone"><a href="tel:4404781181"><i class="fa fa-phone" style="margin-right:8px; color:var(--blue-light);"></i>(440) 478-1181</a></p>
         <div class="footer-social">
           <a href="https://www.facebook.com/starlight2travel" class="social-btn" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
@@ -1388,35 +1391,35 @@
       <div class="footer-col">
         <h4>Vacations</h4>
         <ul>
-          <li><a href="#">All-Inclusive Packages</a></li>
-          <li><a href="#">Family Vacations</a></li>
-          <li><a href="#">Luxury Trips</a></li>
-          <li><a href="#">Tropical Cruises</a></li>
-          <li><a href="#">Couples Trips</a></li>
-          <li><a href="#">Destination Weddings</a></li>
-          <li><a href="#">Honeymoons</a></li>
+          <li><a href="./vacations.html#sub-allinclusive">All-Inclusive Packages</a></li>
+          <li><a href="./vacations.html#sub-family">Family Vacations</a></li>
+          <li><a href="./vacations.html#sub-luxury">Luxury Trips</a></li>
+          <li><a href="./vacations.html#sub-cruises">Tropical Cruises</a></li>
+          <li><a href="./vacations.html#sub-couples">Couples Trips</a></li>
+          <li><a href="./vacations.html#sub-weddings">Destination Weddings</a></li>
+          <li><a href="./vacations.html#sub-honeymoon">Honeymoons</a></li>
         </ul>
       </div>
       <div class="footer-col">
-        <h4>Resources</h4>
+        <h4>Destinations</h4>
         <ul>
-          <li><a href="#">Travel Brochures</a></li>
-          <li><a href="#">Travel Guides</a></li>
-          <li><a href="#">Travel Insurance</a></li>
-          <li><a href="#">Government Resources</a></li>
-          <li><a href="#">Shop Sandals</a></li>
-          <li><a href="#">Shop Beaches</a></li>
+          <li><a href="./destinations.html#sub-caribbean">Caribbean</a></li>
+          <li><a href="./destinations.html#sub-mexico">Mexico</a></li>
+          <li><a href="./destinations.html#sub-europe">Europe</a></li>
+          <li><a href="./destinations.html#sub-usa">United States</a></li>
+          <li><a href="./destinations.html#sub-pacific">South Pacific & Asia</a></li>
+          <li><a href="./destinations.html#dream">Dream List</a></li>
         </ul>
       </div>
       <div class="footer-col">
         <h4>Company</h4>
         <ul>
-          <li><a href="#">Our Agency</a></li>
-          <li><a href="#">Meet the Team</a></li>
-          <li><a href="#">How Booking Works</a></li>
-          <li><a href="#">Reviews</a></li>
+          <li><a href="./about.html">Our Agency</a></li>
+          <li><a href="./about.html#team">Meet the Team</a></li>
+          <li><a href="https://app.tern.travel/public/forms/OxLptYEYs-iKrRUMpwZ_Jg/responses/new" target="_blank">How Booking Works</a></li>
+          <li><a href="./about.html">Reviews</a></li>
           <li><a href="./blog.html">Blog</a></li>
-          <li><a href="/cdn-cgi/l/email-protection#c3aaada5ac83b0b7a2b1afaaa4abb7f1b7b1a2b5a6afeda0acae">Email Us</a></li>
+          <li><a href="mailto:team@starlight2travel.com">Email Us</a></li>
         </ul>
       </div>
     </div>
