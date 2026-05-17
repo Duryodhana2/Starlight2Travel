@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/png" href="https://static.wixstatic.com/media/9d01a9_2c7cecba803b47b19600c8e1c6f58bd2~mv2.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <title>Blog | Starlight2Travel</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy: #1D0C43; --navy-mid: #2B1464; --navy-light: #2B1464;
+      --gold: #CC77F9; --gold-light: #A999F4; --white: #ffffff;
+      --text-muted: #A999F4; --accent: #613DBC; --blue: #1a6dbf;
+      --blue-light: #5B8FDF; --serif: "Playfair Display", Georgia, serif;
+      --sans: "Jost", sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--navy); color: var(--white); font-family: var(--sans); font-weight: 300; overflow-x: hidden; }
+    .topbar { background: var(--accent); color: var(--white); text-align: center; padding: 8px 20px; font-size: 0.88rem; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; }
+    .topbar a { color: var(--white); text-decoration: none; }
+    nav { position: sticky; top: 0; z-index: 100; background: rgba(29,12,67,0.97); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(204,119,249,0.15); padding: 12px 40px; display: flex; align-items: center; justify-content: space-between; height: 80px; }
+    .nav-logo-img { display: flex; align-items: center; text-decoration: none; transition: opacity 0.2s; }
+    .nav-logo-img:hover { opacity: 0.85; }
+    .nav-logo-img img { height: 54px; width: auto; }
+    .nav-links { display: flex; list-style: none; gap: 4px; align-items: center; background: var(--blue); padding: 8px 12px; border-radius: 50px; box-shadow: 0 4px 24px rgba(0,0,0,0.3); }
+    .nav-links a { color: rgba(255,255,255,0.85); text-decoration: none; font-size: 0.88rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; transition: all 0.2s; padding: 7px 14px; border-radius: 50px; white-space: nowrap; }
+    .nav-links a:hover, .nav-links a.active { color: var(--white); background: rgba(255,255,255,0.15); }
+    .nav-cta { background: var(--white) !important; color: var(--blue) !important; font-weight: 600 !important; padding: 7px 18px !important; border-radius: 50px !important; font-size: 0.88rem !important; letter-spacing: 0.1em !important; transition: all 0.3s !important; border: none !important; margin-left: 4px; }
+    .nav-cta:hover { background: #e8f0ff !important; transform: translateY(-1px); }
+    .hamburger { display: none; flex-direction: column; justify-content: center; align-items: center; gap: 5px; width: 44px; height: 44px; background: var(--blue); border: none; border-radius: 50%; cursor: pointer; z-index: 200; transition: background 0.3s; flex-shrink: 0; }
+    .hamburger span { display: block; width: 20px; height: 2px; background: var(--white); border-radius: 2px; transition: all 0.35s cubic-bezier(0.23,1,0.32,1); transform-origin: center; }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .mobile-menu { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(29,12,67,0.98); backdrop-filter: blur(16px); z-index: 150; flex-direction: column; align-items: center; justify-content: center; gap: 8px; padding: 100px 40px 40px; opacity: 0; transform: translateY(-20px); transition: opacity 0.35s ease, transform 0.35s ease; pointer-events: none; }
+    .mobile-menu.open { opacity: 1; transform: translateY(0); pointer-events: all; }
+    .mobile-menu a { color: var(--white); text-decoration: none; font-family: var(--serif); font-size: 2rem; font-weight: 400; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.08); width: 100%; text-align: center; transition: color 0.2s; }
+    .mobile-menu a:hover { color: var(--blue-light); }
+    .mobile-menu .mobile-cta { margin-top: 24px; background: var(--blue); color: var(--white) !important; padding: 16px 48px !important; border-radius: 50px; font-family: var(--sans) !important; font-size: 0.88rem !important; font-weight: 600 !important; letter-spacing: 0.15em !important; text-transform: uppercase !important; border-bottom: none !important; width: auto !important; }
+    @media (max-width: 900px) { .hamburger { display: flex; } nav { padding: 0 20px !important; height: 70px !important; } .nav-links { display: none !important; } }
+    footer { background: #1a6dbf; border-top: 1px solid rgba(255,255,255,0.15); padding: 48px 40px 28px; }
+    .footer-bottom { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 12px; }
+    .footer-bottom p { color: rgba(255,255,255,0.7); font-size: 0.78rem; line-height: 1.7; max-width: 700px; }
+    .footer-bottom a { color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.78rem; transition: color 0.2s; }
+    .footer-bottom a:hover { color: var(--white); }
+    .footer-logo img { height: 56px; width: auto; margin-bottom: 12px; display: block; }
+    .section-label { font-size: 0.85rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--blue-light); font-weight: 500; margin-bottom: 12px; display: block; }
+    .btn-primary { background: var(--blue); color: var(--white); padding: 13px 36px; font-family: var(--sans); font-size: 0.88rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; text-decoration: none; border-radius: 50px; transition: all 0.3s; display: inline-block; }
+    .btn-primary:hover { background: var(--blue-light); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(26,109,191,0.4); }
+  </style>
+  <style>
+    .page-hero { position:relative; padding:100px 40px 80px; text-align:center; background:linear-gradient(160deg,#1D0C43 0%,#2B1464 50%,#1a0838 100%); overflow:hidden; }
+    .page-hero::before { content:""; position:absolute; inset:0; background:radial-gradient(ellipse at 25% 60%,rgba(26,109,191,0.15) 0%,transparent 55%),radial-gradient(ellipse at 80%30%,rgba(204,119,249,0.08) 0%,transparent 50%); }
+    .page-hero .breadcrumb { font-size:0.82rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--blue-light); margin-bottom:20px; position:relative; z-index:1; }
+    .page-hero .breadcrumb a { color:var(--blue-light); text-decoration:none; }
+    .page-hero h1 { font-family:var(--serif); font-size:clamp(2.8rem,6vw,5rem); font-weight:600; line-height:1.05; margin-bottom:16px; position:relative; z-index:1; }
+    .page-hero h1 em { font-style:italic; color:var(--gold-light); }
+    .page-hero p { color:var(--text-muted); font-size:1.05rem; max-width:600px; margin:0 auto; line-height:1.85; position:relative; z-index:1; }
+
+    .blog-grid-wrap { max-width:1200px; margin:80px auto 100px; padding:0 40px; }
+    .blog-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:3px; }
+
+    .blog-card { position:relative; overflow:hidden; text-decoration:none; color:var(--white); display:block; background:var(--navy-mid); transition:transform 0.3s; }
+    .blog-card:hover { transform:translateY(-4px); }
+    .blog-card.featured { grid-column:span 2; }
+
+    .blog-card-img { width:100%; height:280px; object-fit:cover; display:block; transition:transform 0.6s; }
+    .blog-card.featured .blog-card-img { height:420px; }
+    .blog-card:hover .blog-card-img { transform:scale(1.04); }
+
+    .blog-card-body { padding:28px 32px 32px; }
+    .blog-tag { display:inline-block; background:var(--blue); color:var(--white); font-size:0.68rem; letter-spacing:0.18em; text-transform:uppercase; font-weight:600; padding:4px 14px; border-radius:50px; margin-bottom:14px; }
+    .blog-card-body h2 { font-family:var(--serif); font-size:1.5rem; font-weight:600; line-height:1.2; margin-bottom:10px; }
+    .blog-card.featured .blog-card-body h2 { font-size:2rem; }
+    .blog-card-body p { color:var(--text-muted); font-size:0.9rem; line-height:1.75; margin-bottom:16px; }
+    .blog-meta { font-size:0.78rem; color:var(--blue-light); letter-spacing:0.08em; margin-bottom:18px; }
+    .read-more { color:var(--gold-light); font-size:0.78rem; font-weight:600; letter-spacing:0.15em; text-transform:uppercase; display:inline-flex; align-items:center; gap:8px; transition:gap 0.2s,color 0.2s; }
+    .blog-card:hover .read-more { gap:14px; color:var(--white); }
+
+    @media(max-width:768px){ .blog-grid{grid-template-columns:1fr;} .blog-card.featured{grid-column:span 1;} .blog-grid-wrap{padding:0 20px; margin:48px auto 60px;} }
+  </style>
+</head>
+<body>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="./index.html" onclick="closeMobile()">Home</a>
+    <a href="./vacations.html" onclick="closeMobile()">Vacations</a>
+    <a href="./destinations.html" onclick="closeMobile()">Destinations</a>
+    <a href="./blog.html" onclick="closeMobile()">Blog</a>
+    <a href="./about.html" onclick="closeMobile()">About</a>
+    <a href="https://app.tern.travel/public/forms/OxLptYEYs-iKrRUMpwZ_Jg/responses/new" class="mobile-cta" target="_blank" onclick="closeMobile()">Request a Quote</a>
+  </div>
+  <div class="topbar"><a href="tel:4404781181">✦ Call or Text to Talk Travel: (440) 478-1181 ✦</a></div>
+  <nav>
+    <a href="./index.html" class="nav-logo-img"><img src="./logo1.png" alt="Starlight2Travel" /></a>
+    <button class="hamburger" id="hamburgerBtn" aria-label="Open menu" onclick="toggleMobile()"><span></span><span></span><span></span></button>
+    <ul class="nav-links">
+      <li><a href="./index.html">Home</a></li>
+      <li><a href="./vacations.html">Vacations</a></li>
+      <li><a href="./destinations.html">Destinations</a></li>
+      <li><a href="./blog.html" class="active">Blog</a></li>
+      <li><a href="./about.html">About</a></li>
+      <li><a href="https://app.tern.travel/public/forms/OxLptYEYs-iKrRUMpwZ_Jg/responses/new" class="nav-cta" target="_blank">Request a Quote</a></li>
+    </ul>
+  </nav>
+  <div class="page-hero">
+    <p class="breadcrumb"><a href="./index.html">Home</a> &nbsp;✦&nbsp; Blog</p>
+    <h1>Travel Like a <em>Star</em></h1>
+    <p>Inspiration, destination guides, agency news, and travel tips — straight from the Starlight2Travel team.</p>
+  </div>
+
+  <div class="blog-grid-wrap">
+    <span class="section-label">✦ Latest Posts</span>
+    <div class="blog-grid">
+
+      <!-- Post 1 - Featured -->
+      <a href="./blog-crystal-conference.html" class="blog-card featured">
+        <img class="blog-card-img" src="https://static.wixstatic.com/media/9d01a9_5bba71cc824a4f219dc281ae0703412a~mv2.png/v1/fill/w_1000,h_563,al_c,q_90,usm_0.66_1.00_0.01/9d01a9_5bba71cc824a4f219dc281ae0703412a~mv2.png" alt="Crystal Conference 2025" />
+        <div class="blog-card-body">
+          <span class="blog-tag">Agency News</span>
+          <p class="blog-meta">May 16, 2025 &nbsp;·&nbsp; Starlight2Travel Team</p>
+          <h2>A Recap of Crystal Conference & Awards Ceremony Agency Trip 2025</h2>
+          <p>For the first time since 2015, the Crystal Conference took place on land — at the most magical place on earth. Over 500 travel professionals gathered for an unforgettable event.</p>
+          <span class="read-more">Read More →</span>
+        </div>
+      </a>
+
+      <!-- Post 2 -->
+      <a href="./blog-travel-advisor-day.html" class="blog-card">
+        <img class="blog-card-img" src="https://static.wixstatic.com/media/9d01a9_ae3a54554f7546dc88638e456727b23a~mv2.png/v1/fill/w_1000,h_563,al_c,q_90,usm_0.66_1.00_0.01/9d01a9_ae3a54554f7546dc88638e456727b23a~mv2.png" alt="Travel Advisor Appreciation Day" />
+        <div class="blog-card-body">
+          <span class="blog-tag">Starlight2Travel</span>
+          <p class="blog-meta">May 7, 2025 &nbsp;·&nbsp; Starlight2Travel Team</p>
+          <h2>Celebrating National Travel Advisor Appreciation Day</h2>
+          <p>Every year on the first Wednesday of May, we celebrate National Travel Advisor Day — a day to recognize the passion and heart that travel advisors bring to every journey.</p>
+          <span class="read-more">Read More →</span>
+        </div>
+      </a>
+
+      <!-- Post 3 -->
+      <a href="./blog-pinnacle-gold.html" class="blog-card">
+        <img class="blog-card-img" src="https://static.wixstatic.com/media/9d01a9_df7395b39cf44eb594e8c13627efd11e~mv2.png/v1/fill/w_1000,h_563,al_c,q_90,usm_0.66_1.00_0.01/9d01a9_df7395b39cf44eb594e8c13627efd11e~mv2.png" alt="Pinnacle Gold Agency Status" />
+        <div class="blog-card-body">
+          <span class="blog-tag">Milestone</span>
+          <p class="blog-meta">May 2, 2025 &nbsp;·&nbsp; Starlight2Travel Team</p>
+          <h2>Starlight2Travel, Inc. Achieves Pinnacle Gold Agency Status</h2>
+          <p>We are thrilled to announce that Starlight2Travel has been recognized as a Pinnacle Gold Agency — a prestigious distinction awarded to top-performing travel agencies.</p>
+          <span class="read-more">Read More →</span>
+        </div>
+      </a>
+
+      <!-- Post 4 -->
+      <a href="./blog-tony-kathy.html" class="blog-card">
+        <img class="blog-card-img" src="https://static.wixstatic.com/media/9d01a9_06dfd706562047e68437e10f28021d2d~mv2.png/v1/fill/w_1200,h_900,al_c/9d01a9_06dfd706562047e68437e10f28021d2d~mv2.png" alt="Tony and Kathy Feature" />
+        <div class="blog-card-body">
+          <span class="blog-tag">Starlight Traveler</span>
+          <p class="blog-meta">April 11, 2025 &nbsp;·&nbsp; Starlight2Travel Team</p>
+          <h2>Starlight Traveler Feature: Tony and Kathy</h2>
+          <p>Our Starlight Travelers of the month! Tony and Kathy share their experience aboard the Wonder of the Seas on a Royal Caribbean family cruise in June 2024.</p>
+          <span class="read-more">Read More →</span>
+        </div>
+      </a>
+
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-bottom">
+      <div>
+        <div class="footer-logo"><img src="./logo2.png" alt="Starlight2Travel" /></div>
+        <p>© 2019–2025 Starlight2Travel, Inc. &nbsp;|&nbsp; An affiliate of KHM Travel Group</p>
+        <p style="margin-top:6px;">California Seller of Travel Registration # 2089491-50. Registration as a seller of travel in California does not constitute the state's approval. Agent is not a participant in the Travel Consumer Restitution Fund. Florida Seller of Travel License #TI103149. Hawaii Seller of Travel License # TAR 7231. Washington Seller of Travel UBI # 602 775122.</p>
+        <p style="margin-top:6px;">Team Photography Credit: <a href="https://www.instagram.com/annieyuphotos/" target="_blank">Annie Yu Photography</a></p>
+      </div>
+      <div style="display:flex;gap:16px;flex-wrap:wrap;align-items:flex-start;margin-top:8px;">
+        <a href="./blog.html">← Back to Blog</a>
+        <a href="./index.html">Home</a>
+        <a href="./terms.html">Agency Terms</a>
+      </div>
+    </div>
+  </footer>
+  <script>
+    function toggleMobile() {
+      const btn = document.getElementById("hamburgerBtn");
+      const menu = document.getElementById("mobileMenu");
+      const isOpen = btn.classList.contains("open");
+      btn.classList.toggle("open"); menu.classList.toggle("open");
+      menu.style.display = isOpen ? "none" : "flex";
+      document.body.style.overflow = isOpen ? "" : "hidden";
+    }
+    function closeMobile() {
+      const btn = document.getElementById("hamburgerBtn");
+      const menu = document.getElementById("mobileMenu");
+      btn.classList.remove("open"); menu.classList.remove("open");
+      menu.style.display = "none"; document.body.style.overflow = "";
+    }
+  </script>
+</body>
+</html>
