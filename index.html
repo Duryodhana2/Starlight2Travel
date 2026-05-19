@@ -169,6 +169,10 @@
       position: absolute;
       inset: 0;
       overflow: hidden;
+      /* Fallback static image for mobile */
+      background-image: url('https://static.wixstatic.com/media/b0753b_79762f9632254222964ce841d78be3b9~mv2.jpg');
+      background-size: cover;
+      background-position: center;
     }
     .hero-bg video {
       position: absolute;
@@ -183,6 +187,16 @@
       position: absolute;
       inset: 0;
       background: linear-gradient(180deg, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.1) 50%, rgba(0,0,0,0.35) 100%);
+    }
+    /* On mobile - hide video, show static background only */
+    @media (max-width: 768px) {
+      .hero-bg video { display: none; }
+      .hero-bg {
+        background-image: url('https://static.wixstatic.com/media/b0753b_79762f9632254222964ce841d78be3b9~mv2.jpg');
+        background-size: cover;
+        background-position: center;
+        opacity: 0.75;
+      }
     }
 
     /* Star field */
