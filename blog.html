@@ -10,7 +10,7 @@
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --navy: #1D0C43; --navy-mid: #2B1464; --navy-light: #2B1464;
+      --navy: #3a2470; --navy-mid: #4a2e88; --navy-light: #533494;
       --gold: #CC77F9; --gold-light: #A999F4; --white: #ffffff;
       --text-muted: #A999F4; --accent: #613DBC; --blue: #1a6dbf;
       --blue-light: #5B8FDF; --serif: "Playfair Display", Georgia, serif;
@@ -18,13 +18,29 @@
     }
     html { scroll-behavior: smooth; }
     body { background: var(--navy); color: var(--white); font-family: var(--sans); font-weight: 300; overflow-x: hidden; }
-    .topbar { background: var(--accent); color: var(--white); text-align: center; padding: 8px 20px; font-size: 0.88rem; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; }
+    .topbar {
+      background: #1a6dbf;
+      color: var(--white);
+      text-align: center;
+      padding: 7px 20px;
+      font-family: var(--sans);
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
     .topbar a { color: var(--white); text-decoration: none; }
+    @media (max-width: 600px) {
+      .topbar { font-size: 0.62rem !important; letter-spacing: 0.08em !important; padding: 6px 12px !important; }
+    }
     nav {
       position: sticky;
       top: 0;
       z-index: 100;
-      background: rgba(29,12,67,0.97);
+      background: rgba(58,36,112,0.97);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid rgba(204,119,249,0.15);
       padding: 12px 40px;
@@ -63,7 +79,7 @@
     .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
     .hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
     .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-    .mobile-menu { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(29,12,67,0.98); backdrop-filter: blur(16px); z-index: 150; flex-direction: column; align-items: center; justify-content: center; gap: 8px; padding: 100px 40px 40px; opacity: 0; transform: translateY(-20px); transition: opacity 0.35s ease, transform 0.35s ease; pointer-events: none; }
+    .mobile-menu { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(58,36,112,0.98); backdrop-filter: blur(16px); z-index: 150; flex-direction: column; align-items: center; justify-content: center; gap: 8px; padding: 100px 40px 40px; opacity: 0; transform: translateY(-20px); transition: opacity 0.35s ease, transform 0.35s ease; pointer-events: none; }
     .mobile-menu.open { opacity: 1; transform: translateY(0); pointer-events: all; }
     .mobile-menu a { color: var(--white); text-decoration: none; font-family: var(--serif); font-size: 2rem; font-weight: 400; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.08); width: 100%; text-align: center; transition: color 0.2s; }
     .mobile-menu a:hover { color: var(--blue-light); }
@@ -81,7 +97,7 @@
     .btn-primary:hover { background: var(--blue-light); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(26,109,191,0.4); }
   </style>
   <style>
-    .page-hero { position:relative; padding:100px 40px 80px; text-align:center; background:linear-gradient(160deg,#1D0C43 0%,#2B1464 50%,#1a0838 100%); overflow:hidden; }
+    .page-hero { position:relative; padding:100px 40px 80px; text-align:center; background:linear-gradient(160deg,#3a2470 0%,#4a2e88 50%,#2e1a60 100%); overflow:hidden; }
     .page-hero::before { content:""; position:absolute; inset:0; background:radial-gradient(ellipse at 25% 60%,rgba(26,109,191,0.15) 0%,transparent 55%),radial-gradient(ellipse at 80%30%,rgba(204,119,249,0.08) 0%,transparent 50%); }
     .page-hero .breadcrumb { font-size:0.82rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--blue-light); margin-bottom:20px; position:relative; z-index:1; }
     .page-hero .breadcrumb a { color:var(--blue-light); text-decoration:none; }
