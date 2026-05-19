@@ -382,8 +382,8 @@
     .value-num {
       font-family: var(--serif);
       font-size: 3.5rem;
-      font-weight: 300;
-      color: rgba(26,109,191,0.2);
+      font-weight: 700;
+      color: rgba(26,109,191,0.5);
       line-height: 1;
       margin-bottom: 20px;
     }
@@ -761,10 +761,20 @@
     @media (max-width: 960px) {
       .story-section { grid-template-columns: 1fr; gap: 48px; padding: 60px 24px; }
       .values-grid { grid-template-columns: 1fr 1fr; }
-      .team-pillars { grid-template-columns: 1fr; max-width: 500px; }
+      .team-pillars {
+        grid-template-columns: 1fr;
+        max-width: 500px;
+        margin: 0 auto;
+      }
+      /* Remove elevation on mobile - stack naturally */
+      .team-pillar:nth-child(1) { transform: none; order: 2; }
+      .team-pillar:nth-child(2) { transform: none; order: 1; }
+      .team-pillar:nth-child(3) { transform: none; order: 3; }
       .credentials-strip { grid-template-columns: 1fr 1fr; }
       .how-steps { grid-template-columns: 1fr 1fr; gap: 40px; }
       .how-steps::before { display: none; }
+      .page-hero { padding: 70px 24px 60px; }
+    }
       .page-hero { padding: 70px 24px 60px; }
     }
     @media (max-width: 580px) {
