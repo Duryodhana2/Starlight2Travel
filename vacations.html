@@ -547,11 +547,41 @@
     }
 
     @media (max-width: 900px) {
-      .sub-vac-section { padding: 0 20px; }
+      .sub-vac-section { padding: 0 12px; }
       .sub-vac-grid { grid-template-columns: repeat(3, 1fr); }
+      /* Fix header overflow - wrap text properly */
+      .sub-vac-header { padding: 20px 16px; flex-wrap: wrap; gap: 8px; }
+      .sub-vac-header h3 { font-size: 1.1rem; }
+      .sub-vac-header .quote-btn { font-size: 0.65rem; padding: 6px 12px; }
     }
     @media (max-width: 580px) {
-      .sub-vac-grid { grid-template-columns: repeat(2, 1fr); }
+      /* Horizontal scroll for sub-cards on mobile */
+      .sub-vac-grid {
+        display: flex !important;
+        overflow-x: auto !important;
+        scroll-snap-type: x mandatory;
+        gap: 3px;
+        padding-bottom: 8px;
+        grid-template-columns: unset !important;
+        -webkit-overflow-scrolling: touch;
+      }
+      .sub-vac-grid::-webkit-scrollbar { display: none; }
+      .sub-vac-card {
+        min-width: 140px !important;
+        max-width: 140px !important;
+        flex-shrink: 0;
+        scroll-snap-align: start;
+        height: 170px !important;
+      }
+      .sub-vac-name {
+        font-size: 0.85rem !important;
+        padding: 10px 10px !important;
+        white-space: normal !important;
+        word-break: break-word;
+      }
+      /* Fix header on small mobile */
+      .sub-vac-header { padding: 16px 12px; }
+      .sub-vac-header h3 { font-size: 1rem; }
     }
 
 
