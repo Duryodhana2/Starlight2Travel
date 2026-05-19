@@ -11,9 +11,9 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --navy: #1D0C43;
-      --navy-mid: #2B1464;
-      --navy-light: #2B1464;
+      --navy: #2a1a5e;
+      --navy-mid: #341a78;
+      --navy-light: #3d2080;
       --gold: #CC77F9;
       --gold-light: #CC77F9;
       --gold-pale: #c8b4e8;
@@ -987,6 +987,12 @@
       .footer-top { grid-template-columns: 1fr 1fr; gap: 40px; }
       .blog-section { padding: 60px 24px; }
       .destinations { padding: 60px 24px; }
+      /* CTA buttons on mobile - smaller and natural */
+      .cta-actions { flex-direction: row; flex-wrap: wrap; gap: 10px; justify-content: center; }
+      .btn-primary { padding: 10px 20px !important; font-size: 0.72rem !important; letter-spacing: 0.1em !important; }
+      .btn-outline { padding: 10px 20px !important; font-size: 0.72rem !important; letter-spacing: 0.1em !important; }
+      /* Topbar - single line on mobile */
+      .topbar { font-size: 0.62rem !important; letter-spacing: 0.08em !important; padding: 6px 12px !important; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
     }
 
     /* ── HAMBURGER MENU ── */
