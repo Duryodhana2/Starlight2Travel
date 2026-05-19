@@ -549,10 +549,9 @@
     @media (max-width: 900px) {
       .sub-vac-section { padding: 0 12px; }
       .sub-vac-grid { grid-template-columns: repeat(3, 1fr); }
-      /* Fix header overflow - wrap text properly */
       .sub-vac-header { padding: 20px 16px; flex-wrap: wrap; gap: 8px; }
       .sub-vac-header h3 { font-size: 1.1rem; }
-      .sub-vac-header .quote-btn { font-size: 0.65rem; padding: 6px 12px; }
+      .sub-vac-header .quote-btn { display: none; }
     }
     @media (max-width: 580px) {
       /* Horizontal scroll for sub-cards on mobile */
@@ -579,9 +578,25 @@
         white-space: normal !important;
         word-break: break-word;
       }
-      /* Fix header on small mobile */
       .sub-vac-header { padding: 16px 12px; }
       .sub-vac-header h3 { font-size: 1rem; }
+      /* Mobile quote btn below grid */
+      .sub-quote-btn-mobile {
+        text-align: center;
+        padding: 16px 12px 8px;
+      }
+      .sub-quote-btn-mobile a {
+        display: inline-block;
+        background: #1a6dbf;
+        color: #fff;
+        padding: 12px 32px;
+        border-radius: 50px;
+        font-size: 0.78rem;
+        font-weight: 600;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        text-decoration: none;
+      }
     }
 
 
@@ -870,6 +885,7 @@
         <div class="sub-vac-overlay"></div><div class="sub-vac-name">Excursions</div>
       </a>
     </div>
+    <div class="sub-quote-btn-mobile"><a href="https://app.tern.travel/public/forms/OxLptYEYs-iKrRUMpwZ_Jg/responses/new" target="_blank">Request a Quote</a></div>
   </div>
 
   <!-- ── FAMILY VACATIONS SUB-SECTION ── -->
@@ -913,6 +929,7 @@
         <div class="sub-vac-overlay"></div><div class="sub-vac-name">Lightning Lane</div>
       </a>
     </div>
+    <div class="sub-quote-btn-mobile"><a href="https://app.tern.travel/public/forms/OxLptYEYs-iKrRUMpwZ_Jg/responses/new" target="_blank">Request a Quote</a></div>
   </div>
 
   <!-- ── LUXURY SUB-SECTION ── -->
@@ -968,6 +985,7 @@
         <div class="sub-vac-overlay"></div><div class="sub-vac-name">Grocery Services</div>
       </a>
     </div>
+    <div class="sub-quote-btn-mobile"><a href="https://app.tern.travel/public/forms/OxLptYEYs-iKrRUMpwZ_Jg/responses/new" target="_blank">Request a Quote</a></div>
   </div>
 
   <!-- ── CRUISES SUB-SECTION ── -->
@@ -1015,6 +1033,7 @@
         <div class="sub-vac-overlay"></div><div class="sub-vac-name">Excursions</div>
       </a>
     </div>
+    <div class="sub-quote-btn-mobile"><a href="https://app.tern.travel/public/forms/OxLptYEYs-iKrRUMpwZ_Jg/responses/new" target="_blank">Request a Quote</a></div>
   </div>
 
   <!-- ── HONEYMOONS SUB-SECTION ── -->
@@ -1050,6 +1069,7 @@
         <div class="sub-vac-overlay"></div><div class="sub-vac-name">Activities</div>
       </a>
     </div>
+    <div class="sub-quote-btn-mobile"><a href="https://app.tern.travel/public/forms/OxLptYEYs-iKrRUMpwZ_Jg/responses/new" target="_blank">Request a Quote</a></div>
   </div>
 
   <!-- ── DESTINATION WEDDINGS SUB-SECTION ── -->
@@ -1152,6 +1172,26 @@
         if (a.getAttribute('href') === '#' + current) a.classList.add('active');
       });
     });
+    // Hamburger menu
+    function toggleMobile() {
+      const btn = document.getElementById('hamburgerBtn');
+      const menu = document.getElementById('mobileMenu');
+      if (!btn || !menu) return;
+      const isOpen = btn.classList.contains('open');
+      btn.classList.toggle('open');
+      menu.classList.toggle('open');
+      menu.style.display = isOpen ? 'none' : 'flex';
+      document.body.style.overflow = isOpen ? '' : 'hidden';
+    }
+    function closeMobile() {
+      const btn = document.getElementById('hamburgerBtn');
+      const menu = document.getElementById('mobileMenu');
+      if (!btn || !menu) return;
+      btn.classList.remove('open');
+      menu.classList.remove('open');
+      menu.style.display = 'none';
+      document.body.style.overflow = '';
+    }
   </script>
 
 </body>
