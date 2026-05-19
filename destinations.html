@@ -611,6 +611,30 @@
     @media (max-width: 580px) {
       .destinations-grid { grid-template-columns: 1fr; }
       .dest-card.large { grid-column: span 1; }
+      /* Horizontal scroll for sub-destination cards */
+      .sub-dest-grid {
+        display: flex !important;
+        overflow-x: auto !important;
+        scroll-snap-type: x mandatory;
+        gap: 3px;
+        padding-bottom: 8px;
+        -webkit-overflow-scrolling: touch;
+      }
+      .sub-dest-grid::-webkit-scrollbar { display: none; }
+      .sub-card {
+        min-width: 140px !important;
+        max-width: 140px !important;
+        flex-shrink: 0;
+        scroll-snap-align: start;
+        height: 170px !important;
+      }
+      .sub-card-name {
+        font-size: 0.85rem !important;
+        padding: 10px !important;
+        white-space: normal !important;
+      }
+      .sub-dest-header { padding: 16px; }
+      .sub-dest-header h3 { font-size: 1.1rem; }
     }
 
     /* ── HAMBURGER MENU ── */
