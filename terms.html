@@ -11,11 +11,11 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --navy: #1D0C43;
+      --navy: #3a2470;
       
       
-      --navy-mid: #2B1464;
-      --navy-light: #2B1464;
+      --navy-mid: #4a2e88;
+      --navy-light: #533494;
       --gold: #613DBC;
       --gold-light: #A999F4;
       --gold-pale: #A999F4;
@@ -41,24 +41,30 @@
 
     /* ── TOP BAR ── */
     .topbar {
-      background: #2B1464;
+      background: #1a6dbf;
       color: var(--white);
       text-align: center;
-      padding: 8px 20px;
+      padding: 7px 20px;
       font-family: var(--sans);
-      font-size: 0.88rem;
+      font-size: 0.78rem;
       font-weight: 500;
       letter-spacing: 0.15em;
       text-transform: uppercase;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
     .topbar a { color: var(--white); text-decoration: none; }
+    @media (max-width: 600px) {
+      .topbar { font-size: 0.62rem !important; letter-spacing: 0.08em !important; padding: 6px 12px !important; }
+    }
 
     /* ── NAV ── */
     nav {
       position: sticky;
       top: 0;
       z-index: 100;
-      background: rgba(29,12,67,0.97);
+      background: rgba(58,36,112,0.97);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid rgba(204,119,249,0.15);
       padding: 12px 40px;
@@ -112,7 +118,7 @@
     .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
     .mobile-menu {
       display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(29,12,67,0.98); backdrop-filter: blur(16px); z-index: 150;
+      background: rgba(58,36,112,0.98); backdrop-filter: blur(16px); z-index: 150;
       flex-direction: column; align-items: center; justify-content: center;
       gap: 8px; padding: 100px 40px 40px; opacity: 0; transform: translateY(-20px);
       transition: opacity 0.35s ease, transform 0.35s ease; pointer-events: none;
@@ -142,7 +148,7 @@
       position: sticky;
       top: 0;
       z-index: 100;
-      background: rgba(29,12,67,0.97);
+      background: rgba(58,36,112,0.97);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid rgba(204,119,249,0.15);
       padding: 12px 40px;
@@ -212,7 +218,7 @@
 
     /* ── PAGE HERO ── */
     .page-hero {
-      background: linear-gradient(135deg, #1D0C43 0%, #2B1464 50%, #1D0C43 100%);
+      background: linear-gradient(135deg, #3a2470 0%, #4a2e88 50%, #3a2470 100%);
       padding: 80px 40px 60px;
       text-align: center;
       border-bottom: 1px solid rgba(204,119,249,0.15);
@@ -451,7 +457,7 @@
       display: none;
       position: fixed;
       top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(29,12,67,0.98);
+      background: rgba(58,36,112,0.98);
       backdrop-filter: blur(16px);
       z-index: 150;
       flex-direction: column;
@@ -528,7 +534,7 @@
   <!-- NAV -->
   <nav>
     <a href="./index.html" class="nav-logo-img">
-      <img src="./logo1.png" alt="Starlight2Travel" />
+      <img src="./STARLIGHT2TRAVELNEWLOGO_01_1.svg" alt="Starlight2Travel" />
     </a>
       <button class="hamburger" id="hamburgerBtn" aria-label="Open menu" onclick="toggleMobile()">
         <span></span><span></span><span></span>
@@ -664,7 +670,7 @@
     <div class="footer-bottom">
       <div>
         <div class="footer-logo">
-          <img src="./logo2.png" alt="Starlight2Travel" />
+          <img src="./STARLIGHT2TRAVELNEWLOGO_01_1.svg" alt="Starlight2Travel" />
         </div>
         <p>© 2019–2025 Starlight2Travel, Inc. &nbsp;|&nbsp; An affiliate of KHM Travel Group</p>
         <p style="margin-top:6px; font-size:0.68rem;">CA Seller of Travel #2089491-50 · FL License #TI103149 · HI License #TAR 7231 · WA UBI #602 775122</p>
