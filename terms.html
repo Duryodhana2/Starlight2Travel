@@ -385,35 +385,52 @@
       margin: 16px 0;
     }
 
-    /* ── FOOTER ── */
+        /* ── FOOTER ── */
     footer {
       background: #0d1b2e;
-      border-top: 1px solid rgba(255,255,255,0.15);
-      padding: 60px 40px 32px;
+      border-top: 1px solid rgba(169,153,244,0.2);
+      padding: 80px 40px 40px;
     }
-    .footer-bottom {
+    .footer-top {
       max-width: 1200px;
       margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 12px;
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1fr;
+      gap: 60px;
+      margin-bottom: 60px;
     }
-    .footer-bottom p {
-      color: rgba(255,255,255,0.75);
-      font-size: 0.75rem;
-      line-height: 1.6;
+    .footer-brand p { color: var(--text-muted); font-size: 0.85rem; line-height: 1.75; }
+    .footer-social { display: flex; gap: 12px; margin: 20px 0 16px; }
+    .social-btn {
+      width: 42px; height: 42px; background: var(--blue); border: none;
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      color: var(--white); text-decoration: none; font-size: 1rem; transition: all 0.3s;
     }
-    .footer-bottom a {
-      color: rgba(255,255,255,0.75);
-      text-decoration: none;
-      font-size: 0.72rem;
-      transition: color 0.2s;
+    .social-btn:hover { background: var(--blue-light); transform: translateY(-3px); }
+    .footer-email, .footer-phone { font-size: 0.85rem; margin-bottom: 8px; }
+    .footer-email a, .footer-phone a { color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
+    .footer-email a:hover, .footer-phone a:hover { color: var(--white); }
+    .footer-affiliate { font-size: 0.92rem; color: var(--text-muted); letter-spacing: 0.05em; margin-top: 4px; font-style: italic; }
+    .footer-col h4 { font-size: 0.82rem; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 500; color: rgba(255,255,255,0.5); margin-bottom: 20px; }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-col ul a { color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.85rem; transition: color 0.2s; }
+    .footer-col ul a:hover { color: var(--white); }
+    .footer-bottom {
+      max-width: 1200px; margin: 0 auto; padding-top: 32px;
+      border-top: 1px solid rgba(255,255,255,0.15);
+      display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;
     }
-    .footer-bottom a:hover { color: var(--white); }
-    .footer-logo { margin-bottom: 16px; }
-    .footer-logo img { height: 60px; width: auto; }
+    .footer-bottom p { color: rgba(255,255,255,0.7); font-size: 0.9rem; line-height: 1.6; }
+    .footer-legal { display: flex; gap: 24px; }
+    .footer-legal a { color: rgba(255,255,255,0.7); text-decoration: none; font-size: 0.88rem; transition: color 0.2s; }
+    .footer-legal a:hover { color: var(--white); }
+    @media (max-width: 900px) {
+      .footer-top { grid-template-columns: 1fr 1fr; gap: 40px; }
+    }
+    @media (max-width: 480px) {
+      .footer-top { grid-template-columns: 1fr; }
+      footer { padding: 48px 24px 32px; }
+    }
 
     @media (max-width: 768px) {
       nav { padding: 12px 20px; }
@@ -666,20 +683,65 @@
   </div>
 
   <!-- FOOTER -->
+  <!-- FOOTER -->
   <footer>
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="./index.html" style="display:inline-block; margin-bottom:18px;"><img src="./STARLIGHT2TRAVELNEWLOGO_01_1.svg" alt="Starlight2Travel" style="height:80px; width:auto; display:block;" /></a>
+        <p class="footer-email"><a href="mailto:team@starlight2travel.com"><i class="fa fa-envelope" style="margin-right:8px; color:var(--blue-light);"></i>team@starlight2travel.com</a></p>
+        <p class="footer-phone"><a href="tel:4404781181"><i class="fa fa-phone" style="margin-right:8px; color:var(--blue-light);"></i>(440) 478-1181</a></p>
+        <div class="footer-social">
+          <a href="https://www.facebook.com/starlight2travel" class="social-btn" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://www.instagram.com/starlight2travel/" class="social-btn" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.linkedin.com/in/kimberly-j-curlin-192a0475/" class="social-btn" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="https://www.pinterest.com/starlight2travel2019/_saved/" class="social-btn" target="_blank" title="Pinterest"><i class="fab fa-pinterest-p"></i></a>
+        </div>
+        <p class="footer-affiliate">An affiliate of KHM Travel Group</p>
+        <p style="margin-top:12px; font-size:0.8rem;"><a href="https://tracking.us.nylas.com/l/8098134157114d16bc9fd227d499db1f/0/7a7e036795c15f3cb8e902011428017df6bc692a7a63d643f8a3bd77bf8a4989" target="_blank" style="color:var(--blue-light); text-decoration:underline; text-underline-offset:3px;">Click here for a Travel Planning Questionnaire</a></p>
+      </div>
+      <div class="footer-col">
+        <h4>Vacations</h4>
+        <ul>
+          <li><a href="./vacations.html#sub-allinclusive">All-Inclusive Packages</a></li>
+          <li><a href="./vacations.html#sub-family">Family Vacations</a></li>
+          <li><a href="./vacations.html#sub-luxury">Luxury Trips</a></li>
+          <li><a href="./vacations.html#sub-cruises">Tropical Cruises</a></li>
+          <li><a href="./vacations.html#sub-couples">Couples Trips</a></li>
+          <li><a href="./vacations.html#sub-weddings">Destination Weddings</a></li>
+          <li><a href="./vacations.html#sub-honeymoon">Honeymoons</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Destinations</h4>
+        <ul>
+          <li><a href="./destinations.html#sub-caribbean">Caribbean</a></li>
+          <li><a href="./destinations.html#sub-mexico">Mexico</a></li>
+          <li><a href="./destinations.html#sub-europe">Europe</a></li>
+          <li><a href="./destinations.html#sub-usa">United States</a></li>
+          <li><a href="./destinations.html#sub-pacific">South Pacific & Asia</a></li>
+          <li><a href="./destinations.html#dream">Dream List</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="./about.html">Our Agency</a></li>
+          <li><a href="./about.html#team">Meet the Team</a></li>
+          <li><a href="https://app.tern.travel/public/forms/OxLptYEYs-iKrRUMpwZ_Jg/responses/new" target="_blank">How Booking Works</a></li>
+          <li><a href="./about.html">Reviews</a></li>
+          <li><a href="./blog.html">Blog</a></li>
+          <li><a href="mailto:team@starlight2travel.com">Email Us</a></li>
+        </ul>
+      </div>
+    </div>
     <div class="footer-bottom">
       <div>
-        <div class="footer-logo">
-          <img src="./STARLIGHT2TRAVELNEWLOGO_01_1.svg" alt="Starlight2Travel" />
-        </div>
         <p>© 2019–2025 Starlight2Travel, Inc. &nbsp;|&nbsp; An affiliate of KHM Travel Group</p>
-        <p style="margin-top:6px; font-size:0.68rem;">CA Seller of Travel #2089491-50 · FL License #TI103149 · HI License #TAR 7231 · WA UBI #602 775122</p>
-        <p style="margin-top:6px; font-size:0.68rem;">Team Photography Credit: <a href="https://www.instagram.com/annieyuphotos/" target="_blank" style="color:rgba(255,255,255,0.85);">Annie Yu Photography</a></p>
+        <p style="margin-top:6px; font-size:0.68rem;">California Seller of Travel Registration # 2089491-50. Registration as a seller of travel in California does not constitute the state's approval. Agent is not a participant in the Travel Consumer Restitution Fund. Florida Seller of Travel License #TI103149. Hawaii Seller of Travel License # TAR 7231. Washington Seller of Travel UBI # 602 775122.</p>
+        <p style="margin-top:6px; font-size:0.68rem; color:var(--text-muted);">Team Photography Credit: <a href="https://www.instagram.com/annieyuphotos/" target="_blank" style="color:var(--blue-light); text-decoration:none;">Annie Yu Photography</a></p>
       </div>
-      <div>
+      <div class="footer-legal">
         <a href="./terms.html">Agency Terms</a>
-        &nbsp;&nbsp;|&nbsp;&nbsp;
-        <a href="./index.html">← Back to Home</a>
       </div>
     </div>
   </footer>
