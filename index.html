@@ -11,19 +11,19 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --navy: #4a1a6e;
-      --navy-mid: #652684;
-      --navy-light: #7a3496;
-      --gold: #CC77F9;
-      --gold-light: #CC77F9;
-      --gold-pale: #c8b4e8;
-      --cream: #e8f0ff;
+      --navy: #0a0e1a;
+      --navy-mid: #0f1628;
+      --navy-light: #162040;
+      --gold: #c9a84c;
+      --gold-light: #e8c97a;
+      --gold-pale: #f5e6c0;
+      --cream: #faf7f0;
       --white: #ffffff;
-      --text-muted: rgba(255,255,255,0.75);
-      --accent: #613DBC;
-      --blue: #1a6dbf;
-      --blue-light: #5B8FDF;
-      --cyan: #5B8FDF;
+      --text-muted: rgba(255,255,255,0.70);
+      --accent: #c9a84c;
+      --blue: #c9a84c;
+      --blue-light: #e8c97a;
+      --cyan: #e8c97a;
       --serif: 'Playfair Display', Georgia, serif;
       --sans: 'Jost', sans-serif;
     }
@@ -269,7 +269,7 @@
       background: var(--gold-light);
       color: #1D0C43;
       transform: translateY(-2px);
-      box-shadow: 0 8px 30px rgba(53,203,225,0.3);
+      box-shadow: 0 8px 30px rgba(201,168,76,0.3);
     }
 
     .btn-outline {
@@ -348,8 +348,8 @@
     /* ── SERVICES STRIP ── */
     .services-strip {
       background: var(--navy-light);
-      border-top: 1px solid rgba(53,203,225,0.15);
-      border-bottom: 1px solid rgba(53,203,225,0.15);
+      border-top: 1px solid rgba(201,168,76,0.15);
+      border-bottom: 1px solid rgba(201,168,76,0.15);
       padding: 0;
       display: grid;
       grid-template-columns: repeat(6, 1fr);
@@ -358,7 +358,7 @@
     .service-item {
       padding: 32px 20px;
       text-align: center;
-      border-right: 1px solid rgba(53,203,225,0.1);
+      border-right: 1px solid rgba(201,168,76,0.1);
       text-decoration: none;
       color: var(--white);
       transition: background 0.3s;
@@ -423,9 +423,9 @@
     .stat-box {
       background: var(--navy-light);
       padding: 40px 32px;
-      border: 1px solid rgba(53,203,225,0.1);
+      border: 1px solid rgba(201,168,76,0.1);
     }
-    .stat-box:nth-child(2) { background: var(--blue); border-color: rgba(91,143,223,0.3); }
+    .stat-box:nth-child(2) { background: rgba(201,168,76,0.2); border-color: rgba(91,143,223,0.3); }
     .stat-box:nth-child(2) .stat-num { color: var(--white); }
     .stat-box:nth-child(2) .stat-label { color: rgba(255,255,255,0.7); }
 
@@ -449,7 +449,7 @@
     .blog-section {
       padding: 100px 40px;
       background: var(--navy-mid);
-      border-top: 1px solid rgba(53,203,225,0.1);
+      border-top: 1px solid rgba(201,168,76,0.1);
     }
 
     .blog-header {
@@ -483,7 +483,7 @@
       letter-spacing: 0.2em;
       text-transform: uppercase;
       font-weight: 500;
-      border-bottom: 1px solid rgba(53,203,225,0.3);
+      border-bottom: 1px solid rgba(201,168,76,0.3);
       padding-bottom: 2px;
       white-space: nowrap;
       transition: border-color 0.2s;
@@ -540,7 +540,7 @@
 
     .blog-tag {
       display: inline-block;
-      background: var(--blue);
+      background: rgba(201,168,76,0.2);
       color: var(--white);
       font-size: 0.92rem;
       letter-spacing: 0.15em;
@@ -661,8 +661,8 @@
     .why-us {
       padding: 100px 40px;
       background: var(--navy-light);
-      border-top: 1px solid rgba(53,203,225,0.1);
-      border-bottom: 1px solid rgba(53,203,225,0.1);
+      border-top: 1px solid rgba(201,168,76,0.1);
+      border-bottom: 1px solid rgba(201,168,76,0.1);
     }
 
     .why-us-inner {
@@ -693,16 +693,16 @@
     .why-item {
       background: var(--navy);
       padding: 40px 32px;
-      border: 1px solid rgba(53,203,225,0.08);
+      border: 1px solid rgba(201,168,76,0.08);
       transition: border-color 0.3s;
     }
-    .why-item:hover { border-color: rgba(53,203,225,0.3); }
+    .why-item:hover { border-color: rgba(201,168,76,0.3); }
 
     .why-num {
       font-family: var(--serif);
       font-size: 2.5rem;
       font-weight: 300;
-      color: rgba(53,203,225,0.2);
+      color: rgba(201,168,76,0.2);
       line-height: 1;
       margin-bottom: 16px;
     }
@@ -724,8 +724,8 @@
     /* ── SANDALS BADGE ── */
     .sandals-banner {
       background: linear-gradient(135deg, #0a0f1e, #1c2a45);
-      border-top: 1px solid rgba(53,203,225,0.15);
-      border-bottom: 1px solid rgba(53,203,225,0.15);
+      border-top: 1px solid rgba(201,168,76,0.15);
+      border-bottom: 1px solid rgba(201,168,76,0.15);
       padding: 60px 40px;
       text-align: center;
     }
@@ -750,7 +750,7 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: radial-gradient(ellipse at center, rgba(53,203,225,0.08) 0%, transparent 70%);
+      background: radial-gradient(ellipse at center, rgba(201,168,76,0.08) 0%, transparent 70%);
     }
     .cta-section h2 {
       font-family: var(--serif);
@@ -768,8 +768,8 @@
     .stay-connected {
       padding: 100px 40px;
       background: #1D0C43;
-      border-top: 1px solid rgba(53,203,225,0.15);
-      border-bottom: 1px solid rgba(53,203,225,0.15);
+      border-top: 1px solid rgba(201,168,76,0.15);
+      border-bottom: 1px solid rgba(201,168,76,0.15);
       text-align: center;
       position: relative;
       overflow: hidden;
@@ -856,7 +856,7 @@
       width: 200px;
     }
     .connect-form .btn-submit:hover {
-      background: var(--blue);
+      background: rgba(201,168,76,0.2);
       transform: translateY(-2px);
       box-shadow: 0 8px 24px rgba(59,111,191,0.4);
     }
@@ -871,8 +871,8 @@
 
     /* ── FOOTER ── */
     footer {
-      background: #2d0d4a;
-      border-top: 1px solid rgba(169,153,244,0.2);
+      background: #060910;
+      border-top: 1px solid rgba(201,168,76,0.15);
       padding: 80px 40px 40px;
     }
 
@@ -899,7 +899,7 @@
     .social-btn {
       width: 42px;
       height: 42px;
-      background: var(--blue);
+      background: rgba(201,168,76,0.2);
       border: none;
       border-radius: 50%;
       display: flex;
@@ -911,9 +911,9 @@
       transition: all 0.3s;
     }
     .social-btn:hover {
-      background: var(--blue-light);
+      background: rgba(201,168,76,0.4);
       transform: translateY(-3px);
-      box-shadow: 0 6px 20px rgba(59,111,191,0.4);
+      box-shadow: 0 6px 20px rgba(201,168,76,0.3);
     }
     .footer-email, .footer-phone {
       font-size: 0.85rem;
@@ -1372,7 +1372,7 @@
     <p>Tell us where you've dreamed of going — we'll take care of everything else. No stress, no guesswork, just magic.</p>
     <div class="cta-actions">
       <a href="https://app.tern.travel/public/forms/OxLptYEYs-iKrRUMpwZ_Jg/responses/new" class="btn-primary" target="_blank">Request a Quote</a>
-      <a href="https://calendly.com/-starlight2travel/travelappointment?month=2026-04" class="btn-primary" target="_blank" style="background: var(--blue);">Schedule Time</a>
+      <a href="https://calendly.com/-starlight2travel/travelappointment?month=2026-04" class="btn-primary" target="_blank" style="background: rgba(201,168,76,0.2);">Schedule Time</a>
       <a href="tel:4404781181" class="btn-outline">Call (440) 478-1181</a>
     </div>
   </section>
@@ -1498,9 +1498,9 @@
     const navEl = document.querySelector('nav');
     window.addEventListener('scroll', () => {
       if (window.scrollY > 60) {
-        navEl.style.background = 'rgba(74,26,110,0.96)';
+        navEl.style.background = 'rgba(10,14,26,0.97)';
         navEl.style.backdropFilter = 'blur(14px)';
-        navEl.style.borderBottom = '1px solid rgba(53,203,225,0.2)';
+        navEl.style.borderBottom = '1px solid rgba(201,168,76,0.2)';
       } else {
         navEl.style.background = 'transparent';
         navEl.style.backdropFilter = 'none';
