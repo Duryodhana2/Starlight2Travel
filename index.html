@@ -169,7 +169,7 @@
       position: absolute;
       inset: 0;
       overflow: hidden;
-      /* Fallback static image for mobile */
+      /* Fallback static image always present */
       background-image: url('https://static.wixstatic.com/media/b0753b_79762f9632254222964ce841d78be3b9~mv2.jpg');
       background-size: cover;
       background-position: center;
@@ -181,6 +181,8 @@
       height: 100%;
       object-fit: cover;
       opacity: 0.75;
+      /* Hidden by default on mobile - JS will show it if Chrome */
+      display: none;
     }
     .hero-bg::after {
       content: '';
@@ -188,15 +190,9 @@
       inset: 0;
       background: linear-gradient(180deg, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.1) 50%, rgba(0,0,0,0.35) 100%);
     }
-    /* On mobile - hide video, show static background only */
-    @media (max-width: 768px) {
-      .hero-bg video { display: none; }
-      .hero-bg {
-        background-image: url('https://static.wixstatic.com/media/b0753b_79762f9632254222964ce841d78be3b9~mv2.jpg');
-        background-size: cover;
-        background-position: center;
-        opacity: 0.75;
-      }
+    /* Desktop always shows video */
+    @media (min-width: 769px) {
+      .hero-bg video { display: block; }
     }
 
     /* Star field */
@@ -1461,6 +1457,23 @@
   </footer>
 
   <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    // Browser detection for mobile video
+    // Show video on Chrome/Android, keep static image on Safari/iOS
+    (function() {
+      const isMobile = window.innerWidth <= 768;
+      if (!isMobile) return;
+      const ua = navigator.userAgent;
+      const isSafari = /^((?!chrome|android).)*safari/i.test(ua);
+      const isIOS = /iPad|iPhone|iPod/.test(ua);
+      if (!isSafari && !isIOS) {
+        const video = document.querySelector('.hero-bg video');
+        if (video) {
+          video.style.display = 'block';
+          video.play().catch(() => { video.style.display = 'none'; });
+        }
+      }
+    })();
+
     // Generate star field
     const starsEl = document.getElementById('stars');
     for (let i = 0; i < 180; i++) {
