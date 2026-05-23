@@ -11,19 +11,20 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --navy: #0a0e1a;
-      --navy-mid: #0f1628;
-      --navy-light: #162040;
-      --gold: #c9a84c;
-      --gold-light: #e8c97a;
-      --gold-pale: #f5e6c0;
-      --cream: #faf7f0;
+      --navy: #1a0535;
+      --navy-mid: #240848;
+      --navy-light: #2e0d5c;
+      --gold: #e040fb;
+      --gold-light: #ce93d8;
+      --gold-pale: #f3e5f5;
+      --cream: #fdf6ff;
       --white: #ffffff;
-      --text-muted: rgba(255,255,255,0.70);
-      --accent: #c9a84c;
-      --blue: #c9a84c;
-      --blue-light: #e8c97a;
-      --cyan: #e8c97a;
+      --text-muted: rgba(255,255,255,0.80);
+      --accent: #7c4dff;
+      --blue: #448aff;
+      --blue-light: #40c4ff;
+      --cyan: #40c4ff;
+      --rose: #f06292;
       --serif: 'Playfair Display', Georgia, serif;
       --sans: 'Jost', sans-serif;
     }
@@ -269,7 +270,7 @@
       background: var(--gold-light);
       color: #1D0C43;
       transform: translateY(-2px);
-      box-shadow: 0 8px 30px rgba(201,168,76,0.3);
+      box-shadow: 0 8px 30px rgba(64,196,255,0.35);
     }
 
     .btn-outline {
@@ -348,8 +349,8 @@
     /* ── SERVICES STRIP ── */
     .services-strip {
       background: var(--navy-light);
-      border-top: 1px solid rgba(201,168,76,0.15);
-      border-bottom: 1px solid rgba(201,168,76,0.15);
+      border-top: 1px solid rgba(64,196,255,0.2);
+      border-bottom: 1px solid rgba(64,196,255,0.2);
       padding: 0;
       display: grid;
       grid-template-columns: repeat(6, 1fr);
@@ -358,7 +359,7 @@
     .service-item {
       padding: 32px 20px;
       text-align: center;
-      border-right: 1px solid rgba(201,168,76,0.1);
+      border-right: 1px solid rgba(64,196,255,0.15);
       text-decoration: none;
       color: var(--white);
       transition: background 0.3s;
@@ -423,9 +424,9 @@
     .stat-box {
       background: var(--navy-light);
       padding: 40px 32px;
-      border: 1px solid rgba(201,168,76,0.1);
+      border: 1px solid rgba(64,196,255,0.15);
     }
-    .stat-box:nth-child(2) { background: rgba(201,168,76,0.2); border-color: rgba(91,143,223,0.3); }
+    .stat-box:nth-child(2) { background: rgba(64,196,255,0.25); border-color: rgba(91,143,223,0.3); }
     .stat-box:nth-child(2) .stat-num { color: var(--white); }
     .stat-box:nth-child(2) .stat-label { color: rgba(255,255,255,0.7); }
 
@@ -449,7 +450,7 @@
     .blog-section {
       padding: 100px 40px;
       background: var(--navy-mid);
-      border-top: 1px solid rgba(201,168,76,0.1);
+      border-top: 1px solid rgba(64,196,255,0.15);
     }
 
     .blog-header {
@@ -483,7 +484,7 @@
       letter-spacing: 0.2em;
       text-transform: uppercase;
       font-weight: 500;
-      border-bottom: 1px solid rgba(201,168,76,0.3);
+      border-bottom: 1px solid rgba(64,196,255,0.35);
       padding-bottom: 2px;
       white-space: nowrap;
       transition: border-color 0.2s;
@@ -540,7 +541,7 @@
 
     .blog-tag {
       display: inline-block;
-      background: rgba(201,168,76,0.2);
+      background: rgba(64,196,255,0.25);
       color: var(--white);
       font-size: 0.92rem;
       letter-spacing: 0.15em;
@@ -661,8 +662,8 @@
     .why-us {
       padding: 100px 40px;
       background: var(--navy-light);
-      border-top: 1px solid rgba(201,168,76,0.1);
-      border-bottom: 1px solid rgba(201,168,76,0.1);
+      border-top: 1px solid rgba(64,196,255,0.15);
+      border-bottom: 1px solid rgba(64,196,255,0.15);
     }
 
     .why-us-inner {
@@ -693,16 +694,16 @@
     .why-item {
       background: var(--navy);
       padding: 40px 32px;
-      border: 1px solid rgba(201,168,76,0.08);
+      border: 1px solid rgba(64,196,255,0.1);
       transition: border-color 0.3s;
     }
-    .why-item:hover { border-color: rgba(201,168,76,0.3); }
+    .why-item:hover { border-color: rgba(64,196,255,0.35); }
 
     .why-num {
       font-family: var(--serif);
       font-size: 2.5rem;
       font-weight: 300;
-      color: rgba(201,168,76,0.2);
+      color: rgba(64,196,255,0.25);
       line-height: 1;
       margin-bottom: 16px;
     }
@@ -724,8 +725,8 @@
     /* ── SANDALS BADGE ── */
     .sandals-banner {
       background: linear-gradient(135deg, #0a0f1e, #1c2a45);
-      border-top: 1px solid rgba(201,168,76,0.15);
-      border-bottom: 1px solid rgba(201,168,76,0.15);
+      border-top: 1px solid rgba(64,196,255,0.2);
+      border-bottom: 1px solid rgba(64,196,255,0.2);
       padding: 60px 40px;
       text-align: center;
     }
@@ -750,7 +751,7 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: radial-gradient(ellipse at center, rgba(201,168,76,0.08) 0%, transparent 70%);
+      background: radial-gradient(ellipse at center, rgba(64,196,255,0.1) 0%, transparent 70%);
     }
     .cta-section h2 {
       font-family: var(--serif);
@@ -768,8 +769,8 @@
     .stay-connected {
       padding: 100px 40px;
       background: #1D0C43;
-      border-top: 1px solid rgba(201,168,76,0.15);
-      border-bottom: 1px solid rgba(201,168,76,0.15);
+      border-top: 1px solid rgba(64,196,255,0.2);
+      border-bottom: 1px solid rgba(64,196,255,0.2);
       text-align: center;
       position: relative;
       overflow: hidden;
@@ -856,7 +857,7 @@
       width: 200px;
     }
     .connect-form .btn-submit:hover {
-      background: rgba(201,168,76,0.2);
+      background: rgba(64,196,255,0.25);
       transform: translateY(-2px);
       box-shadow: 0 8px 24px rgba(59,111,191,0.4);
     }
@@ -871,8 +872,8 @@
 
     /* ── FOOTER ── */
     footer {
-      background: #060910;
-      border-top: 1px solid rgba(201,168,76,0.15);
+      background: #0f0220;
+      border-top: 1px solid rgba(64,196,255,0.2);
       padding: 80px 40px 40px;
     }
 
@@ -899,7 +900,7 @@
     .social-btn {
       width: 42px;
       height: 42px;
-      background: rgba(201,168,76,0.2);
+      background: rgba(64,196,255,0.25);
       border: none;
       border-radius: 50%;
       display: flex;
@@ -911,9 +912,9 @@
       transition: all 0.3s;
     }
     .social-btn:hover {
-      background: rgba(201,168,76,0.4);
+      background: rgba(64,196,255,0.45);
       transform: translateY(-3px);
-      box-shadow: 0 6px 20px rgba(201,168,76,0.3);
+      box-shadow: 0 6px 20px rgba(64,196,255,0.35);
     }
     .footer-email, .footer-phone {
       font-size: 0.85rem;
@@ -1372,7 +1373,7 @@
     <p>Tell us where you've dreamed of going — we'll take care of everything else. No stress, no guesswork, just magic.</p>
     <div class="cta-actions">
       <a href="https://app.tern.travel/public/forms/OxLptYEYs-iKrRUMpwZ_Jg/responses/new" class="btn-primary" target="_blank">Request a Quote</a>
-      <a href="https://calendly.com/-starlight2travel/travelappointment?month=2026-04" class="btn-primary" target="_blank" style="background: rgba(201,168,76,0.2);">Schedule Time</a>
+      <a href="https://calendly.com/-starlight2travel/travelappointment?month=2026-04" class="btn-primary" target="_blank" style="background: rgba(64,196,255,0.25);">Schedule Time</a>
       <a href="tel:4404781181" class="btn-outline">Call (440) 478-1181</a>
     </div>
   </section>
@@ -1498,9 +1499,9 @@
     const navEl = document.querySelector('nav');
     window.addEventListener('scroll', () => {
       if (window.scrollY > 60) {
-        navEl.style.background = 'rgba(10,14,26,0.97)';
+        navEl.style.background = 'rgba(26,5,53,0.97)';
         navEl.style.backdropFilter = 'blur(14px)';
-        navEl.style.borderBottom = '1px solid rgba(201,168,76,0.2)';
+        navEl.style.borderBottom = '1px solid rgba(64,196,255,0.25)';
       } else {
         navEl.style.background = 'transparent';
         navEl.style.backdropFilter = 'none';
